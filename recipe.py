@@ -24,10 +24,12 @@ all_ingredients = []
 for link in links:
 	r = urllib.urlopen(link)
 	soup = BeautifulSoup(r)
-	ingredients = soup.find_all("span", class_="recipe-ingred_txt added")
+	ingredients = soup.find_all("span", class_="recipe-directions__list--item")
 
+	count = 1
 	for ing in ingredients:
- 		all_ingredients.append(ing.get_text())
+ 		all_ingredients.append(str(count) + ". " + ing.get_text())
+ 		count += 1
 
  	all_ingredients.append("NEXT RECIPE")
 
