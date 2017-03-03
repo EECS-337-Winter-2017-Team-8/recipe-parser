@@ -252,9 +252,15 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
+<<<<<<< HEAD
 			elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'VB') or (ingredient_pos[increment][1] == 'RB')):
 				if (preparation != ""):
 					preparation += " " + ingredient_pos[increment][0]
+=======
+			elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
+				if (preperation != ""):
+					preperation += " " + ingredient_pos[increment][0]
+>>>>>>> 24c2852ef2b3557718d4493a5ca10cbab2f8a27d
 				else:
 					preparation = ingredient_pos[increment][0]
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
@@ -349,6 +355,15 @@ def parse_measurement(ingredient):
 	return measurement
 
 
+<<<<<<< HEAD
+=======
+ingredients = list(open("ingredients.txt", "r"))
+
+# Easier way to check part of speech
+def easy_pos_tag(ingredient):
+	return nltk.pos_tag(nltk.word_tokenize(ingredient))
+
+>>>>>>> 24c2852ef2b3557718d4493a5ca10cbab2f8a27d
 # Used to find a potentially unlisted measurement from an ingredient string
 def find_measurements():
 	new_measurements = []
