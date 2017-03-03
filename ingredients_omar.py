@@ -1,6 +1,6 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set-up: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import nltk, string, os
-#execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients.py')
+#execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients_omar.py')
 
 
 if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
@@ -90,13 +90,7 @@ def parse_ingredient (ingredient):
 		while ((increment < word_list_len) and (lower_word_list[increment] != ")")):
 			tmp_inc = increment
 			# Find new quantity
-			while ((increment < word_list_len) and (any(char.isdigit() for char in lower_word_list[increment]))):
-				if (new_quantity != ""):
-					new_quantity += " "
-				new_quantity += lower_word_list[increment]
-				increment += 1
-			# Find measurement
-			while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
+			while ((increment < word_list_len) and ((any(char.isdigit() for char in lower_word_list[increment])) or (lower_word_list[increment] in measurements))):
 				if (new_measurement != ""):
 					new_measurement += " "
 				new_measurement += lower_word_list[increment]
@@ -106,19 +100,18 @@ def parse_ingredient (ingredient):
 		increment += 1
 
 	# If a measurement was not found within a bracketed statement, find measurement
-	while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
-		if (measurement != ""):
-			measurement += " "
-		measurement += lower_word_list[increment]
-		increment += 1
+	if(new_measurement==""):
+		while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
+			if (measurement != ""):
+				measurement += " "
+			measurement += lower_word_list[increment]
+			increment += 1
+		
 
 	if (measurement in containers):
 		measurement = new_measurement
-		quantity = new_quantity
-
 	elif (((new_quantity != "") or (new_measurement != "")) and (measurement == "")):
 		descriptor += new_quantity + " " + new_measurement
-
 	elif ((new_measurement != "") and (measurement != "")):
 		measurement = new_quantity + " " + new_measurement + " " + measurement
 
