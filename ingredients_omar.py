@@ -3,6 +3,11 @@ import nltk, string, os
 # os.chdir("documents/eecs/eecs337/recipe-parser")
 #execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients_omar.py')
 
+#for list of all possible NLTK P.O.S.s
+#nltk.help.upenn_tagset()
+
+
+
 if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 	os.chdir("../Desktop/Code/recipe-parser")
 
@@ -149,7 +154,7 @@ def parse_ingredient (ingredient):
 		descriptor += ", "
 	descriptor += newIngDescPrep[2]
 	if (preparation != ""):
-		preparation += ", "
+		preparation += "; "
 	preparation += newIngDescPrep[3]
 	if (measurement == ""):
 		measurement = newIngDescPrep[4]
@@ -236,8 +241,10 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 	while (increment < ing_pos_len):
 		if (ingredient_pos[increment][0] in ingredient_name_tokens):
 			if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
+				#verb, past participle. Used w/ Auxillary version of has
+				#he HAS ridden. he HAS eaten. he HAS rowed the boat.
 				if (descriptor != ""):
-					descriptor += ", "
+					descriptor += "; "
 				descriptor += ingredient_pos[increment][0]
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
@@ -245,6 +252,8 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
 			elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
+				#VBD past tense Verb: dipped, pleased, swiped, adopted, strode, wore
+				#RB averb. occassionally, professionally, maddeningly, swiftly, quickly
 				if (preparation != ""):
 					preparation += " " + ingredient_pos[increment][0]
 				else:
@@ -284,6 +293,8 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
 			elif ((ingredient_pos[increment][0] == "CC") and (ingredient_pos[increment][0] != "and")):
+				#CC: Conjunction, coordinating. 
+				#and both but either et for less minus neither nor or plus so therefore times yet whether
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
