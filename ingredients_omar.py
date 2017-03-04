@@ -1,29 +1,29 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set-up: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import nltk, string, os
+# os.chdir("documents/eecs/eecs337/recipe-parser")
 #execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients_omar.py')
-
 
 if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 	os.chdir("../Desktop/Code/recipe-parser")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Measurement words
+# List of measurement words
 measurements = [ "tablespoons", "tablespoon", "cup", "cups", "rib", "teaspoon", "teaspoons", "pound", "pounds", 
-"cloves", "clove", "slice", "slices", "pinch", "can", "cans", "ounce", "ounces", "package", "packages", "rack", 
-"fillet", "fillets", "bottle", "bottles", "fluid", "head", "heads", "containter", "sprig", "sprigs", "stalk", 
+"cloves", "clove", "slice", "slices", "pinch", "can", "cans", "ounce", "ounces", "package", "packages", "rack",
+"bottle", "bottles", "fluid", "head", "heads", "containter", "sprig", "sprigs", "stalk", 
 "stalks", "jar", "jars", "dash", "fluid ounce", "fluid ounces", "inch", "inches", "foot", "feet", "halves",
 "half", "dollop", "dollops" ]
 
-# Descriptors
+# List of descriptors
 descriptors = [ "bone-in", "frozen", "fresh", "extra", "very", "lean", "fatty", "virgin", "extra-virgin", "small",
 "large", "tiny", "big", "giant", "long", "short", "whole", "wheat", "grain", "hot", "cold", "ground", "sweet",
 "seasoned", "italian-seasoned", "extra-extra-virgin" ]
 
-# Containers
+# List of containers
 containers = [ "can", "cans", "bottle", "bottles", "jar", "jars", "package", "packages", "container", "containers" ]
 
-# Conjunctions
+# List of conjunctions
 conjunctions = [ "for", "and", "nor", "but", "or", "yet", "so" ]
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,7 +34,7 @@ def removeNextRecipeTag(ing_lst):
 	return ing_lst
 
 def clear():
-	print "\n"*50
+	print "\n"*70
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Parse Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -83,8 +83,6 @@ def parse_ingredient (ingredient):
 	# If quantity and measurement are actually in brackets
 	# i.e. "1 (8 ounce) can tomato sauce"
 	# should produce Quantity: 8, Measurement: Ounce
-
-	
 	if ((increment < word_list_len) and (lower_word_list[increment] == "(")):
 		increment += 1
 		while ((increment < word_list_len) and (lower_word_list[increment] != ")")):
@@ -99,21 +97,23 @@ def parse_ingredient (ingredient):
 				increment += 1
 		increment += 1
 
-	# If a measurement was not found within a bracketed statement, find measurement
-	if(new_measurement==""):
-		while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
-			if (measurement != ""):
-				measurement += " "
-			measurement += lower_word_list[increment]
-			increment += 1
-		
+	# Find measurement in the rest of the ingredient
+	while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
+		if (measurement != ""):
+			measurement += " "
+		measurement += lower_word_list[increment]
+		increment += 1
+
 
 	if (measurement in containers):
+		if(new_measurement!=""):
+			measurement = new_measurement+" "+measurement
+
+	elif ((new_measurement != "") and (measurement == "")):
 		measurement = new_measurement
-	elif (((new_quantity != "") or (new_measurement != "")) and (measurement == "")):
-		descriptor += new_quantity + " " + new_measurement
+
 	elif ((new_measurement != "") and (measurement != "")):
-		measurement = new_quantity + " " + new_measurement + " " + measurement
+		measurement = new_measurement + " " + measurement
 
 	# Find ingredient name
 	while ((increment < word_list_len) and (lower_word_list[increment] != ",") and (lower_word_list[increment] != "-")):
@@ -131,7 +131,6 @@ def parse_ingredient (ingredient):
 				preparation += " "
 			preparation += lower_word_list[increment]
 			increment += 1
-
 
 	ingred_repl = [", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste", " or more to taste", "or more to taste", "more to taste",
 	", or as needed", ", or to taste", "or as needed", "or to taste", " as needed", " to taste"]
@@ -228,12 +227,12 @@ def parse_ingredient (ingredient):
 
 def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 	results = { 1: None, 2: None, 3: None, 4: None }
-	descriptor = ""
-	preparation = ""
-	measurement = ""
+	descriptor, preparation, measurement = "", "",""
+	
 	ingredient_pos = nltk.pos_tag(ingredient)
 	ing_pos_len = len(ingredient_pos)
 	increment = 0
+
 	while (increment < ing_pos_len):
 		if (ingredient_pos[increment][0] in ingredient_name_tokens):
 			if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
@@ -245,7 +244,7 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-			elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'VB') or (ingredient_pos[increment][1] == 'RB')):
+			elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
 				if (preparation != ""):
 					preparation += " " + ingredient_pos[increment][0]
 				else:
@@ -269,7 +268,7 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 				increment += 1
 				if (descriptor != ""):
-					descriptor += ","
+					descriptor += " ; "
 				while ((increment < ing_pos_len) and (ingredient_pos[increment][0] != ")")):
 					if (descriptor != ""):
 						descriptor += " "
@@ -341,6 +340,9 @@ def parse_measurement(ingredient):
 
 	return measurement
 
+# Easier way to check part of speech
+def easy_pos_tag(ingredient):
+	return nltk.pos_tag(nltk.word_tokenize(ingredient))
 
 # Used to find a potentially unlisted measurement from an ingredient string
 def find_measurements():
@@ -378,6 +380,8 @@ ingredients = removeNextRecipeTag(list(open("ingredients.txt", "r")))
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tests ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 def run_tests():
 	for ingredient in list_of_ingredients:
 		ingredient_words = None
@@ -391,14 +395,12 @@ def run_tests():
 		print ingredient_words
 		print " "
 
-def omar_tests():
-	for i in ingredients[:35]:
+def omar_tests(i):
+	for i in ingredients[:i]:
 		omar = parse_ingredient(i)
 		print i
 		print omar
 		print "~~~~~~~~~~~~~~~~~"
-
-
 
 list_of_ingredients = ["2 chipotle chilies in adobo sauce, minced, or to taste", 
 "1 1/2 pounds ground beef",
@@ -411,3 +413,4 @@ list_of_ingredients = ["2 chipotle chilies in adobo sauce, minced, or to taste",
 "1 (10 ounce) package frozen chopped spinach , thawed, drained and squeezed dry",
 "4 (6 ounce) fillets salmon",
 "1 cup finely grated Parmigiano-Reggiano cheese, plus more for topping"]
+
