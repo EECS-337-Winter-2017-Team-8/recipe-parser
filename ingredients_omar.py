@@ -6,8 +6,6 @@ import nltk, string, os
 #for list of all possible NLTK P.O.S.s
 #nltk.help.upenn_tagset()
 
-
-
 if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 	os.chdir("../Desktop/Code/recipe-parser")
 
@@ -142,10 +140,12 @@ def parse_ingredient (ingredient):
 	prep_repl = [", or as needed", ", or to taste", "or as needed", "or to taste", ", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste",
 	" or more to taste", "or more to taste", "more to taste"]
 
-	for i_r in ingred_repl:
-		ingredient_name = ingredient_name.replace(i_r, "")
-	for p_r in prep_repl:
-		preparation = preparation.replace(p_r, "")
+	if(ingredient_name != ""):
+		for i_r in ingred_repl:
+			ingredient_name = ingredient_name.replace(i_r, "")
+	if(preparation!=""):
+		for p_r in prep_repl:
+			preparation = preparation.replace(p_r, "")
 
 	# Parse ingredient to find descriptor
 	newIngDescPrep = parse_ing_name(lower_word_list, ingredient_name, ingredient_name_tokens)
@@ -154,7 +154,7 @@ def parse_ingredient (ingredient):
 		descriptor += ", "
 	descriptor += newIngDescPrep[2]
 	if (preparation != ""):
-		preparation += "; "
+		preparation += " "
 	preparation += newIngDescPrep[3]
 	if (measurement == ""):
 		measurement = newIngDescPrep[4]
@@ -244,9 +244,9 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				#verb, past participle. Used w/ Auxillary version of has
 				#he HAS ridden. he HAS eaten. he HAS rowed the boat.
 				if (descriptor != ""):
-					descriptor += "; "
+					descriptor += " "
 				descriptor += ingredient_pos[increment][0]
-				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
@@ -258,7 +258,7 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 					preparation += " " + ingredient_pos[increment][0]
 				else:
 					preparation = ingredient_pos[increment][0]
-				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")

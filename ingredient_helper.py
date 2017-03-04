@@ -135,14 +135,6 @@ ingredient_pos = nltk.pos_tag(ingredient)
 ing_pos_len = len(ingredient_pos)
 increment = 0
 
-while (increment < ing_pos_len):
-	if (ingredient_pos[increment][0] in ingredient_name_tokens):
-		print "ingredient_pos[increment][0] is :",ingredient_pos[increment][0]
-		print "ingredient_pos[increment][1] is :",ingredient_pos[increment][1]
-		print "increment is :", increment
-	increment+=1
-
-
 
 
 

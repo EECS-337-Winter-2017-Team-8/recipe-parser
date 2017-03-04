@@ -1,7 +1,10 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set-up: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import nltk, string, os
 # os.chdir("documents/eecs/eecs337/recipe-parser")
-#execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients.py')
+#execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients_omar.py')
+
+#for list of all possible NLTK P.O.S.s
+#nltk.help.upenn_tagset()
 
 if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 	os.chdir("../Desktop/Code/recipe-parser")
@@ -10,8 +13,8 @@ if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 
 # List of measurement words
 measurements = [ "tablespoons", "tablespoon", "cup", "cups", "rib", "teaspoon", "teaspoons", "pound", "pounds", 
-"cloves", "clove", "slice", "slices", "pinch", "can", "cans", "ounce", "ounces", "package", "packages", "rack", 
-"fillet", "fillets", "bottle", "bottles", "fluid", "head", "heads", "containter", "sprig", "sprigs", "stalk", 
+"cloves", "clove", "slice", "slices", "pinch", "can", "cans", "ounce", "ounces", "package", "packages", "rack",
+"bottle", "bottles", "fluid", "head", "heads", "containter", "sprig", "sprigs", "stalk", 
 "stalks", "jar", "jars", "dash", "fluid ounce", "fluid ounces", "inch", "inches", "foot", "feet", "halves",
 "half", "dollop", "dollops" ]
 
@@ -34,7 +37,7 @@ def removeNextRecipeTag(ing_lst):
 	return ing_lst
 
 def clear():
-	print "\n"*50
+	print "\n"*70
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Parse Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -88,13 +91,7 @@ def parse_ingredient (ingredient):
 		while ((increment < word_list_len) and (lower_word_list[increment] != ")")):
 			tmp_inc = increment
 			# Find new quantity
-			while ((increment < word_list_len) and (any(char.isdigit() for char in lower_word_list[increment]))):
-				if (new_quantity != ""):
-					new_quantity += " "
-				new_quantity += lower_word_list[increment]
-				increment += 1
-			# Find measurement
-			while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
+			while ((increment < word_list_len) and ((any(char.isdigit() for char in lower_word_list[increment])) or (lower_word_list[increment] in measurements))):
 				if (new_measurement != ""):
 					new_measurement += " "
 				new_measurement += lower_word_list[increment]
@@ -102,22 +99,24 @@ def parse_ingredient (ingredient):
 			if (tmp_inc == increment):
 				increment += 1
 		increment += 1
-	# If a measurement was not found within a bracketed statement, find measurement
+
+	# Find measurement in the rest of the ingredient
 	while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
 		if (measurement != ""):
 			measurement += " "
 		measurement += lower_word_list[increment]
 		increment += 1
 
-	if (measurement in containers):
-		measurement = new_measurement
-		quantity = new_quantity
 
-	elif (((new_quantity != "") or (new_measurement != "")) and (measurement == "")):
-		descriptor += new_quantity + " " + new_measurement
+	if (measurement in containers):
+		if(new_measurement!=""):
+			measurement = new_measurement+" "+measurement
+
+	elif ((new_measurement != "") and (measurement == "")):
+		measurement = new_measurement
 
 	elif ((new_measurement != "") and (measurement != "")):
-		measurement = new_quantity + " " + new_measurement + " " + measurement
+		measurement = new_measurement + " " + measurement
 
 	# Find ingredient name
 	while ((increment < word_list_len) and (lower_word_list[increment] != ",") and (lower_word_list[increment] != "-")):
@@ -141,10 +140,12 @@ def parse_ingredient (ingredient):
 	prep_repl = [", or as needed", ", or to taste", "or as needed", "or to taste", ", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste",
 	" or more to taste", "or more to taste", "more to taste"]
 
-	for i_r in ingred_repl:
-		ingredient_name = ingredient_name.replace(i_r, "")
-	for p_r in prep_repl:
-		preparation = preparation.replace(p_r, "")
+	if(ingredient_name != ""):
+		for i_r in ingred_repl:
+			ingredient_name = ingredient_name.replace(i_r, "")
+	if(preparation!=""):
+		for p_r in prep_repl:
+			preparation = preparation.replace(p_r, "")
 
 	# Parse ingredient to find descriptor
 	newIngDescPrep = parse_ing_name(lower_word_list, ingredient_name, ingredient_name_tokens)
@@ -153,7 +154,7 @@ def parse_ingredient (ingredient):
 		descriptor += ", "
 	descriptor += newIngDescPrep[2]
 	if (preparation != ""):
-		preparation += ", "
+		preparation += " "
 	preparation += newIngDescPrep[3]
 	if (measurement == ""):
 		measurement = newIngDescPrep[4]
@@ -231,29 +232,33 @@ def parse_ingredient (ingredient):
 
 def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 	results = { 1: None, 2: None, 3: None, 4: None }
-	descriptor = ""
-	preparation = ""
-	measurement = ""
+	descriptor, preparation, measurement = "", "",""
+	
 	ingredient_pos = nltk.pos_tag(ingredient)
 	ing_pos_len = len(ingredient_pos)
 	increment = 0
+
 	while (increment < ing_pos_len):
 		if (ingredient_pos[increment][0] in ingredient_name_tokens):
 			if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
+				#verb, past participle. Used w/ Auxillary version of has
+				#he HAS ridden. he HAS eaten. he HAS rowed the boat.
 				if (descriptor != ""):
-					descriptor += ", "
+					descriptor += " "
 				descriptor += ingredient_pos[increment][0]
-				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
 			elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
+				#VBD past tense Verb: dipped, pleased, swiped, adopted, strode, wore
+				#RB averb. occassionally, professionally, maddeningly, swiftly, quickly
 				if (preparation != ""):
 					preparation += " " + ingredient_pos[increment][0]
 				else:
 					preparation = ingredient_pos[increment][0]
-				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
@@ -272,7 +277,7 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 				increment += 1
 				if (descriptor != ""):
-					descriptor += ","
+					descriptor += " ; "
 				while ((increment < ing_pos_len) and (ingredient_pos[increment][0] != ")")):
 					if (descriptor != ""):
 						descriptor += " "
@@ -288,6 +293,8 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
 			elif ((ingredient_pos[increment][0] == "CC") and (ingredient_pos[increment][0] != "and")):
+				#CC: Conjunction, coordinating. 
+				#and both but either et for less minus neither nor or plus so therefore times yet whether
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
@@ -344,7 +351,6 @@ def parse_measurement(ingredient):
 
 	return measurement
 
-
 # Easier way to check part of speech
 def easy_pos_tag(ingredient):
 	return nltk.pos_tag(nltk.word_tokenize(ingredient))
@@ -400,6 +406,13 @@ def run_tests():
 		print ingredient_words
 		print " "
 
+def omar_tests(i):
+	for i in ingredients[:i]:
+		omar = parse_ingredient(i)
+		print i
+		print omar
+		print "~~~~~~~~~~~~~~~~~"
+
 list_of_ingredients = ["2 chipotle chilies in adobo sauce, minced, or to taste", 
 "1 1/2 pounds ground beef",
 "salt and pepper to taste", 
@@ -412,11 +425,3 @@ list_of_ingredients = ["2 chipotle chilies in adobo sauce, minced, or to taste",
 "4 (6 ounce) fillets salmon",
 "1 cup finely grated Parmigiano-Reggiano cheese, plus more for topping"]
 
-
-
-def omar_tests():
-	for i in ingredients[:35]:
-		omar = parse_ingredient(i)
-		print i
-		print omar
-		print "~~~~~~~~~~~~~~~~~"
