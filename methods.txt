@@ -1,0 +1,597 @@
+lower_step = preheat a large heavy skillet over medium heat for 3 minutes; METHOD is = preheat
+lower_step = coat salmon with olive oil; METHOD is = coat
+lower_step = place in skillet, and increase heat to high; METHOD is = place
+lower_step = cook for 3 minutes; METHOD is = cook
+lower_step = sprinkle with capers, and salt and pepper; METHOD is = sprinkle
+lower_step = turn salmon over, and cook for 5 minutes, or until browned; METHOD is = turn
+THERE IS NO METHOD IN lower_step = salmon is done when it flakes easily with a fork; first_token is = salmon
+lower_step = transfer salmon to individual plates, and garnish with lemon slices; METHOD is = transfer
+lower_step = preheat the oven to 375 degrees f (190 degrees c); METHOD is = preheat
+lower_step = melt butter in a saucepan over medium heat; METHOD is = melt
+lower_step = add garlic and onion; cook for a few minutes until fragrant, but not brown; METHOD is = add
+lower_step = stir in spinach, and cook for about 5 more minutes; METHOD is = stir
+lower_step = remove from the heat, and mix in ricotta cheese, sour cream, and 1 cup of monterey jack cheese; METHOD is = remove
+THERE IS NO METHOD IN lower_step = in a skillet over medium heat, warm tortillas one at a time until flexible, about 15 seconds; first_token is = in
+lower_step = spoon about 1/4 cup of the spinach mixture onto the center of each tortilla; METHOD is = spoon
+lower_step = roll up, and place seam side down in a 9x13 inch baking dish; METHOD is = roll
+lower_step = pour enchilada sauce over the top, and sprinkle with the remaining cup of monterey jack; METHOD is = pour
+lower_step = bake for 15 to 20 minutes in the preheated oven, until sauce is bubbling and cheese is lightly browned at the edges; METHOD is = bake
+lower_step = season pork with pepper and salt; METHOD is = season
+lower_step = heat oil in large pot over high heat; METHOD is = heat
+THERE IS NO METHOD IN lower_step = working in batches, cook pork in the hot oil until browned on all sides, about 5 minutes; first_token is = working
+lower_step = return all cooked pork and accumulated juice to pot; METHOD is = return
+lower_step = season pork with bay leaves, cumin, dried oregano, and cayenne pepper; METHOD is = season
+lower_step = stir in fresh orange juice, orange zest, and milk; METHOD is = stir
+lower_step = bring mixture to a boil over high heat; reduce heat to low; METHOD is = bring
+lower_step = cover and simmer, stirring occasionally, until meat is fork tender but not falling apart, about 2 hours; METHOD is = cover
+lower_step = preheat oven to 450 degrees f (230 degrees c); METHOD is = preheat
+lower_step = remove pork from liquid; METHOD is = remove
+lower_step = skim some fat from the pot to grease a baking dish; METHOD is = skim
+lower_step = transfer the pieces of pork to the baking dish; METHOD is = transfer
+lower_step = drizzle about 2 more tablespoons of the floating fat over the meat; METHOD is = drizzle
+lower_step = season with more salt, if needed; METHOD is = season
+lower_step = bake in preheated oven until pork is browned, about 15 minutes; METHOD is = bake
+lower_step = stir pork; METHOD is = stir
+lower_step = turn on oven's broiler; METHOD is = turn
+lower_step = cook pork under broiler until crisp, 2 to 3 minutes; METHOD is = cook
+lower_step = preheat oven to 375 degrees f (190 degrees c); METHOD is = preheat
+lower_step = season chicken thighs all over with salt and black pepper; METHOD is = season
+lower_step = place bacon in a large, oven-proof skillet and cook over medium-high heat, turning occasionally, until evenly browned, about 10 minutes; METHOD is = place
+lower_step = transfer bacon with a slotted spoon to a paper-towel lined plate, leaving drippings in the skillet; METHOD is = transfer
+lower_step = increase heat to high and place chicken, skin-side down, into skillet; METHOD is = increase
+lower_step = cook in hot skillet until browned, 2 to 4 minutes per side; METHOD is = cook
+lower_step = transfer chicken to a plate; drain and discard all but 1 tablespoon drippings from the skillet; METHOD is = transfer
+lower_step = lower heat to medium-high; saute mushrooms, onion, and shallots with a pinch of salt in the hot skillet until golden and caramelized, 7 to 12 minutes; METHOD is = lower
+lower_step = stir flour and butter into vegetable mixture until completely incorporated, about 1 minute; METHOD is = stir
+lower_step = pour red wine into the skillet and bring to a boil while scraping browned bits of food off of the bottom of the pan with a wooden spoon; METHOD is = pour
+lower_step = stir bacon and thyme into red wine mixture; simmer until wine is about 1/3 reduced, 3 to 5 minutes; METHOD is = stir
+lower_step = pour chicken broth into wine mixture and set chicken thighs into skillet; bring wine and stock to a simmer; METHOD is = pour
+lower_step = cook chicken in the preheated oven for 30 minutes; METHOD is = cook
+lower_step = spoon pan juices over the chicken and continue cooking until no longer pink at the bone and the juices run clear, about 30 minutes more; METHOD is = spoon
+THERE IS NO METHOD IN lower_step = an instant-read thermometer inserted into the thickest part of the thigh, near the bone should read 165 degrees f (74 degrees c); first_token is = an
+lower_step = transfer chicken to a platter; METHOD is = transfer
+lower_step = place skillet over high heat and reduce pan juices, skimming fat off the top as necessary, until sauce thickens slightly, about 5 minutes; METHOD is = place
+lower_step = season with salt and pepper; remove and discard thyme; METHOD is = season
+lower_step = pour sauce over chicken; METHOD is = pour
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = season pork chops with salt, pepper, and italian seasoning; METHOD is = season
+lower_step = heat butter and olive oil together in a skillet over medium-high heat until butter begins to foam; cook pork chops in the hot butter-oil mixture until golden brown, about 3 minutes per side; METHOD is = heat
+lower_step = transfer pork chops to a baking dish, keeping the pan juices in skillet; METHOD is = transfer
+lower_step = bake pork chops in the preheated oven until no longer pink in the center, 10 to 15 minutes; METHOD is = bake
+THERE IS NO METHOD IN lower_step = an instant-read thermometer inserted into the center should read at least 145 degrees f (63 degrees c); first_token is = an
+lower_step = cook and stir onion and shallots in the skillet with pan juices over medium heat until softened, 3 to 5 minutes; METHOD is = cook
+lower_step = pour chicken stock and cooking wine into onion mixture, and bring to a boil while scraping the browned bits of food off of the bottom of the pan with a wooden spoon; METHOD is = pour
+lower_step = whisk half-and-half, horseradish mustard, lemon juice, and thyme into onion mixture until mustard sauce is smooth and heated through, about 5 minutes; METHOD is = whisk
+lower_step = serve pork chops drizzled with mustard sauce; METHOD is = serve
+THERE IS NO METHOD IN lower_step = in medium bowl, blend reserved pineapple juice with cornstarch; stir in pineapple, chili sauce, raisins, sugar and cinnamon and set aside; first_token is = in
+THERE IS NO METHOD IN lower_step = in large skillet lightly brown chops in oil and drain; first_token is = in
+lower_step = pour pineapple mixture over chops; METHOD is = pour
+lower_step = cover and simmer 15 minutes or until pork is cooked throughout; METHOD is = cover
+THERE IS NO METHOD IN lower_step = in medium bowl, blend reserved pineapple juice with cornstarch; stir in pineapple, chili sauce, raisins, sugar and cinnamon and set aside; first_token is = in
+THERE IS NO METHOD IN lower_step = in large skillet lightly brown chops in oil and drain; first_token is = in
+lower_step = pour pineapple mixture over chops; METHOD is = pour
+lower_step = cover and simmer 15 minutes or until pork is cooked throughout; METHOD is = cover
+THERE IS NO METHOD IN lower_step = in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper; first_token is = in
+lower_step = let simmer, stirring frequently, until sauce thickens and bubbles; METHOD is = let
+lower_step = preheat oven to 425 degrees f (220 degrees c); METHOD is = preheat
+lower_step = place chicken pieces in a lightly greased 9x13 inch baking dish; METHOD is = place
+lower_step = brush chicken with the sauce; METHOD is = brush
+lower_step = turn pieces over, and brush again; METHOD is = turn
+lower_step = bake in the preheated oven for 30 minutes; METHOD is = bake
+lower_step = turn pieces over, and bake for another 30 minutes, until no longer pink and juices run clear; METHOD is = turn
+lower_step = brush with sauce every 10 minutes during cooking; METHOD is = brush
+THERE IS NO METHOD IN lower_step = in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper; first_token is = in
+lower_step = let simmer, stirring frequently, until sauce thickens and bubbles; METHOD is = let
+lower_step = preheat oven to 425 degrees f (220 degrees c); METHOD is = preheat
+lower_step = place chicken pieces in a lightly greased 9x13 inch baking dish; METHOD is = place
+lower_step = brush chicken with the sauce; METHOD is = brush
+lower_step = turn pieces over, and brush again; METHOD is = turn
+lower_step = bake in the preheated oven for 30 minutes; METHOD is = bake
+lower_step = turn pieces over, and bake for another 30 minutes, until no longer pink and juices run clear; METHOD is = turn
+lower_step = brush with sauce every 10 minutes during cooking; METHOD is = brush
+lower_step = preheat oven to 375 degrees f (190 degrees c); METHOD is = preheat
+lower_step = heat olive oil in a large oven-safe frying pan over medium-high heat; METHOD is = heat
+lower_step = sprinkle chops with salt, pepper, garlic powder, and poultry seasoning; METHOD is = sprinkle
+lower_step = place in hot oil, and brown on both sides; METHOD is = place
+lower_step = drizzle worcestershire sauce over chops, and pour in apple cider; METHOD is = drizzle
+lower_step = bake in preheated oven for 25 minutes; METHOD is = bake
+lower_step = remove chops to a plate, and return frying pan to stove over medium-high heat; METHOD is = remove
+lower_step = stir sherry into pan, and boil until sauce thickens, stirring frequently; METHOD is = stir
+lower_step = serve sauce over chops; METHOD is = serve
+lower_step = preheat oven to 375 degrees f (190 degrees c); METHOD is = preheat
+lower_step = heat olive oil in a large oven-safe frying pan over medium-high heat; METHOD is = heat
+lower_step = sprinkle chops with salt, pepper, garlic powder, and poultry seasoning; METHOD is = sprinkle
+lower_step = place in hot oil, and brown on both sides; METHOD is = place
+lower_step = drizzle worcestershire sauce over chops, and pour in apple cider; METHOD is = drizzle
+lower_step = bake in preheated oven for 25 minutes; METHOD is = bake
+lower_step = remove chops to a plate, and return frying pan to stove over medium-high heat; METHOD is = remove
+lower_step = stir sherry into pan, and boil until sauce thickens, stirring frequently; METHOD is = stir
+lower_step = serve sauce over chops; METHOD is = serve
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly grease a large baking dish; first_token is = lightly
+THERE IS NO METHOD IN lower_step = in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes); first_token is = in
+lower_step = add the garlic powder, then stir in the green chiles, cream of mushroom soup and sour cream; METHOD is = add
+lower_step = mix well; METHOD is = mix
+lower_step = reserve 3/4 of this sauce and set aside; METHOD is = reserve
+THERE IS NO METHOD IN lower_step = to the remaining 1/4 of the sauce in the saucepan, add the chicken and 1/2 cup of shredded cheddar cheese; first_token is = to
+lower_step = stir together; METHOD is = stir
+lower_step = fill each flour tortilla with the chicken mixture and roll up; METHOD is = fill
+lower_step = place seam side down in the prepared baking dish; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a small bowl combine the reserved 3/4 of the sauce with the milk; first_token is = in
+lower_step = spoon this mixture over the rolled tortillas and top with the remaining 1/2 cup of shredded cheddar cheese; METHOD is = spoon
+lower_step = bake in the preheated oven for 30 to 35 minutes, or until cheese is bubbly; METHOD is = bake
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly grease a large baking dish; first_token is = lightly
+THERE IS NO METHOD IN lower_step = in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes); first_token is = in
+lower_step = add the garlic powder, then stir in the green chiles, cream of mushroom soup and sour cream; METHOD is = add
+lower_step = mix well; METHOD is = mix
+lower_step = reserve 3/4 of this sauce and set aside; METHOD is = reserve
+THERE IS NO METHOD IN lower_step = to the remaining 1/4 of the sauce in the saucepan, add the chicken and 1/2 cup of shredded cheddar cheese; first_token is = to
+lower_step = stir together; METHOD is = stir
+lower_step = fill each flour tortilla with the chicken mixture and roll up; METHOD is = fill
+lower_step = place seam side down in the prepared baking dish; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a small bowl combine the reserved 3/4 of the sauce with the milk; first_token is = in
+lower_step = spoon this mixture over the rolled tortillas and top with the remaining 1/2 cup of shredded cheddar cheese; METHOD is = spoon
+lower_step = bake in the preheated oven for 30 to 35 minutes, or until cheese is bubbly; METHOD is = bake
+lower_step = preheat an oven to 400 degrees f (200 degrees c); METHOD is = preheat
+lower_step = place the beef into a mixing bowl, and season with salt, onion, garlic salt, italian seasoning, oregano, red pepper flakes, hot pepper sauce, and worcestershire sauce; mix well; METHOD is = place
+lower_step = add the milk, parmesan cheese, and bread crumbs; METHOD is = add
+lower_step = mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet; METHOD is = mix
+lower_step = bake in the preheated oven until no longer pink in the center, 20 to 25 minutes; METHOD is = bake
+lower_step = preheat an oven to 400 degrees f (200 degrees c); METHOD is = preheat
+lower_step = place the beef into a mixing bowl, and season with salt, onion, garlic salt, italian seasoning, oregano, red pepper flakes, hot pepper sauce, and worcestershire sauce; mix well; METHOD is = place
+lower_step = add the milk, parmesan cheese, and bread crumbs; METHOD is = add
+lower_step = mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet; METHOD is = mix
+lower_step = bake in the preheated oven until no longer pink in the center, 20 to 25 minutes; METHOD is = bake
+lower_step = season the chicken with salt and pepper; METHOD is = season
+lower_step = rinse the mushrooms and pat dry; METHOD is = rinse
+lower_step = season the flour with salt and pepper and dredge the chicken breasts in the flour mixture; METHOD is = season
+lower_step = heat oil in a skillet over medium high heat and saute the chicken until it is nicely browned on one side (about 3 minutes); METHOD is = heat
+lower_step = add the garlic; METHOD is = add
+lower_step = turn the chicken breasts and scatter the mushrooms over them; METHOD is = turn
+lower_step = continue frying, shaking the skillet and stirring the mushrooms; METHOD is = continue
+lower_step = cook for about 3 minutes, then add the vinegar, broth, bay leaf and thyme; METHOD is = cook
+lower_step = cover tightly and simmer over medium low heat for 10 minutes, turning occasionally; METHOD is = cover
+lower_step = transfer the chicken to a warm serving platter and cover with foil; METHOD is = transfer
+lower_step = set aside; METHOD is = set
+lower_step = continue simmering the sauce, uncovered, over medium high heat for about 7 minutes; METHOD is = continue
+lower_step = swirl in the butter or margarine and discard the bay leaf; METHOD is = swirl
+lower_step = pour this mushroom sauce mixture over the chicken and serve; METHOD is = pour
+lower_step = season the chicken with salt and pepper; METHOD is = season
+lower_step = rinse the mushrooms and pat dry; METHOD is = rinse
+lower_step = season the flour with salt and pepper and dredge the chicken breasts in the flour mixture; METHOD is = season
+lower_step = heat oil in a skillet over medium high heat and saute the chicken until it is nicely browned on one side (about 3 minutes); METHOD is = heat
+lower_step = add the garlic; METHOD is = add
+lower_step = turn the chicken breasts and scatter the mushrooms over them; METHOD is = turn
+lower_step = continue frying, shaking the skillet and stirring the mushrooms; METHOD is = continue
+lower_step = cook for about 3 minutes, then add the vinegar, broth, bay leaf and thyme; METHOD is = cook
+lower_step = cover tightly and simmer over medium low heat for 10 minutes, turning occasionally; METHOD is = cover
+lower_step = transfer the chicken to a warm serving platter and cover with foil; METHOD is = transfer
+lower_step = set aside; METHOD is = set
+lower_step = continue simmering the sauce, uncovered, over medium high heat for about 7 minutes; METHOD is = continue
+lower_step = swirl in the butter or margarine and discard the bay leaf; METHOD is = swirl
+lower_step = pour this mushroom sauce mixture over the chicken and serve; METHOD is = pour
+THERE IS NO METHOD IN lower_step = generously season both sides of roast with salt and pepper; first_token is = generously
+lower_step = sprinkle flour over the top until well coated, and pat it into the meat; METHOD is = sprinkle
+lower_step = shake off any excess; METHOD is = shake
+lower_step = heat vegetable oil in a large skillet over medium-high heat until hot; METHOD is = heat
+lower_step = sear the roast on both sides for 5-6 minutes each, until well browned; METHOD is = sear
+lower_step = remove from the skillet and set aside; METHOD is = remove
+lower_step = reduce the heat to medium and stir in mushrooms and butter; cook for 3-4 minutes; METHOD is = reduce
+lower_step = stir in onion; cook for 5 minutes, until onions are translucent and begin to brown; METHOD is = stir
+lower_step = add garlic, stir for about a minute; METHOD is = add
+lower_step = stir in 1 1/2 tablespoons flour; cook and stir for about 1 minute; METHOD is = stir
+lower_step = add tomato paste, and cook for another minute; METHOD is = add
+THERE IS NO METHOD IN lower_step = slowly add chicken stock, stir to combine, and return to a simmer; first_token is = slowly
+lower_step = remove skillet from the heat; METHOD is = remove
+lower_step = place carrots and celery in the slow cooker; METHOD is = place
+lower_step = place roast over the vegetables and pour in any accumulated juices; METHOD is = place
+lower_step = add rosemary and thyme; METHOD is = add
+lower_step = pour onion and mushroom mixture over the top of the roast; METHOD is = pour
+lower_step = cover slow cooker, turn to high and cook the roast for 5-6 hours, until the meat is fork tender; METHOD is = cover
+lower_step = skim off any fat from the surface and remove the bones; METHOD is = skim
+lower_step = season with salt and pepper to taste; METHOD is = season
+THERE IS NO METHOD IN lower_step = generously season both sides of roast with salt and pepper; first_token is = generously
+lower_step = sprinkle flour over the top until well coated, and pat it into the meat; METHOD is = sprinkle
+lower_step = shake off any excess; METHOD is = shake
+lower_step = heat vegetable oil in a large skillet over medium-high heat until hot; METHOD is = heat
+lower_step = sear the roast on both sides for 5-6 minutes each, until well browned; METHOD is = sear
+lower_step = remove from the skillet and set aside; METHOD is = remove
+lower_step = reduce the heat to medium and stir in mushrooms and butter; cook for 3-4 minutes; METHOD is = reduce
+lower_step = stir in onion; cook for 5 minutes, until onions are translucent and begin to brown; METHOD is = stir
+lower_step = add garlic, stir for about a minute; METHOD is = add
+lower_step = stir in 1 1/2 tablespoons flour; cook and stir for about 1 minute; METHOD is = stir
+lower_step = add tomato paste, and cook for another minute; METHOD is = add
+THERE IS NO METHOD IN lower_step = slowly add chicken stock, stir to combine, and return to a simmer; first_token is = slowly
+lower_step = remove skillet from the heat; METHOD is = remove
+lower_step = place carrots and celery in the slow cooker; METHOD is = place
+lower_step = place roast over the vegetables and pour in any accumulated juices; METHOD is = place
+lower_step = add rosemary and thyme; METHOD is = add
+lower_step = pour onion and mushroom mixture over the top of the roast; METHOD is = pour
+lower_step = cover slow cooker, turn to high and cook the roast for 5-6 hours, until the meat is fork tender; METHOD is = cover
+lower_step = skim off any fat from the surface and remove the bones; METHOD is = skim
+lower_step = season with salt and pepper to taste; METHOD is = season
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = heat vegetable oil in a large skillet over medium heat and cook turkey bacon until browned and crisp, about 5 minutes per side; METHOD is = heat
+lower_step = drain bacon on paper towels; crumble when cool; METHOD is = drain
+lower_step = mix cooked bacon with ground turkey, cheddar cheese, egg, onion, crumbled french bread, worcestershire sauce, garlic powder, and black pepper; turn the turkey meatloaf mixture into a 9x13-inch baking dish and form into a loaf shape in the middle of the dish; METHOD is = mix
+lower_step = mix ketchup, yellow mustard, and brown sugar together in a bowl, stirring to dissolve brown sugar; METHOD is = mix
+lower_step = spread the mixture over the turkey loaf; METHOD is = spread
+lower_step = bake the turkey loaf in the preheated oven until the juices run clear, loaf is no longer pink in the middle, and an instant-read meat thermometer inserted into the thickest part of the loaf reads at least 160 degrees f (70 degrees f), 45 minutes to 1 hour; METHOD is = bake
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = heat vegetable oil in a large skillet over medium heat and cook turkey bacon until browned and crisp, about 5 minutes per side; METHOD is = heat
+lower_step = drain bacon on paper towels; crumble when cool; METHOD is = drain
+lower_step = mix cooked bacon with ground turkey, cheddar cheese, egg, onion, crumbled french bread, worcestershire sauce, garlic powder, and black pepper; turn the turkey meatloaf mixture into a 9x13-inch baking dish and form into a loaf shape in the middle of the dish; METHOD is = mix
+lower_step = mix ketchup, yellow mustard, and brown sugar together in a bowl, stirring to dissolve brown sugar; METHOD is = mix
+lower_step = spread the mixture over the turkey loaf; METHOD is = spread
+lower_step = bake the turkey loaf in the preheated oven until the juices run clear, loaf is no longer pink in the middle, and an instant-read meat thermometer inserted into the thickest part of the loaf reads at least 160 degrees f (70 degrees f), 45 minutes to 1 hour; METHOD is = bake
+lower_step = preheat the oven to 375 degrees f (190 degrees c); METHOD is = preheat
+lower_step = bring rice and water to a boil in a saucepan over high heat; METHOD is = bring
+lower_step = reduce heat to medium-low, cover, and simmer until the rice is tender, and the liquid has been absorbed, 20 to 25 minutes; METHOD is = reduce
+lower_step = set the cooked rice aside; METHOD is = set
+lower_step = cook onion and olive oil over medium heat until onion begins to soften, about 5 minutes; METHOD is = cook
+lower_step = transfer half of cooked onion to a large bowl and set aside; METHOD is = transfer
+lower_step = stir marinara sauce, beef broth, balsamic vinegar, and red pepper flakes into the skillet; cook and stir for 1 minute; METHOD is = stir
+lower_step = pour sauce mixture into a 9x13-inch baking dish and set aside; METHOD is = pour
+lower_step = combine ground beef, italian sausage, diced tomatoes, italian parsley, garlic, salt, black pepper, and cayenne pepper into bowl with reserved onions; mix well; METHOD is = combine
+lower_step = stir in cooked rice and parmigiano reggiano; METHOD is = stir
+lower_step = stuff green bell peppers with beef and sausage mixture; METHOD is = stuff
+lower_step = place stuffed green bell pepper halves in the baking dish over tomato sauce; sprinkle with remaining parmigiano-reggiano, cover baking dish with aluminum foil, and bake in the preheated oven for 45 minutes; METHOD is = place
+lower_step = remove aluminum foil and bake until the meat is no longer pink, the green peppers are tender and the cheese is browned on top, an addition 20 to 25 minutes; METHOD is = remove
+lower_step = preheat the oven to 375 degrees f (190 degrees c); METHOD is = preheat
+lower_step = bring rice and water to a boil in a saucepan over high heat; METHOD is = bring
+lower_step = reduce heat to medium-low, cover, and simmer until the rice is tender, and the liquid has been absorbed, 20 to 25 minutes; METHOD is = reduce
+lower_step = set the cooked rice aside; METHOD is = set
+lower_step = cook onion and olive oil over medium heat until onion begins to soften, about 5 minutes; METHOD is = cook
+lower_step = transfer half of cooked onion to a large bowl and set aside; METHOD is = transfer
+lower_step = stir marinara sauce, beef broth, balsamic vinegar, and red pepper flakes into the skillet; cook and stir for 1 minute; METHOD is = stir
+lower_step = pour sauce mixture into a 9x13-inch baking dish and set aside; METHOD is = pour
+lower_step = combine ground beef, italian sausage, diced tomatoes, italian parsley, garlic, salt, black pepper, and cayenne pepper into bowl with reserved onions; mix well; METHOD is = combine
+lower_step = stir in cooked rice and parmigiano reggiano; METHOD is = stir
+lower_step = stuff green bell peppers with beef and sausage mixture; METHOD is = stuff
+lower_step = place stuffed green bell pepper halves in the baking dish over tomato sauce; sprinkle with remaining parmigiano-reggiano, cover baking dish with aluminum foil, and bake in the preheated oven for 45 minutes; METHOD is = place
+lower_step = remove aluminum foil and bake until the meat is no longer pink, the green peppers are tender and the cheese is browned on top, an addition 20 to 25 minutes; METHOD is = remove
+THERE IS NO METHOD IN lower_step = in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned; first_token is = in
+lower_step = stir in crushed tomatoes, tomato paste, tomato sauce, and water; METHOD is = stir
+lower_step = season with sugar, basil, fennel seeds, italian seasoning, 1 tablespoon salt, pepper, and 2 tablespoons parsley; METHOD is = season
+lower_step = simmer, covered, for about 1 1/2 hours, stirring occasionally; METHOD is = simmer
+lower_step = bring a large pot of lightly salted water to a boil; METHOD is = bring
+lower_step = cook lasagna noodles in boiling water for 8 to 10 minutes; METHOD is = cook
+lower_step = drain noodles, and rinse with cold water; METHOD is = drain
+THERE IS NO METHOD IN lower_step =  in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt; first_token is = in
+lower_step = preheat oven to 375  degrees f (190 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = to assemble, spread 1 1/2 cups of meat sauce in the bottom of a 9x13 inch baking dish; first_token is = to
+lower_step =  arrange 6 noodles lengthwise over meat sauce; METHOD is = arrange
+lower_step = spread with one half of the ricotta cheese mixture; METHOD is = spread
+lower_step = top with a third of mozzarella cheese slices; METHOD is = top
+lower_step = spoon 1 1/2 cups meat sauce over mozzarella, and sprinkle with 1/4 cup parmesan cheese; METHOD is = spoon
+lower_step =  repeat layers, and top with remaining mozzarella and parmesan cheese; METHOD is = repeat
+lower_step = cover with foil: to prevent sticking, either spray foil with cooking spray, or make sure the foil does not touch the cheese; METHOD is = cover
+lower_step = bake in preheated oven for 25 minutes; METHOD is = bake
+lower_step = remove foil, and bake an additional 25 minutes; METHOD is = remove
+lower_step = cool for 15 minutes before serving; METHOD is = cool
+THERE IS NO METHOD IN lower_step = in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned; first_token is = in
+lower_step = stir in crushed tomatoes, tomato paste, tomato sauce, and water; METHOD is = stir
+lower_step = season with sugar, basil, fennel seeds, italian seasoning, 1 tablespoon salt, pepper, and 2 tablespoons parsley; METHOD is = season
+lower_step = simmer, covered, for about 1 1/2 hours, stirring occasionally; METHOD is = simmer
+lower_step = bring a large pot of lightly salted water to a boil; METHOD is = bring
+lower_step = cook lasagna noodles in boiling water for 8 to 10 minutes; METHOD is = cook
+lower_step = drain noodles, and rinse with cold water; METHOD is = drain
+THERE IS NO METHOD IN lower_step =  in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt; first_token is = in
+lower_step = preheat oven to 375  degrees f (190 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = to assemble, spread 1 1/2 cups of meat sauce in the bottom of a 9x13 inch baking dish; first_token is = to
+lower_step =  arrange 6 noodles lengthwise over meat sauce; METHOD is = arrange
+lower_step = spread with one half of the ricotta cheese mixture; METHOD is = spread
+lower_step = top with a third of mozzarella cheese slices; METHOD is = top
+lower_step = spoon 1 1/2 cups meat sauce over mozzarella, and sprinkle with 1/4 cup parmesan cheese; METHOD is = spoon
+lower_step =  repeat layers, and top with remaining mozzarella and parmesan cheese; METHOD is = repeat
+lower_step = cover with foil: to prevent sticking, either spray foil with cooking spray, or make sure the foil does not touch the cheese; METHOD is = cover
+lower_step = bake in preheated oven for 25 minutes; METHOD is = bake
+lower_step = remove foil, and bake an additional 25 minutes; METHOD is = remove
+lower_step = cool for 15 minutes before serving; METHOD is = cool
+lower_step = preheat oven to 425 degrees f (220 degrees c.); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = in a saucepan, combine chicken, carrots, peas, and celery; first_token is = in
+lower_step = add water to cover and boil for 15 minutes; METHOD is = add
+lower_step = remove from heat, drain and set aside; METHOD is = remove
+THERE IS NO METHOD IN lower_step = in the saucepan over medium heat, cook onions in butter until soft and translucent; first_token is = in
+lower_step = stir in flour, salt, pepper, and celery seed; METHOD is = stir
+THERE IS NO METHOD IN lower_step = slowly stir in chicken broth and milk; first_token is = slowly
+lower_step = simmer over medium-low heat until thick; METHOD is = simmer
+lower_step = remove from heat and set aside; METHOD is = remove
+lower_step = place the chicken mixture in bottom pie crust; METHOD is = place
+lower_step = pour hot liquid mixture over; METHOD is = pour
+lower_step = cover with top crust, seal edges, and cut away excess dough; METHOD is = cover
+lower_step = make several small slits in the top to allow steam to escape; METHOD is = make
+lower_step = bake in the preheated oven for 30 to 35 minutes, or until pastry is golden brown and filling is bubbly; METHOD is = bake
+lower_step = cool for 10 minutes before serving; METHOD is = cool
+lower_step = preheat oven to 425 degrees f (220 degrees c.); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = in a saucepan, combine chicken, carrots, peas, and celery; first_token is = in
+lower_step = add water to cover and boil for 15 minutes; METHOD is = add
+lower_step = remove from heat, drain and set aside; METHOD is = remove
+THERE IS NO METHOD IN lower_step = in the saucepan over medium heat, cook onions in butter until soft and translucent; first_token is = in
+lower_step = stir in flour, salt, pepper, and celery seed; METHOD is = stir
+THERE IS NO METHOD IN lower_step = slowly stir in chicken broth and milk; first_token is = slowly
+lower_step = simmer over medium-low heat until thick; METHOD is = simmer
+lower_step = remove from heat and set aside; METHOD is = remove
+lower_step = place the chicken mixture in bottom pie crust; METHOD is = place
+lower_step = pour hot liquid mixture over; METHOD is = pour
+lower_step = cover with top crust, seal edges, and cut away excess dough; METHOD is = cover
+lower_step = make several small slits in the top to allow steam to escape; METHOD is = make
+lower_step = bake in the preheated oven for 30 to 35 minutes, or until pastry is golden brown and filling is bubbly; METHOD is = bake
+lower_step = cool for 10 minutes before serving; METHOD is = cool
+lower_step = preheat your oven's broiler; METHOD is = preheat
+lower_step = grease a broiling pan or line pan with aluminum foil; METHOD is = grease
+THERE IS NO METHOD IN lower_step = in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice; first_token is = in
+lower_step = season with dried basil, pepper, onion powder and celery salt; METHOD is = season
+lower_step = mix well and set aside; METHOD is = mix
+lower_step = arrange fillets in a single layer on the prepared pan; METHOD is = arrange
+lower_step = broil a few inches from the heat for 2 to 3 minutes; METHOD is = broil
+lower_step = flip the fillets over and broil for a couple more minutes; METHOD is = flip
+lower_step = remove the fillets from the oven and cover them with the parmesan cheese mixture on the top side; METHOD is = remove
+lower_step = broil for 2 more minutes or until the topping is browned and fish flakes easily with a fork; METHOD is = broil
+THERE IS NO METHOD IN lower_step = be careful not to over cook the fish; first_token is = be
+lower_step = preheat your oven's broiler; METHOD is = preheat
+lower_step = grease a broiling pan or line pan with aluminum foil; METHOD is = grease
+THERE IS NO METHOD IN lower_step = in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice; first_token is = in
+lower_step = season with dried basil, pepper, onion powder and celery salt; METHOD is = season
+lower_step = mix well and set aside; METHOD is = mix
+lower_step = arrange fillets in a single layer on the prepared pan; METHOD is = arrange
+lower_step = broil a few inches from the heat for 2 to 3 minutes; METHOD is = broil
+lower_step = flip the fillets over and broil for a couple more minutes; METHOD is = flip
+lower_step = remove the fillets from the oven and cover them with the parmesan cheese mixture on the top side; METHOD is = remove
+lower_step = broil for 2 more minutes or until the topping is browned and fish flakes easily with a fork; METHOD is = broil
+THERE IS NO METHOD IN lower_step = be careful not to over cook the fish; first_token is = be
+THERE IS NO METHOD IN lower_step = in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water; first_token is = in
+lower_step = place pot roast in slow cooker and coat with soup mixture; METHOD is = place
+lower_step = cook on high setting for 3 to 4 hours, or on low setting for 8 to 9 hours; METHOD is = cook
+THERE IS NO METHOD IN lower_step = in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water; first_token is = in
+lower_step = place pot roast in slow cooker and coat with soup mixture; METHOD is = place
+lower_step = cook on high setting for 3 to 4 hours, or on low setting for 8 to 9 hours; METHOD is = cook
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly grease a 5x9 inch loaf pan; first_token is = lightly
+lower_step = press the brown sugar in the bottom of the prepared loaf pan and spread the ketchup over the sugar; METHOD is = press
+THERE IS NO METHOD IN lower_step = in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf; first_token is = in
+lower_step = place on top of the ketchup; METHOD is = place
+lower_step = bake in preheated oven for 1 hour or until juices are clear; METHOD is = bake
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly grease a 5x9 inch loaf pan; first_token is = lightly
+lower_step = press the brown sugar in the bottom of the prepared loaf pan and spread the ketchup over the sugar; METHOD is = press
+THERE IS NO METHOD IN lower_step = in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf; first_token is = in
+lower_step = place on top of the ketchup; METHOD is = place
+lower_step = bake in preheated oven for 1 hour or until juices are clear; METHOD is = bake
+lower_step = bring a large pot of lightly salted water to a boil; METHOD is = bring
+lower_step = add ziti pasta, and cook until al dente, about 8 minutes; drain; METHOD is = add
+THERE IS NO METHOD IN lower_step = in a large skillet, brown onion and ground beef over medium heat; first_token is = in
+lower_step = add spaghetti sauce, and simmer 15 minutes; METHOD is = add
+lower_step = preheat the oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = butter a 9x13 inch baking dish; METHOD is = butter
+lower_step = layer as follows: 1/2 of the ziti, provolone cheese, sour cream, 1/2 sauce mixture, remaining ziti, mozzarella cheese and remaining sauce mixture; METHOD is = layer
+lower_step = top with grated parmesan cheese; METHOD is = top
+lower_step = bake for 30 minutes in the preheated oven, or until cheeses are melted; METHOD is = bake
+lower_step = bring a large pot of lightly salted water to a boil; METHOD is = bring
+lower_step = add ziti pasta, and cook until al dente, about 8 minutes; drain; METHOD is = add
+THERE IS NO METHOD IN lower_step = in a large skillet, brown onion and ground beef over medium heat; first_token is = in
+lower_step = add spaghetti sauce, and simmer 15 minutes; METHOD is = add
+lower_step = preheat the oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = butter a 9x13 inch baking dish; METHOD is = butter
+lower_step = layer as follows: 1/2 of the ziti, provolone cheese, sour cream, 1/2 sauce mixture, remaining ziti, mozzarella cheese and remaining sauce mixture; METHOD is = layer
+lower_step = top with grated parmesan cheese; METHOD is = top
+lower_step = bake for 30 minutes in the preheated oven, or until cheeses are melted; METHOD is = bake
+THERE IS NO METHOD IN lower_step = in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper; first_token is = in
+lower_step = let simmer, stirring frequently, until sauce thickens and bubbles; METHOD is = let
+lower_step = preheat oven to 425 degrees f (220 degrees c); METHOD is = preheat
+lower_step = place chicken pieces in a lightly greased 9x13 inch baking dish; METHOD is = place
+lower_step = brush chicken with the sauce; METHOD is = brush
+lower_step = turn pieces over, and brush again; METHOD is = turn
+lower_step = bake in the preheated oven for 30 minutes; METHOD is = bake
+lower_step = turn pieces over, and bake for another 30 minutes, until no longer pink and juices run clear; METHOD is = turn
+lower_step = brush with sauce every 10 minutes during cooking; METHOD is = brush
+THERE IS NO METHOD IN lower_step = in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper; first_token is = in
+lower_step = let simmer, stirring frequently, until sauce thickens and bubbles; METHOD is = let
+lower_step = preheat oven to 425 degrees f (220 degrees c); METHOD is = preheat
+lower_step = place chicken pieces in a lightly greased 9x13 inch baking dish; METHOD is = place
+lower_step = brush chicken with the sauce; METHOD is = brush
+lower_step = turn pieces over, and brush again; METHOD is = turn
+lower_step = bake in the preheated oven for 30 minutes; METHOD is = bake
+lower_step = turn pieces over, and bake for another 30 minutes, until no longer pink and juices run clear; METHOD is = turn
+lower_step = brush with sauce every 10 minutes during cooking; METHOD is = brush
+THERE IS NO METHOD IN lower_step = in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids; first_token is = in
+lower_step = stir in the garlic powder, mustard, ketchup, and brown sugar; mix thoroughly; METHOD is = stir
+lower_step = reduce heat, and simmer for 30 minutes; METHOD is = reduce
+lower_step = season with salt and pepper; METHOD is = season
+THERE IS NO METHOD IN lower_step = in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids; first_token is = in
+lower_step = stir in the garlic powder, mustard, ketchup, and brown sugar; mix thoroughly; METHOD is = stir
+lower_step = reduce heat, and simmer for 30 minutes; METHOD is = reduce
+lower_step = season with salt and pepper; METHOD is = season
+lower_step = pound chicken breasts if they are too thick; METHOD is = pound
+lower_step = place a cheese and ham slice on each breast within 1/2 inch of the edges; METHOD is = place
+lower_step = fold the edges of the chicken over the filling, and secure with toothpicks; METHOD is = fold
+lower_step = mix the flour and paprika in a small bowl, and coat the chicken pieces; METHOD is = mix
+lower_step = heat the butter in a large skillet over medium-high heat, and cook the chicken until browned on all sides; METHOD is = heat
+lower_step = add the wine and bouillon; METHOD is = add
+lower_step = reduce heat to low, cover, and simmer for 30 minutes, until chicken is no longer pink and juices run clear; METHOD is = reduce
+lower_step = remove the toothpicks, and transfer the breasts to a warm platter; METHOD is = remove
+lower_step = blend the cornstarch with the cream in a small bowl, and whisk slowly into the skillet; METHOD is = blend
+lower_step = cook, stirring until thickened, and pour over the chicken; METHOD is = cook
+lower_step = serve warm; METHOD is = serve
+lower_step = pound chicken breasts if they are too thick; METHOD is = pound
+lower_step = place a cheese and ham slice on each breast within 1/2 inch of the edges; METHOD is = place
+lower_step = fold the edges of the chicken over the filling, and secure with toothpicks; METHOD is = fold
+lower_step = mix the flour and paprika in a small bowl, and coat the chicken pieces; METHOD is = mix
+lower_step = heat the butter in a large skillet over medium-high heat, and cook the chicken until browned on all sides; METHOD is = heat
+lower_step = add the wine and bouillon; METHOD is = add
+lower_step = reduce heat to low, cover, and simmer for 30 minutes, until chicken is no longer pink and juices run clear; METHOD is = reduce
+lower_step = remove the toothpicks, and transfer the breasts to a warm platter; METHOD is = remove
+lower_step = blend the cornstarch with the cream in a small bowl, and whisk slowly into the skillet; METHOD is = blend
+lower_step = cook, stirring until thickened, and pour over the chicken; METHOD is = cook
+lower_step = serve warm; METHOD is = serve
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = rinse pork chops, pat dry, and season with garlic powder and seasoning salt to taste; METHOD is = rinse
+lower_step = place the beaten eggs in a small bowl; METHOD is = place
+lower_step = dredge the pork chops lightly in flour, dip in the egg, and coat liberally with bread crumbs; METHOD is = dredge
+lower_step = heat the oil in a medium skillet over medium-high heat; METHOD is = heat
+lower_step = fry the pork chops 5 minutes per side, or until the breading appears well browned; METHOD is = fry
+lower_step = transfer the chops to a 9x13 inch baking dish, and cover with foil; METHOD is = transfer
+lower_step = bake in the preheated oven for 1 hour; METHOD is = bake
+THERE IS NO METHOD IN lower_step = while baking, combine the cream of mushroom soup, milk and white wine in a medium bowl; first_token is = while
+THERE IS NO METHOD IN lower_step = after the pork chops have baked for an hour, cover them with the soup mixture; first_token is = after
+lower_step = replace foil, and bake for another 30 minutes; METHOD is = replace
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+lower_step = rinse pork chops, pat dry, and season with garlic powder and seasoning salt to taste; METHOD is = rinse
+lower_step = place the beaten eggs in a small bowl; METHOD is = place
+lower_step = dredge the pork chops lightly in flour, dip in the egg, and coat liberally with bread crumbs; METHOD is = dredge
+lower_step = heat the oil in a medium skillet over medium-high heat; METHOD is = heat
+lower_step = fry the pork chops 5 minutes per side, or until the breading appears well browned; METHOD is = fry
+lower_step = transfer the chops to a 9x13 inch baking dish, and cover with foil; METHOD is = transfer
+lower_step = bake in the preheated oven for 1 hour; METHOD is = bake
+THERE IS NO METHOD IN lower_step = while baking, combine the cream of mushroom soup, milk and white wine in a medium bowl; first_token is = while
+THERE IS NO METHOD IN lower_step = after the pork chops have baked for an hour, cover them with the soup mixture; first_token is = after
+lower_step = replace foil, and bake for another 30 minutes; METHOD is = replace
+lower_step = place chicken in a slow cooker; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce; first_token is = in
+lower_step = pour over the chicken; METHOD is = pour
+lower_step = cover, and cook 3 to 4 hours on high or 6 to 8 hours on low; METHOD is = cover
+lower_step = place chicken in a slow cooker; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce; first_token is = in
+lower_step = pour over the chicken; METHOD is = pour
+lower_step = cover, and cook 3 to 4 hours on high or 6 to 8 hours on low; METHOD is = cover
+lower_step = preheat oven to 425 degrees f (220 degrees c); METHOD is = preheat
+lower_step = heat olive oil and garlic in a small saucepan over low heat until warmed, 1 to 2 minutes; METHOD is = heat
+lower_step = transfer garlic and oil to a shallow bowl; METHOD is = transfer
+lower_step = combine bread crumbs and parmesan cheese in a separate shallow bowl; METHOD is = combine
+lower_step = dip chicken breasts in the olive oil-garlic mixture using tongs; transfer to bread crumb mixture and turn to evenly coat; METHOD is = dip
+lower_step = transfer coated chicken to a shallow baking dish; METHOD is = transfer
+lower_step = bake in the preheated oven until no longer pink and juices run clear, 30 to 35 minutes; METHOD is = bake
+THERE IS NO METHOD IN lower_step = an instant-read thermometer inserted into the center should read at least 165 degrees f (74 degrees c); first_token is = an
+lower_step = preheat oven to 425 degrees f (220 degrees c); METHOD is = preheat
+lower_step = heat olive oil and garlic in a small saucepan over low heat until warmed, 1 to 2 minutes; METHOD is = heat
+lower_step = transfer garlic and oil to a shallow bowl; METHOD is = transfer
+lower_step = combine bread crumbs and parmesan cheese in a separate shallow bowl; METHOD is = combine
+lower_step = dip chicken breasts in the olive oil-garlic mixture using tongs; transfer to bread crumb mixture and turn to evenly coat; METHOD is = dip
+lower_step = transfer coated chicken to a shallow baking dish; METHOD is = transfer
+lower_step = bake in the preheated oven until no longer pink and juices run clear, 30 to 35 minutes; METHOD is = bake
+THERE IS NO METHOD IN lower_step = an instant-read thermometer inserted into the center should read at least 165 degrees f (74 degrees c); first_token is = an
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs; first_token is = in
+lower_step = season with salt and pepper to taste and place in a lightly greased 5x9 inch loaf pan, or form into a loaf and place in a lightly greased 9x13 inch baking dish; METHOD is = season
+THERE IS NO METHOD IN lower_step = in a separate small bowl, combine the brown sugar, mustard and ketchup; first_token is = in
+lower_step = mix well and pour over the meatloaf; METHOD is = mix
+lower_step = bake at 350 degrees f (175 degrees c) for 1 hour; METHOD is = bake
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs; first_token is = in
+lower_step = season with salt and pepper to taste and place in a lightly greased 5x9 inch loaf pan, or form into a loaf and place in a lightly greased 9x13 inch baking dish; METHOD is = season
+THERE IS NO METHOD IN lower_step = in a separate small bowl, combine the brown sugar, mustard and ketchup; first_token is = in
+lower_step = mix well and pour over the meatloaf; METHOD is = mix
+lower_step = bake at 350 degrees f (175 degrees c) for 1 hour; METHOD is = bake
+THERE IS NO METHOD IN lower_step = in a shallow dish or bowl, mix together the flour, salt, pepper and oregano; first_token is = in
+lower_step = coat chicken pieces in flour mixture; METHOD is = coat
+THERE IS NO METHOD IN lower_step = in a large skillet, melt butter in oil over medium heat; first_token is = in
+lower_step = place chicken in the pan, and lightly brown; METHOD is = place
+lower_step =  turn over chicken pieces, and add mushrooms; METHOD is = turn
+lower_step = pour in wine and sherry; METHOD is = pour
+lower_step =  cover skillet; simmer chicken 10 minutes, turning once, until no longer pink and juices run clear; METHOD is = cover
+THERE IS NO METHOD IN lower_step = in a shallow dish or bowl, mix together the flour, salt, pepper and oregano; first_token is = in
+lower_step = coat chicken pieces in flour mixture; METHOD is = coat
+THERE IS NO METHOD IN lower_step = in a large skillet, melt butter in oil over medium heat; first_token is = in
+lower_step = place chicken in the pan, and lightly brown; METHOD is = place
+lower_step =  turn over chicken pieces, and add mushrooms; METHOD is = turn
+lower_step = pour in wine and sherry; METHOD is = pour
+lower_step =  cover skillet; simmer chicken 10 minutes, turning once, until no longer pink and juices run clear; METHOD is = cover
+lower_step = season salmon fillets with lemon pepper, garlic powder, and salt; METHOD is = season
+THERE IS NO METHOD IN lower_step = in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved; first_token is = in
+lower_step = place fish in a large resealable plastic bag with the soy sauce mixture, seal, and turn to coat; METHOD is = place
+lower_step = refrigerate for at least 2 hours; METHOD is = refrigerate
+lower_step = preheat grill for medium heat; METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly oil grill grate; first_token is = lightly
+lower_step = place salmon on the preheated grill, and discard marinade; METHOD is = place
+lower_step = cook salmon for 6 to 8 minutes per side, or until the fish flakes easily with a fork; METHOD is = cook
+lower_step = season salmon fillets with lemon pepper, garlic powder, and salt; METHOD is = season
+THERE IS NO METHOD IN lower_step = in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved; first_token is = in
+lower_step = place fish in a large resealable plastic bag with the soy sauce mixture, seal, and turn to coat; METHOD is = place
+lower_step = refrigerate for at least 2 hours; METHOD is = refrigerate
+lower_step = preheat grill for medium heat; METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly oil grill grate; first_token is = lightly
+lower_step = place salmon on the preheated grill, and discard marinade; METHOD is = place
+lower_step = cook salmon for 6 to 8 minutes per side, or until the fish flakes easily with a fork; METHOD is = cook
+lower_step = place the pork tenderloin in a slow cooker; pour the root beer over the meat; METHOD is = place
+lower_step = cover and cook on low until well cooked and the pork shreds easily, 6 to 7 hours; METHOD is = cover
+THERE IS NO METHOD IN lower_step = note: the actual length of time may vary according to individual slow cooker; first_token is = note
+lower_step = drain well; METHOD is = drain
+lower_step = stir in barbecue sauce; METHOD is = stir
+lower_step = serve over hamburger buns; METHOD is = serve
+lower_step = place the pork tenderloin in a slow cooker; pour the root beer over the meat; METHOD is = place
+lower_step = cover and cook on low until well cooked and the pork shreds easily, 6 to 7 hours; METHOD is = cover
+THERE IS NO METHOD IN lower_step = note: the actual length of time may vary according to individual slow cooker; first_token is = note
+lower_step = drain well; METHOD is = drain
+lower_step = stir in barbecue sauce; METHOD is = stir
+lower_step = serve over hamburger buns; METHOD is = serve
+THERE IS NO METHOD IN lower_step = in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper; first_token is = in
+lower_step = place salmon in a shallow glass baking dish, and coat with the maple syrup mixture; METHOD is = place
+lower_step = cover the dish, and marinate salmon in the refrigerator 30 minutes, turning once; METHOD is = cover
+lower_step = preheat oven to 400 degrees f (200 degrees c); METHOD is = preheat
+lower_step = place the baking dish in the preheated oven, and bake salmon uncovered 20 minutes, or until easily flaked with a fork; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper; first_token is = in
+lower_step = place salmon in a shallow glass baking dish, and coat with the maple syrup mixture; METHOD is = place
+lower_step = cover the dish, and marinate salmon in the refrigerator 30 minutes, turning once; METHOD is = cover
+lower_step = preheat oven to 400 degrees f (200 degrees c); METHOD is = preheat
+lower_step = place the baking dish in the preheated oven, and bake salmon uncovered 20 minutes, or until easily flaked with a fork; METHOD is = place
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly grease a large baking dish; first_token is = lightly
+THERE IS NO METHOD IN lower_step = in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes); first_token is = in
+lower_step = add the garlic powder, then stir in the green chiles, cream of mushroom soup and sour cream; METHOD is = add
+lower_step = mix well; METHOD is = mix
+lower_step = reserve 3/4 of this sauce and set aside; METHOD is = reserve
+THERE IS NO METHOD IN lower_step = to the remaining 1/4 of the sauce in the saucepan, add the chicken and 1/2 cup of shredded cheddar cheese; first_token is = to
+lower_step = stir together; METHOD is = stir
+lower_step = fill each flour tortilla with the chicken mixture and roll up; METHOD is = fill
+lower_step = place seam side down in the prepared baking dish; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a small bowl combine the reserved 3/4 of the sauce with the milk; first_token is = in
+lower_step = spoon this mixture over the rolled tortillas and top with the remaining 1/2 cup of shredded cheddar cheese; METHOD is = spoon
+lower_step = bake in the preheated oven for 30 to 35 minutes, or until cheese is bubbly; METHOD is = bake
+lower_step = preheat oven to 350 degrees f (175 degrees c); METHOD is = preheat
+THERE IS NO METHOD IN lower_step = lightly grease a large baking dish; first_token is = lightly
+THERE IS NO METHOD IN lower_step = in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes); first_token is = in
+lower_step = add the garlic powder, then stir in the green chiles, cream of mushroom soup and sour cream; METHOD is = add
+lower_step = mix well; METHOD is = mix
+lower_step = reserve 3/4 of this sauce and set aside; METHOD is = reserve
+THERE IS NO METHOD IN lower_step = to the remaining 1/4 of the sauce in the saucepan, add the chicken and 1/2 cup of shredded cheddar cheese; first_token is = to
+lower_step = stir together; METHOD is = stir
+lower_step = fill each flour tortilla with the chicken mixture and roll up; METHOD is = fill
+lower_step = place seam side down in the prepared baking dish; METHOD is = place
+THERE IS NO METHOD IN lower_step = in a small bowl combine the reserved 3/4 of the sauce with the milk; first_token is = in
+lower_step = spoon this mixture over the rolled tortillas and top with the remaining 1/2 cup of shredded cheddar cheese; METHOD is = spoon
+lower_step = bake in the preheated oven for 30 to 35 minutes, or until cheese is bubbly; METHOD is = bake
+lower_step = preheat oven to 375  degrees f (190 degrees c); METHOD is = preheat
+lower_step = place chicken breasts in a lightly greased 9x13 inch baking dish; METHOD is = place
+lower_step = sprinkle taco seasoning on both sides of chicken breasts, and pour salsa over all; METHOD is = sprinkle
+lower_step = bake at 375 degrees f (190 degrees c) for 25 to 35 minutes, or until chicken is tender and juicy and its juices run clear; METHOD is = bake
+lower_step = sprinkle chicken evenly with cheese, and continue baking for an additional 3 to 5 minutes, or until cheese is melted and bubbly; METHOD is = sprinkle
+lower_step = top with sour cream if desired, and serve; METHOD is = top
+lower_step = preheat oven to 375  degrees f (190 degrees c); METHOD is = preheat
+lower_step = place chicken breasts in a lightly greased 9x13 inch baking dish; METHOD is = place
+lower_step = sprinkle taco seasoning on both sides of chicken breasts, and pour salsa over all; METHOD is = sprinkle
+lower_step = bake at 375 degrees f (190 degrees c) for 25 to 35 minutes, or until chicken is tender and juicy and its juices run clear; METHOD is = bake
+lower_step = sprinkle chicken evenly with cheese, and continue baking for an additional 3 to 5 minutes, or until cheese is melted and bubbly; METHOD is = sprinkle
+lower_step = top with sour cream if desired, and serve; METHOD is = top
+THERE IS NO METHOD IN lower_step = in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder; first_token is = in
+lower_step = remove and discard giblets from chicken; METHOD is = remove
+lower_step = rinse chicken cavity, and pat dry with paper towel; METHOD is = rinse
+lower_step = rub each chicken inside and out with spice mixture; METHOD is = rub
+lower_step = place 1 onion into the cavity of each chicken; METHOD is = place
+lower_step = place chickens in a resealable bag or double wrap with plastic wrap; METHOD is = place
+lower_step = refrigerate overnight, or at least 4 to 6 hours; METHOD is = refrigerate
+lower_step = preheat oven to 250 degrees f (120 degrees c); METHOD is = preheat
+lower_step = place chickens in a roasting pan; METHOD is = place
+lower_step = bake uncovered for 5 hours, to a minimum internal temperature of 180 degrees f (85 degrees c); METHOD is = bake
+lower_step = let the chickens stand for 10 minutes before carving; METHOD is = let
+THERE IS NO METHOD IN lower_step = in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder; first_token is = in
+lower_step = remove and discard giblets from chicken; METHOD is = remove
+lower_step = rinse chicken cavity, and pat dry with paper towel; METHOD is = rinse
+lower_step = rub each chicken inside and out with spice mixture; METHOD is = rub
+lower_step = place 1 onion into the cavity of each chicken; METHOD is = place
+lower_step = place chickens in a resealable bag or double wrap with plastic wrap; METHOD is = place
+lower_step = refrigerate overnight, or at least 4 to 6 hours; METHOD is = refrigerate
+lower_step = preheat oven to 250 degrees f (120 degrees c); METHOD is = preheat
+lower_step = place chickens in a roasting pan; METHOD is = place
+lower_step = bake uncovered for 5 hours, to a minimum internal temperature of 180 degrees f (85 degrees c); METHOD is = bake
+lower_step = let the chickens stand for 10 minutes before carving; METHOD is = let
