@@ -15,18 +15,21 @@ descriptors = ["baking", "dutch", "heavy", "large", "loaf", "medium", "small"]
 
 measurements = ["inch"]
 
-methods = ["add", "adjust", "air", "arrange", "assemble", "bake", "baste", "beat", "begin", "blanch", "blend", "boil", "bone", "braise", "bread", "bring",
+methods = ["add", "adjust", "air", "allow", "arrange", "assemble", "bake", "baste", "be","beat", "begin", "blanch", "blend", "boil", "bone", "braise", "bread", "break", "bring",
 "broil", "brown", "bronze", "brush", "butter", "caramelize", "carve", "check", "chill", "chop", "coat", "combine", "continue", "cook", "cool", "cover", 
-"crack", "crisp", "cut", "deglaze", "dice", "dip", "discard", "dissolve", "dig", "drain", "dredge", "drizzle", "dry", "fill", "flip", "freeze", "fry", 
-"fold", "form", "garnish", "glaze", "grate", "grease", "grill", "heat", "increase", "julienne", "knead", "layer", "leave", "let", "line", "lower", "make", "marinate", 
-"mash", "massage", "measure", "melt", "mince", "mix", "moisten", "oil", "pat", "place", "peel", "plate", "pink", "poach", "pound", "pour", "preheat", "press", "prevent", 
-"puree", "read", "reduce", "refrigerate", "reheat", "remove", "repeat", "replace", "reserve", "return", "rinse", "roast", "roll", "rub", "salt", "saute", "scale", 
-"scatter", "scramble", "scrape", "sear", "season", "seed", "select", "separate", "serve", "set", "shake", "shave", "sift", "simmer", "skewer", "skim", "skin", 
-"slice", "smear", "smoke",  "soak", "soften", "spice", "spoon", "spread", "sprinkle", "steam", "stir", "stirfry", "strain", "stuff", "swirl", "taste", "tie", "tilt",
- "toast", "top", "toss", "transfer", "turn", "unroll", "wait", "wash", "warm", "weigh", "whip", "whisk", "wrap"]
+"crack", "crisp", "cube", "cut", "deglaze", "dice", "dip", "discard", "dissolve", "dig", "divide", "do", "drain", "dredge", "drizzle", "drop", "dry", "dust", "fill", "flip", "fluff", "freeze", "fry", 
+"fold", "form", "garnish", "gather", "glaze", "grate", "grease", "grill", "heat", "increase", "julienne", "keep", "knead", "ladle", "lay", "layer", "leave", "let", "lift", "line", "lower", "make", "marinate", 
+"mash", "massage", "measure", "melt", "microwave", "mince", "mix", "moisten", "note", "oil", "pat", "place", "peel", "plate", "plunge", "pinch", "pink", "poach", "poke", "pound", "pour", "preheat", "press", "prevent", "prick", "process", 
+"punch", "puree", "put", "raise", "read", "record", "reduce", "refrigerate", "reheat", "remember", "remove", "repeat", "replace", "reserve", "return", "rinse", "roast", "roll", "rub", "run", "salt", "saute", "scale", 
+"scatter", "scoop", "scramble", "scrape", "seal", "sear", "season", "seed", "select", "separate", "serve", "set", "shake", "shape", "shave", "shred", "sift", "simmer", "skewer", "skim", "skin", 
+"slice", "smear", "smoke", "soak", "soften", "soup", "spear", "spice", "split", "spoon", "spray", "spread", "sprinkle", "spritz", "squeeze", "squirt", "stand", "steam", "stir", "stirfry", "stir-fry","store", "strain", "stuff", "suspend", "sweeten", 
+"swirl", "tap", "taste", "thread", "tie", "tilt", "time", "toast", "top", "toss", "transfer", "turn", "unroll", "use","wait", "wash", "warm", "weigh", "wet", "whip", "whisk", "wipe", "wrap"]
 
 tools = ["barbeque", "bowl", "coal", "cooker", "dish", "fork", "grate", "grill", "knife", "oven", "pan","saucepan", "skillet", "spatula",
 	"thongs", "toaster"]
+
+#Maybe check if it starts with "do not"
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,7 +43,11 @@ def clear():
 
 def formatDirn(dirn):
 	#remove initial number; split by sentences; remove \n
-	return dirn[dirn.index('. ')+2:].replace('  ',' ').replace('.\n','').replace('\n','').split('. ')
+	try:
+		test =  dirn[dirn.index('. ')+2:].replace('  ',' ').replace('.\n','').replace('\n','').split('. ')
+		return test
+	except:
+		print "dirn is", dirn, "."
 
 def getSteps(directions):
 	steps = []
@@ -157,7 +164,10 @@ def firstWordAnalysis(lower_step):
 	lower_step_pos = nltk.pos_tag(lower_step_tokens)
 	method, tool = None, None
 	fw = lower_step_tokens[0]
-	if (fw in methods):
+	if(fw == "("):
+		#In the event of this
+		return firstWordAnalysis()
+	elif (fw in methods):
 		# If it is a verb
 		method = fw
 
@@ -165,7 +175,8 @@ def firstWordAnalysis(lower_step):
 		#Functionality works! 
 		iterator = 1
 		tool, iterator = getAdjacentTool(iterator, lower_step_tokens, lower_step_pos, retIterator=True)
-		print ("lower_step_tokens[iterator] is: ", lower_step_tokens[iterator])
+		if( (tool==None) or (iterator==None) ):
+			iterator = 1
 		# #Get the tool name
 		# iterator = 1
 		# while(lower_step_pos[iterator][1]=='DT'):
@@ -191,15 +202,21 @@ def firstWordAnalysis(lower_step):
 
 	return method, tool
 
-
-
-
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-directions = removeNextRecipeTag(list(open("directions.txt", "r")))
-
-
+allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
+# asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
+# diabeticDirections = removeNextRecipeTag(list(open("Directions/diabeticDirections.txt", "r")))
+# dietHealthDirections = removeNextRecipeTag(list(open("Directions/dietHealthDirections.txt", "r")))
+# glutenfreeDirections = removeNextRecipeTag(list(open("Directions/gluten-freeDirections.txt", "r")))
+# healthyrecipesDirections = removeNextRecipeTag(list(open("Directions/healthy-recipesDirections.txt", "r")))
+# indianDirections = removeNextRecipeTag(list(open("Directions/indianDirections.txt", "r")))
+# italianDirections = removeNextRecipeTag(list(open("Directions/italianDirections.txt", "r")))
+# lowcalorieDirections = removeNextRecipeTag(list(open("Directions/low-calorieDirections.txt", "r")))
+# lowfatDirections = removeNextRecipeTag(list(open("Directions/low-fatDirections.txt", "r")))
+# mexicanDirections = removeNextRecipeTag(list(open("Directions/mexicanDirections.txt", "r")))
+# southernDirections = removeNextRecipeTag(list(open("Directions/southernDirections.txt", "r")))
+# worldDirections = removeNextRecipeTag(list(open("Directions/worldDirections.txt", "r")))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tests ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

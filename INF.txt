@@ -1,0 +1,2046 @@
+the step is: in batches, carefully drop the chicken cubes into the hot oil one by one, cooking until they turns golden brown and begin to float, about 3 minutes
+firstWordANalysis returns:
+method =drop
+tool = None
+
+the step is: in batches, carefully drop the chicken cubes into the hot oil one by one, cooking until they turns golden brown and begin to float, about 3 minutes
+firstWordANalysis returns:
+method =drop
+tool = None
+
+the step is: in a large skillet, in 2 tablespoons vegetable oil (or ghee) fry potatoes until brown, drain and reserve the potatoes
+firstWordANalysis returns:
+method =oil
+tool = large skillet
+
+the step is: in a large skillet, heat vegetable oil (or ghee) and fry the onions until they are golden
+firstWordANalysis returns:
+method =heat
+tool = large skillet
+
+the step is: in a medium-size pot, heat the chicken stock and salt
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large skillet, in 2 tablespoons vegetable oil (or ghee) fry potatoes until brown, drain and reserve the potatoes
+firstWordANalysis returns:
+method =oil
+tool = large skillet
+
+the step is: in a large skillet, heat vegetable oil (or ghee) and fry the onions until they are golden
+firstWordANalysis returns:
+method =heat
+tool = large skillet
+
+the step is: in a medium-size pot, heat the chicken stock and salt
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in the preheated vegetable oil, cook gyoza approximately 1 minute per side, until lightly browned
+firstWordANalysis returns:
+method =oil
+tool = None
+
+the step is: in a small bowl, mix soy sauce and rice vinegar
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in the preheated vegetable oil, cook gyoza approximately 1 minute per side, until lightly browned
+firstWordANalysis returns:
+method =oil
+tool = None
+
+the step is: in a small bowl, mix soy sauce and rice vinegar
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a bowl, stir together the soy sauce, brown sugar, water, garlic, green onions, and sesame oil until the sugar has dissolved
+firstWordANalysis returns:
+method =stir
+tool = bowl
+
+the step is: in a bowl, stir together the soy sauce, brown sugar, water, garlic, green onions, and sesame oil until the sugar has dissolved
+firstWordANalysis returns:
+method =stir
+tool = bowl
+
+the step is: in a glass or plastic bowl, whisk together the soy sauce, oil, lemon juice, sesame seeds, sugar, green onions, garlic, and ginger
+firstWordANalysis returns:
+method =whisk
+tool = None
+
+the step is: in a glass or plastic bowl, whisk together the soy sauce, oil, lemon juice, sesame seeds, sugar, green onions, garlic, and ginger
+firstWordANalysis returns:
+method =whisk
+tool = None
+
+the step is: in a bowl, stir together water, ketchup, soy sauce, cornstarch, honey, crushed red pepper, and ground ginger
+firstWordANalysis returns:
+method =stir
+tool = bowl
+
+the step is: in a bowl, stir together water, ketchup, soy sauce, cornstarch, honey, crushed red pepper, and ground ginger
+firstWordANalysis returns:
+method =stir
+tool = bowl
+
+the step is: in a large bowl, combine yogurt, lemon juice, 2 teaspoons cumin, cinnamon, cayenne, black pepper, ginger, and 4 teaspoons salt
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large bowl, combine yogurt, lemon juice, 2 teaspoons cumin, cinnamon, cayenne, black pepper, ginger, and 4 teaspoons salt
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large bowl, dissolve yeast in warm water
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a large bowl, dissolve yeast in warm water
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a small bowl, beat egg with water
+firstWordANalysis returns:
+method =beat
+tool = small bowl
+
+the step is: in a small bowl, beat egg with water
+firstWordANalysis returns:
+method =beat
+tool = small bowl
+
+the step is: in another resealable plastic bag, mix the flour, salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in another resealable plastic bag, mix the flour, salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a small bowl combine soy sauce, water, sugar, vinegar, garlic powder and salt
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl combine soy sauce, water, sugar, vinegar, garlic powder and salt
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a jar with a tight-fitting lid, combine vegetable oil, soy sauce, vinegar, sesame oil, sugar, sesame seeds, ginger, and pepper
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a jar with a tight-fitting lid, combine vegetable oil, soy sauce, vinegar, sesame oil, sugar, sesame seeds, ginger, and pepper
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a medium skillet, heat sauce slowly until aromatic
+firstWordANalysis returns:
+method =heat
+tool = medium skillet
+
+the step is: in a medium skillet, heat sauce slowly until aromatic
+firstWordANalysis returns:
+method =heat
+tool = medium skillet
+
+the step is: in a small bowl, combine the soy sauce, rice wine, brown sugar and cornstarch
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, combine the soy sauce, rice wine, brown sugar and cornstarch
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a saucepan, combine rice and water
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in a small saucepan, boil carrots in water about 3 to 5 minutes
+firstWordANalysis returns:
+method =boil
+tool = small saucepan
+
+the step is: in a saucepan, combine rice and water
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in a small saucepan, boil carrots in water about 3 to 5 minutes
+firstWordANalysis returns:
+method =boil
+tool = small saucepan
+
+the step is: in a saucepan, combine 1 1/2 cups water, sugar, vinegar, reserved pineapple juice, and orange food coloring
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in a saucepan, combine 1 1/2 cups water, sugar, vinegar, reserved pineapple juice, and orange food coloring
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in a large bowl, dissolve yeast in warm water
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a medium bowl, combine yogurt, onion, garlic, ginger, garam masala, and cayenne pepper
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in a medium bowl, combine yogurt, onion, garlic, ginger, garam masala, and cayenne pepper
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in a large bowl, combine yogurt, lemon juice, 2 teaspoons cumin, cinnamon, cayenne, black pepper, ginger, and 4 teaspoons salt
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large bowl, combine yogurt, lemon juice, 2 teaspoons cumin, cinnamon, cayenne, black pepper, ginger, and 4 teaspoons salt
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large bowl, dissolve yeast in warm water
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a large bowl, dissolve yeast in warm water
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a medium bowl, stir together yogurt, salt, pepper, cloves, and ginger
+firstWordANalysis returns:
+method =stir
+tool = medium bowl
+
+the step is: in a medium bowl, stir together yogurt, salt, pepper, cloves, and ginger
+firstWordANalysis returns:
+method =stir
+tool = medium bowl
+
+the step is: in a medium bowl, combine yogurt, onion, garlic, ginger, garam masala, and cayenne pepper
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in a medium bowl, combine yogurt, onion, garlic, ginger, garam masala, and cayenne pepper
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in a shallow dish or bowl, mix together flour, salt and paprika
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a separate dish or bowl, mix together egg and milk
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large skillet, heat butter or margarine over medium-high heat
+firstWordANalysis returns:
+method =heat
+tool = large skillet
+
+the step is: in a medium bowl combine the broth, wine, lemon juice and cornstarch
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in the morning, cut zip ties, and transfer cheese to an airtight container
+firstWordANalysis returns:
+method =cut
+tool = None
+
+the step is: in the morning, cut zip ties, and transfer cheese to an airtight container
+firstWordANalysis returns:
+method =cut
+tool = None
+
+the step is: in a medium saucepan, whisk together egg yolks and sugar until well blended
+firstWordANalysis returns:
+method =whisk
+tool = medium saucepan
+
+the step is: in a medium bowl, beat cream with vanilla until stiff peaks form
+firstWordANalysis returns:
+method =beat
+tool = medium bowl
+
+the step is: in a small bowl, combine coffee and rum
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan, whisk together egg yolks and sugar until well blended
+firstWordANalysis returns:
+method =whisk
+tool = medium saucepan
+
+the step is: in a medium bowl, beat cream with vanilla until stiff peaks form
+firstWordANalysis returns:
+method =beat
+tool = medium bowl
+
+the step is: in a small bowl, combine coffee and rum
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a bowl, mix together garlic, oregano, red pepper flakes, black pepper, and olives
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix together garlic, oregano, red pepper flakes, black pepper, and olives
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a large bowl, dissolve the yeast and brown sugar in the water, and let sit for 10 minutes
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a large bowl, dissolve the yeast and brown sugar in the water, and let sit for 10 minutes
+firstWordANalysis returns:
+method =dissolve
+tool = large bowl
+
+the step is: in a large bowl, combine ground beef, bread crumbs, parsley, parmesan, 1/4 teaspoon black pepper, garlic powder and beaten egg
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large saucepan over medium heat, saute onion and garlic in olive oil until onion is translucent
+firstWordANalysis returns:
+method =saute
+tool = large saucepan
+
+the step is: in a large bowl, combine ground beef, bread crumbs, parsley, parmesan, 1/4 teaspoon black pepper, garlic powder and beaten egg
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large saucepan over medium heat, saute onion and garlic in olive oil until onion is translucent
+firstWordANalysis returns:
+method =saute
+tool = large saucepan
+
+the step is: in a 9x13 inch baking dish spread spaghetti sauce to cover the bottom
+firstWordANalysis returns:
+method =spread
+tool = 9x13 inch baking dish
+
+the step is: in a 9x13 inch baking dish spread spaghetti sauce to cover the bottom
+firstWordANalysis returns:
+method =spread
+tool = 9x13 inch baking dish
+
+the step is: in a large bowl, combine the roma tomatoes, sun-dried tomatoes, garlic, olive oil, vinegar, basil, salt, and pepper
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large bowl, combine the roma tomatoes, sun-dried tomatoes, garlic, olive oil, vinegar, basil, salt, and pepper
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a stockpot or dutch oven, brown sausage with garlic
+firstWordANalysis returns:
+method =brown
+tool = None
+
+the step is: in a stockpot or dutch oven, brown sausage with garlic
+firstWordANalysis returns:
+method =brown
+tool = None
+
+the step is: in a shallow bowl, mix the bread crumbs, parmesan cheese, cheddar cheese, parsley, oregano, pepper, and salt
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a shallow bowl, mix the bread crumbs, parmesan cheese, cheddar cheese, parsley, oregano, pepper, and salt
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a saucepan, warm the broth over low heat
+firstWordANalysis returns:
+method =warm
+tool = saucepan
+
+the step is: in a saucepan, warm the broth over low heat
+firstWordANalysis returns:
+method =warm
+tool = saucepan
+
+the step is: in a small bowl, combine tomato paste, water, parmesan cheese, garlic, honey, anchovy paste, onion powder, oregano, marjoram, basil, ground black pepper, cayenne pepper, red pepper flakes and salt; mix together, breaking up any clumps of cheese
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, combine tomato paste, water, parmesan cheese, garlic, honey, anchovy paste, onion powder, oregano, marjoram, basil, ground black pepper, cayenne pepper, red pepper flakes and salt; mix together, breaking up any clumps of cheese
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a skillet over medium heat, brown ground beef, onion and garlic; drain fat
+firstWordANalysis returns:
+method =brown
+tool = skillet
+
+the step is: in a medium bowl, mix together eggs, ricotta, parmesan cheese, parsley and 1 teaspoon salt
+firstWordANalysis returns:
+method =mix
+tool = medium bowl
+
+the step is: in a skillet over medium heat, brown ground beef, onion and garlic; drain fat
+firstWordANalysis returns:
+method =brown
+tool = skillet
+
+the step is: in a medium bowl, mix together eggs, ricotta, parmesan cheese, parsley and 1 teaspoon salt
+firstWordANalysis returns:
+method =mix
+tool = medium bowl
+
+the step is: in a large saucepan over low heat, melt butter; add garlic and cook for 30 seconds
+firstWordANalysis returns:
+method =melt
+tool = large saucepan
+
+the step is: in a large skillet over medium heat, warm oil and saute chicken
+firstWordANalysis returns:
+method =warm
+tool = large skillet
+
+the step is: in the same skillet, over medium heat, bring 1/4 cup chicken broth to a boil; stirring the pan juices
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large saucepan over low heat, melt butter; add garlic and cook for 30 seconds
+firstWordANalysis returns:
+method =melt
+tool = large saucepan
+
+the step is: in a large skillet over medium heat, warm oil and saute chicken
+firstWordANalysis returns:
+method =warm
+tool = large skillet
+
+the step is: in the same skillet, over medium heat, bring 1/4 cup chicken broth to a boil; stirring the pan juices
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large stock pot, over medium-low heat, heat olive oil and saute garlic for 2 to 3 minutes
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large stock pot, over medium-low heat, heat olive oil and saute garlic for 2 to 3 minutes
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a 5 quart dutch oven, brown sausage
+firstWordANalysis returns:
+method =brown
+tool = None
+
+the step is: in a 5 quart dutch oven, brown sausage
+firstWordANalysis returns:
+method =brown
+tool = None
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, combine the green chile peppers, chili powder, oregano, cumin, garlic and salt to taste
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium sauce pan, cook rice in oil over medium heat for about 3 minutes
+firstWordANalysis returns:
+method =cook
+tool = None
+
+the step is: in a small nonstick saucepan, heat the sugar over medium heat
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a blender, combine sweetened condensed milk, cream, milk, eggs and vanilla
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a large saucepan, heat vegetable oil over a medium-low heat
+firstWordANalysis returns:
+method =heat
+tool = large saucepan
+
+the step is: in a large saucepan, heat vegetable oil over a medium-low heat
+firstWordANalysis returns:
+method =heat
+tool = large saucepan
+
+the step is: in a medium bowl, cream the butter and sugar
+firstWordANalysis returns:
+method =butter
+tool = medium bowl
+
+the step is: in a medium bowl, cream the butter and sugar
+firstWordANalysis returns:
+method =butter
+tool = medium bowl
+
+the step is: in a medium bowl, mash together the avocados, lime juice, and salt
+firstWordANalysis returns:
+method =mash
+tool = medium bowl
+
+the step is: in a medium bowl, mash together the avocados, lime juice, and salt
+firstWordANalysis returns:
+method =mash
+tool = medium bowl
+
+the step is: in a small bowl, mix together chili powder, garlic powder, onion powder, red pepper flakes, oregano, paprika, cumin, salt and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together chili powder, garlic powder, onion powder, red pepper flakes, oregano, paprika, cumin, salt and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a large bowl, thoroughly mix kiwis, golden delicious apples, raspberries, strawberries, white sugar, brown sugar and fruit preserves
+firstWordANalysis returns:
+method =mix
+tool = large bowl
+
+the step is: in a large bowl, thoroughly mix kiwis, golden delicious apples, raspberries, strawberries, white sugar, brown sugar and fruit preserves
+firstWordANalysis returns:
+method =mix
+tool = large bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a large skillet over medium heat, saute the ground beef for 5 minutes
+firstWordANalysis returns:
+method =saute
+tool = large skillet
+
+the step is: in a large skillet over medium heat, saute the ground beef for 5 minutes
+firstWordANalysis returns:
+method =saute
+tool = large skillet
+
+the step is: in a medium, non-stick skillet over medium heat, cook chicken until no longer pink and juices run clear
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a medium, non-stick skillet over medium heat, cook chicken until no longer pink and juices run clear
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a medium bowl, blend the taco seasoning mix and refried beans
+firstWordANalysis returns:
+method =blend
+tool = medium bowl
+
+the step is: in a medium bowl, blend the taco seasoning mix and refried beans
+firstWordANalysis returns:
+method =blend
+tool = medium bowl
+
+the step is: in a large pot over medium heat, combine water, chicken, salt, pepper, garlic powder, parsley, onion powder and bouillon cubes
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large pot over medium heat, cook onion and garlic in olive oil until slightly browned
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large pot over medium heat, combine water, chicken, salt, pepper, garlic powder, parsley, onion powder and bouillon cubes
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large pot over medium heat, cook onion and garlic in olive oil until slightly browned
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large pot over medium heat, cook and stir chicken in the oil for 5 minutes
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large pot over medium heat, cook and stir chicken in the oil for 5 minutes
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large bowl, combine beans, bell peppers, frozen corn, and red onion
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a small bowl, whisk together olive oil, red wine vinegar, lime juice, lemon juice, sugar, salt, garlic, cilantro, cumin, and black pepper
+firstWordANalysis returns:
+method =whisk
+tool = small bowl
+
+the step is: in a large bowl, combine beans, bell peppers, frozen corn, and red onion
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a small bowl, whisk together olive oil, red wine vinegar, lime juice, lemon juice, sugar, salt, garlic, cilantro, cumin, and black pepper
+firstWordANalysis returns:
+method =whisk
+tool = small bowl
+
+the step is: in a medium skillet, cook the ground beef until browned over medium heat
+firstWordANalysis returns:
+method =cook
+tool = medium skillet
+
+the step is: in a medium skillet, cook the ground beef until browned over medium heat
+firstWordANalysis returns:
+method =cook
+tool = medium skillet
+
+the step is: in a large bowl, combine flour, brown sugar, white sugar, baking powder, salt, and vanilla
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in this next step, use your best judgement
+firstWordANalysis returns:
+method =use
+tool = None
+
+the step is: in a large frying pan, pour in oil to cover bottom of the pan; place pan over medium to medium-high heat
+firstWordANalysis returns:
+method =pour
+tool = None
+
+the step is: in this next step, use your best judgement
+firstWordANalysis returns:
+method =use
+tool = None
+
+the step is: in a large frying pan, pour in oil to cover bottom of the pan; place pan over medium to medium-high heat
+firstWordANalysis returns:
+method =pour
+tool = None
+
+the step is: in a large bowl, combine peaches, 1/4 cup white sugar, 1/4 cup brown sugar, 1/4 teaspoon cinnamon, nutmeg, lemon juice, and cornstarch
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a large bowl, combine peaches, 1/4 cup white sugar, 1/4 cup brown sugar, 1/4 teaspoon cinnamon, nutmeg, lemon juice, and cornstarch
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a slow cooker, mix the chicken, sausage, tomatoes with juice, onion, green bell pepper, celery, and broth
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a slow cooker, mix the chicken, sausage, tomatoes with juice, onion, green bell pepper, celery, and broth
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a medium bowl, combine black-eyed peas, black beans, corn, onion, green bell pepper, jalapeno peppers and tomatoes
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in a medium bowl, combine black-eyed peas, black beans, corn, onion, green bell pepper, jalapeno peppers and tomatoes
+firstWordANalysis returns:
+method =combine
+tool = medium bowl
+
+the step is: in a shallow container, blend soy sauce, honey, vegetable oil, lime juice, and garlic
+firstWordANalysis returns:
+method =blend
+tool = None
+
+the step is: in a shallow container, blend soy sauce, honey, vegetable oil, lime juice, and garlic
+firstWordANalysis returns:
+method =blend
+tool = None
+
+the step is: in a shallow dish, mix together the garlic powder, pepper, salt, paprika, bread crumbs and flour
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a separate dish, whisk together the milk and egg
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a shallow dish, mix together the garlic powder, pepper, salt, paprika, bread crumbs and flour
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a separate dish, whisk together the milk and egg
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, mix the flour, 2 cups sugar, salt, baking powder and baking soda
+firstWordANalysis returns:
+method =mix
+tool = large bowl
+
+the step is: in a large bowl, mix the flour, 2 cups sugar, salt, baking powder and baking soda
+firstWordANalysis returns:
+method =mix
+tool = large bowl
+
+the step is: in a skillet, heat oil over medium heat
+firstWordANalysis returns:
+method =heat
+tool = skillet
+
+the step is: in a saucepan, bring water and rice to a boil
+firstWordANalysis returns:
+method =bring
+tool = saucepan
+
+the step is: in a skillet, heat oil over medium heat
+firstWordANalysis returns:
+method =heat
+tool = skillet
+
+the step is: in a saucepan, bring water and rice to a boil
+firstWordANalysis returns:
+method =bring
+tool = saucepan
+
+the step is: in a large, deep skillet over medium heat, melt butter
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large, deep skillet over medium heat, melt butter
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large bowl, mix the flour, 1/2 cup sugar, baking powder, and salt
+firstWordANalysis returns:
+method =mix
+tool = large bowl
+
+the step is: in a separate bowl, dissolve the cornstarch in cold water
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, mix the flour, 1/2 cup sugar, baking powder, and salt
+firstWordANalysis returns:
+method =mix
+tool = large bowl
+
+the step is: in a separate bowl, dissolve the cornstarch in cold water
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a bowl, mix the flour, baking powder, baking soda, salt, and sugar
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix the flour, baking powder, baking soda, salt, and sugar
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a small saucepan, combine brown sugar, pineapple juice, honey, orange juice, orange zest, dijon mustard, and ground cloves
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan, combine brown sugar, pineapple juice, honey, orange juice, orange zest, dijon mustard, and ground cloves
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a large, heavy saucepan over medium heat, blend olive oil and flour to create a roux
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a large, heavy saucepan over medium heat, blend olive oil and flour to create a roux
+firstWordANalysis returns:
+method =heat
+tool = None
+
+the step is: in a skillet over medium heat, warm tortillas one at a time until flexible, about 15 seconds
+firstWordANalysis returns:
+method =warm
+tool = skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a skillet over medium heat, warm tortillas one at a time until flexible, about 15 seconds
+firstWordANalysis returns:
+method =warm
+tool = skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a skillet over medium heat, warm tortillas one at a time until flexible, about 15 seconds
+firstWordANalysis returns:
+method =warm
+tool = skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a skillet over medium heat, warm tortillas one at a time until flexible, about 15 seconds
+firstWordANalysis returns:
+method =warm
+tool = skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a skillet over medium heat, warm tortillas one at a time until flexible, about 15 seconds
+firstWordANalysis returns:
+method =warm
+tool = skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned
+firstWordANalysis returns:
+method =cook
+tool = dutch oven
+
+the step is: in a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt
+firstWordANalysis returns:
+method =combine
+tool = None
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a saucepan, combine chicken, carrots, peas, and celery
+firstWordANalysis returns:
+method =combine
+tool = saucepan
+
+the step is: in the saucepan over medium heat, cook onions in butter until soft and translucent
+firstWordANalysis returns:
+method =cook
+tool = saucepan
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix together the parmesan cheese, butter, mayonnaise and lemon juice
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a slow cooker, mix cream of mushroom soup, dry onion soup mix and water
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a mixing bowl, mix thoroughly all remaining ingredients and shape into a loaf
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a large skillet, brown onion and ground beef over medium heat
+firstWordANalysis returns:
+method =brown
+tool = large skillet
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a small saucepan over low heat, combine the cornstarch, cold water, sugar, soy sauce, vinegar, garlic, ginger and ground black pepper
+firstWordANalysis returns:
+method =combine
+tool = small saucepan
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids
+firstWordANalysis returns:
+method =brown
+tool = medium skillet
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a bowl, mix the barbecue sauce, italian salad dressing, brown sugar, and worcestershire sauce
+firstWordANalysis returns:
+method =mix
+tool = bowl
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a large bowl, combine the beef, egg, onion, milk and bread or cracker crumbs
+firstWordANalysis returns:
+method =combine
+tool = large bowl
+
+the step is: in a separate small bowl, combine the brown sugar, mustard and ketchup
+firstWordANalysis returns:
+method =separate
+tool = None
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a shallow dish or bowl, mix together the flour, salt, pepper and oregano
+firstWordANalysis returns:
+method =mix
+tool = None
+
+the step is: in a large skillet, melt butter in oil over medium heat
+firstWordANalysis returns:
+method =melt
+tool = large skillet
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, stir together soy sauce, brown sugar, water, and vegetable oil until sugar is dissolved
+firstWordANalysis returns:
+method =stir
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a small bowl, mix the maple syrup, soy sauce, garlic, garlic salt, and pepper
+firstWordANalysis returns:
+method =mix
+tool = small bowl
+
+the step is: in a medium saucepan over medium heat, melt the butter and saute the green onion until tender (about 3 to 4 minutes)
+firstWordANalysis returns:
+method =melt
+tool = medium saucepan
+
+the step is: in a small bowl combine the reserved 3/4 of the sauce with the milk
+firstWordANalysis returns:
+method =combine
+tool = small bowl
+
+the step is: in a medium sauce
