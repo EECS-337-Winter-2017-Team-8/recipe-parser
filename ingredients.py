@@ -1,7 +1,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set-up: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import nltk, string, os
 # os.chdir("documents/eecs/eecs337/recipe-parser")
-#execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients_omar.py')
+# execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients.py')
 
 #for list of all possible NLTK P.O.S.s
 #nltk.help.upenn_tagset()

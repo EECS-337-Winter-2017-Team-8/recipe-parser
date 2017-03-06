@@ -11,7 +11,7 @@ if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-descriptors = ["baking", "dutch", "heavy", "large", "loaf", "medium", "small"]
+descriptors = ["baking", "cold", "covered", "deep", "dutch", "foil", "glass", "greased", "heavy", "large", "loaf", "medium", "medium-size", "mixing", "nylon", "oiled", "paper", "plastic", "roasting", "shallow", "small","soup", "steak", "towel-lined", "well", "zipper"]
 
 measurements = ["inch"]
 
@@ -25,8 +25,8 @@ methods = ["add", "adjust", "air", "allow", "arrange", "assemble", "bake", "bast
 "slice", "smear", "smoke", "soak", "soften", "soup", "spear", "spice", "split", "spoon", "spray", "spread", "sprinkle", "spritz", "squeeze", "squirt", "stand", "steam", "stir", "stirfry", "stir-fry","store", "strain", "stuff", "suspend", "sweeten", 
 "swirl", "tap", "taste", "thread", "tie", "tilt", "time", "toast", "top", "toss", "transfer", "turn", "unroll", "use","wait", "wash", "warm", "weigh", "wet", "whip", "whisk", "wipe", "wrap"]
 
-tools = ["barbeque", "bowl", "coal", "cooker", "dish", "fork", "grate", "grill", "knife", "oven", "pan","saucepan", "skillet", "spatula",
-	"thongs", "toaster"]
+tools = ["barbeque", "bowl", "coal", "cooker", "colander", "cover", "deep-fryer", "dish", "fork", "grate", "grill", "knife", "oven", "pan", "pot","saucepan", "set", "skillet", "spatula",
+	"thongs", "toaster", "water", "wok"]
 
 #Maybe check if it starts with "do not"
 
@@ -48,6 +48,15 @@ def formatDirn(dirn):
 		return test
 	except:
 		print "dirn is", dirn, "."
+
+def findConsecutiveWords(lower_arr_words, lower_arr_tokens):
+	#returns the index of the first of the consecutive word block, or None if it is absent
+	length_words = len(lower_arr_words)
+	for i in range(len(lower_arr_tokens)-length_words):
+		if(lower_arr_tokens[i:i+length_words] == lower_arr_words):
+			return i
+	return None
+
 
 def getSteps(directions):
 	steps = []
@@ -130,11 +139,23 @@ def getAdjacentTool(index, lower_step_tokens, lower_step_pos, retIterator=False)
 		#In event we have "grill grate" or something.
 		while((iterator<len(lower_step_tokens)) and (lower_step_tokens[iterator] in tools)):
 			iterator+=1
-		tool = lower_step_tokens[start:iterator]
+
+		next_tool, next_iterator = None, None
+
+		if((iterator<len(lower_step_tokens)) and (lower_step_tokens[iterator]=="or")):
+			next_tool, next_iterator = getAdjacentTool(iterator+1, lower_step_tokens, lower_step_pos, retIterator=True)
+
+		if(next_iterator!=None):
+			iterator = next_iterator
+			tool = lower_step_tokens[start:iterator]
+		else:
+			tool = lower_step_tokens[start:iterator]
+
 		if(retIterator):
 			return tool, iterator
 		else:
 			return tool
+
 	if(retIterator):
 		return None, None
 	else:
@@ -167,9 +188,17 @@ def firstWordAnalysis(lower_step):
 	if(fw == "("):
 		#In the event of this
 		return firstWordAnalysis()
+	
 	elif (fw in methods):
 		# If it is a verb
 		method = fw
+		in_a_index = findConsecutiveWords(["in", "a"], lower_step_tokens)
+		if(in_a_index):
+			tool = getAdjacentTool(in_a_index+2, lower_step_tokens, lower_step_pos)
+			print "~~~~~~~~~~~~~~"
+			print "lower_step: ", lower_step
+			print "method: ", method
+			print "tool: ", tool
 
 	elif (fw == "in"):
 		#Functionality works! 
@@ -204,8 +233,8 @@ def firstWordAnalysis(lower_step):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
-# asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
+# allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
+asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
 # diabeticDirections = removeNextRecipeTag(list(open("Directions/diabeticDirections.txt", "r")))
 # dietHealthDirections = removeNextRecipeTag(list(open("Directions/dietHealthDirections.txt", "r")))
 # glutenfreeDirections = removeNextRecipeTag(list(open("Directions/gluten-freeDirections.txt", "r")))
