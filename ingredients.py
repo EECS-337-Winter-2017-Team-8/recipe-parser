@@ -12,19 +12,19 @@ if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # List of measurement words
-measurements = [ "tablespoons", "tablespoon", "cup", "cups", "rib", "teaspoon", "teaspoons", "pound", "pounds", 
+ing_measurements = [ "tablespoons", "tablespoon", "cup", "cups", "rib", "teaspoon", "teaspoons", "pound", "pounds", 
 "cloves", "clove", "slice", "slices", "pinch", "can", "cans", "ounce", "ounces", "package", "packages", "rack",
 "bottle", "bottles", "fluid", "head", "heads", "containter", "sprig", "sprigs", "stalk", 
 "stalks", "jar", "jars", "dash", "fluid ounce", "fluid ounces", "inch", "inches", "foot", "feet", "halves",
 "half", "dollop", "dollops" ]
 
 # List of descriptors
-descriptors = [ "bone-in", "frozen", "fresh", "extra", "very", "lean", "fatty", "virgin", "extra-virgin", "small",
+ing_descriptors = [ "bone-in", "frozen", "fresh", "extra", "very", "lean", "fatty", "virgin", "extra-virgin", "small",
 "large", "tiny", "big", "giant", "long", "short", "whole", "wheat", "grain", "hot", "cold", "ground", "sweet",
 "seasoned", "italian-seasoned", "extra-extra-virgin" ]
 
 # List of containers
-containers = [ "can", "cans", "bottle", "bottles", "jar", "jars", "package", "packages", "container", "containers" ]
+ing_containers = [ "can", "cans", "bottle", "bottles", "jar", "jars", "package", "packages", "container", "containers" ]
 
 # List of conjunctions
 conjunctions = [ "for", "and", "nor", "but", "or", "yet", "so" ]
@@ -91,7 +91,7 @@ def parse_ingredient (ingredient):
 		while ((increment < word_list_len) and (lower_word_list[increment] != ")")):
 			tmp_inc = increment
 			# Find new quantity
-			while ((increment < word_list_len) and ((any(char.isdigit() for char in lower_word_list[increment])) or (lower_word_list[increment] in measurements))):
+			while ((increment < word_list_len) and ((any(char.isdigit() for char in lower_word_list[increment])) or (lower_word_list[increment] in ing_measurements))):
 				if (new_measurement != ""):
 					new_measurement += " "
 				new_measurement += lower_word_list[increment]
@@ -101,14 +101,14 @@ def parse_ingredient (ingredient):
 		increment += 1
 
 	# Find measurement in the rest of the ingredient
-	while ((increment < word_list_len) and (lower_word_list[increment] in measurements)):
+	while ((increment < word_list_len) and (lower_word_list[increment] in ing_measurements)):
 		if (measurement != ""):
 			measurement += " "
 		measurement += lower_word_list[increment]
 		increment += 1
 
 
-	if (measurement in containers):
+	if (measurement in ing_containers):
 		if(new_measurement!=""):
 			measurement = new_measurement+" "+measurement
 
@@ -120,7 +120,7 @@ def parse_ingredient (ingredient):
 
 	# Find ingredient name
 	while ((increment < word_list_len) and (lower_word_list[increment] != ",") and (lower_word_list[increment] != "-")):
-		if (lower_word_list[increment] not in containers):
+		if (lower_word_list[increment] not in ing_containers):
 			if (ingredient_name != ""):
 				ingredient_name += " "
 			ingredient_name += lower_word_list[increment]
@@ -173,7 +173,7 @@ def parse_ingredient (ingredient):
 			prep_token_len = len(prep_tokens)
 			tmp_inc = 0
 			while ((tmp_inc < prep_token_len) and (prep_tokens[tmp_inc] != ",")):
-				if (preparation[tmp_inc] not in containers):
+				if (preparation[tmp_inc] not in ing_containers):
 					if (ingredient_name != ""):
 						ingredient_name += " "
 					ingredient_name += prep_tokens[tmp_inc]
@@ -240,7 +240,7 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 
 	while (increment < ing_pos_len):
 		if (ingredient_pos[increment][0] in ingredient_name_tokens):
-			if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
+			if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in ing_descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
 				#verb, past participle. Used w/ Auxillary version of has
 				#he HAS ridden. he HAS eaten. he HAS rowed the boat.
 				if (descriptor != ""):
@@ -263,7 +263,7 @@ def parse_ing_name(ingredient, ingredient_name, ingredient_name_tokens):
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-			elif (ingredient_pos[increment][0] in measurements):
+			elif (ingredient_pos[increment][0] in ing_measurements):
 				measurement += ingredient_pos[increment][0]
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
 				ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
@@ -364,7 +364,7 @@ def find_measurements():
 		new_measurements[:] = [item for item in new_measurements if item != possibility]
 		new_measurements.append(possibility)
 	for possibility in new_measurements:
-		if (possibility not in measurements):
+		if (possibility not in ing_measurements):
 			print possibility
 
 def run_all():
@@ -383,12 +383,36 @@ def run_all():
 			print " "
 			print " "
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Used in directions.py ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def getAdjacentIngredient(index, lower_step_tokens, lower_step_pos, retIterator=False):
+	#checks if there is an ingredient starting from that index
+		# heat [4 cups vegetable oil] in a deep-fryer
+		# beat the [egg] in a mixing bowl
+		# add the [chicken cubes];
+
+	iterator, ingredient = index, None
+
+	#remove "determiners" such as 'a', 'the', 'an', 'these', 'those',
+	while(lower_step_pos[iterator][1]=='DT'):
+		iterator+=1
+
+	#While the next_word is compatible, we continue onwards.
+	while ((lower_step_pos[iterator][1]=="CD") (lower_step_tokens[iterator] in ing_measurements) | (lower_step_tokens[iterator] in ing_descriptors) | (lower_step_tokens[iterator] in ing_containers)):
+		iterator+=1
+
+
+
+	start = iterator
+
+
+
+	#checks if there is a tool starting from that index
+	iterator, tool = index, None
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 ingredients = removeNextRecipeTag(list(open("ingredients.txt", "r")))
-
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tests ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
