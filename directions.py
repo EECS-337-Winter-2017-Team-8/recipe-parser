@@ -254,6 +254,13 @@ def firstWordAnalysis(lower_step):
 
 	return method, tool
 
+def understandDirections(directions):
+	steps = getSteps(directions)
+	for step in steps:
+		tool, method = firstWordAnalysis
+		if(tool == None):
+			tool = extractTool()
+		time = getTime(step.lower())
 
 def getConcreteTime(step):
 	""" This function takes a step (as a string) and returns a string
@@ -284,17 +291,7 @@ def getConcreteTime(step):
 			final_time = "about " + final_time
 		elif "approximately " + final_time in step:
 			final_time = "approximately " + final_time
-	
-<<<<<<< HEAD
-def understandDirections(directions):
-	steps = getSteps(directions)
-	for step in steps:
-		tool, method = firstWordAnalysis
-		if(tool == None):
-			tool = extractTool()
-		time = getTime(step.lower())
-=======
-	# Else this step unfortunately doesn't use digits for its numbers
+		# Else this step unfortunately doesn't use digits for its numbers
 	# First check for numbers using NLTK Part-Of-Speech Tagging, numbers
 	# are "CD"
 	else:
@@ -343,7 +340,6 @@ def getUntilTime(step):
 	while idx < len(tokens) and tokens[idx] not in ",./;:()[]{}\|":
 		until_time += tokens[idx] + " "
 		idx += 1
->>>>>>> 6ef70a2ea58228def8239884561f14a3caad3c7b
 
 	return until_time.strip()
  

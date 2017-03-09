@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import urllib
 
 
-
 directions = []
 ingredients = []
 
@@ -13,8 +12,6 @@ def run():
 		url = raw_input("""Please enter a recipe URL from "allrecipes.com":  """)
 
 	get_ingredients_and_directions(url)
-
-
 
 def get_ingredients_and_directions(url):
 	data = urllib.urlopen(url)
