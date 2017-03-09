@@ -32,6 +32,8 @@ dirn_time_units = ["seconds", "minutes", "hours", "days", "second", "minute", "h
 
 dirn_bad_adverbs = ["then", "there", "meanwhile", "once"]
 
+dirn_split_toks = [",", ";", "in", "to", "and", "with"]
+
 #Maybe check if it starts with "do not"
 
 
@@ -124,17 +126,32 @@ def getFirstWord_AllElseSteps(directions):
 		first_words.add(step_toks[0])
 	return first_words
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Work Space ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def splitForSplitAnalysis(lower_step):
+	lower_step_list = [lower_step]
+	for split_tok in dirn_split_toks:
+		for i in lower_step_list:
+			toks = nltk.word_tokenize(i)
+			if split_tok in toks:
+				lower_step_list+=map(str.strip, i.split(split_tok))
+				lower_step_list.remove(i)
+	return lower_step_list
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ _____ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def getAdjacentTool(index, lower_step_tokens, lower_step_pos, retIterator=False):
 	#checks if there is a tool starting from that index
 	iterator, tool = index, None
 
 	#remove "determiners" such as 'a'
-	while(lower_step_pos[iterator][1]=='DT'):
+	while( (iterator<len(lower_step_pos)) and (lower_step_pos[iterator][1]=='DT')):
 		iterator+=1
 
 	start = iterator
+	if(iterator==len(lower_step_pos)):
+		if(retIterator):
+			return None, None
+		else:
+			return None
 
 	#While the next_word is compatible but not a tool, we continue onwards.
 	while ((lower_step_tokens[iterator] in dirn_measurements) or (lower_step_tokens[iterator] in dirn_descriptors) 
@@ -184,7 +201,7 @@ def firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos):
 		print "FAILED lower_step is: ", lower_step
 		raise ValueError('Adverb wasnt followed by a method')
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Work Space ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main Methods ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def firstWordAnalysis(lower_step, recipe_ingrs_extracted_tokens=None):
 	lower_step_tokens = nltk.word_tokenize(lower_step)
@@ -238,6 +255,30 @@ def firstWordAnalysis(lower_step, recipe_ingrs_extracted_tokens=None):
 		method, tool = firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos)
 
 	return method, tool, ingredient
+
+def splitAnalysis(lower_step, recipe_ingrs_extracted_tokens):
+	lower_step_list = splitForSplitAnalysis(lower_step)
+	methods, tools, ingredients = [],[],[]
+	for splitted_elt in lower_step_list:
+		if(len(splitted_elt)==0):
+			continue
+		tool, ingr, method = None, None, None
+		lower_step_tokens = nltk.word_tokenize(splitted_elt)
+		lower_step_pos = nltk.pos_tag(lower_step_tokens)
+		tool = getAdjacentTool(0, lower_step_tokens, lower_step_pos)
+		ingr = getAdjacentIngredient(lower_step_tokens, 0, recipe_ingrs_extracted_toks)
+		method = lower_step_tokens[0] if (lower_step_tokens[0] in dirn_methods) else None
+		if((tool) and (method==tool)):
+			#Then we are trying to declare the same thing twice.
+			print "In splitted_elt = \"", splitted_elt, "\", we come across tool:", tool, " = elt: \" ", elt, " \" \n"
+		if(tool!=None): tools += (tool)
+		if(ingr!=None):
+			if (len(ingr)>1): ingredients.append(ingr)
+			else: ingredients+=ingr
+		if(method!=None): methods.append(method)
+	return methods, tools, ingredients
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Work Space ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def understandDirections(directions):
 	steps = getSteps(directions)

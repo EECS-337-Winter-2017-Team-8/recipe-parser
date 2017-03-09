@@ -47,38 +47,48 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
 	#where recipe_ingrs_extracted_toks = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
 	#& recipe_ingrs_extracted=getRecipeIngredientsAttributes(recipe_ingrs_raw)
 	#Basically, recipe_ingrs_extracted_toks is a TOKENIZED LIST OF ALL OF THE 'INGREDIENTS' - no descriptions, measurements, nothing
-	susp_ingr  = lower_step_tokens[index]
+	lower_step_pos = nltk.pos_tag(lower_step_tokens)
+
+	iterator = index
+
+	while( (iterator<len(lower_step_tokens)) and ((lower_step_pos[iterator][1] in ["DT", "CD"]) or (lower_step_tokens[iterator] in ing_measurements) or (lower_step_tokens[iterator] in ing_descriptors) 
+	  or (bool(filter(lambda(x): x.isdigit(), lower_step_tokens[iterator]))))):
+		iterator+=1
+
+	if(iterator==len(lower_step_tokens)):
+		return None
+
+	susp_ingr  = lower_step_tokens[iterator]
 	for ingr_token in recipe_ingrs_extracted_tokens:
 		#The tokens of 1 ingredient 
 		if(susp_ingr in ingr_token):
 			len_ingr_token = len(ingr_token)
-
+			iterator_fwd, iterator_bwd = None, None
 			if(len_ingr_token>1):
-				iterator_fwd, iterator_bwd = None, None
-				index = ingr_token.index(susp_ingr)
+				token_index = ingr_token.index(susp_ingr)
 				len_step_tokens = len(lower_step_tokens)
 
-				if(index==0): 
+				if(token_index==0): 
 					#if suspected ingredient is found at the start of the token, check if there is a match w the next one
 					iterator_fwd = 1
-					while( (len_step_tokens > (index+iterator_fwd) ) and ( lower_step_tokens[index+iterator_fwd] in ingr_token) ):
+					while( (len_step_tokens > (token_index+iterator_fwd) ) and ( lower_step_tokens[token_index+iterator_fwd] in ingr_token) ):
 						iterator_fwd+=1
 					iterator_fwd-=1
 
-				elif(index == (len_step_tokens-1) ): 
+				elif(token_index == (len_step_tokens-1) ): 
 					#if suspected ingredient is found at the end of the token, check if there is a match w the previous one
 					iterator_bwd = -1
-					while( (len_step_tokens > (index+iterator_bwd) ) and ( lower_step_tokens[index+iterator_bwd] in ingr_token) ):
+					while( (len_step_tokens > (token_index+iterator_bwd) ) and ( lower_step_tokens[token_index+iterator_bwd] in ingr_token) ):
 						iterator_bwd-=1
 					iterator_bwd+=1
 
 				else:
 					#may be a chance that it is before OR after.
 					iterator_fwd, iterator_bwd = 1, -1
-					while( (len_step_tokens > (index+iterator_fwd) ) and ( lower_step_tokens[index+iterator_fwd] in ingr_token) ):
+					while( (len_step_tokens > (token_index+iterator_fwd) ) and ( lower_step_tokens[token_index+iterator_fwd] in ingr_token) ):
 						iterator_fwd+=1
 					
-					while( (len_step_tokens > (index+iterator_bwd) ) and ( lower_step_tokens[index+iterator_bwd] in ingr_token) ):
+					while( ( (token_index+iterator_bwd) >= 0 ) and ( lower_step_tokens[token_index+iterator_bwd] in ingr_token) ):
 						iterator_bwd-=1
 					
 					#Just to undo the offset
@@ -86,29 +96,37 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
 					iterator_bwd+=1
 
 			if((iterator_fwd!=None) and (iterator_bwd!=None)):
-				return lower_step_tokens[index+iterator_bwd : index+iterator_fwd+1]
+				return lower_step_tokens[iterator+iterator_bwd : iterator+iterator_fwd+1]
 			elif(iterator_fwd):
-				return lower_step_tokens[index: index+iterator_fwd+1]
+				return lower_step_tokens[iterator: iterator+iterator_fwd+1]
 			elif(iterator_bwd):
-				return lower_step_tokens[index+iterator_bwd : index]
+				return lower_step_tokens[iterator+iterator_bwd : iterator]
 			else:
-				return lower_step_tokens[index]
+				return [lower_step_tokens[iterator]]
 		else:
 			continue
 	return None
+
 
 #Get steps:
 recipe_steps = getSteps(recipe_dirns_raw)
 recipe_lower_steps = map(str.lower, recipe_steps)
 lower_steps_toks = map(nltk.word_tokenize, recipe_lower_steps)
-lower_step_toks = lower_steps_toks[1]
 
-#Demo:
-# for step in recipe_lower_steps:
-# 	m,t,i = firstWordAnalysis(step, recipe_ingrs_extracted_toks)
-# 	print "step is: ", step
-# 	print "method is : ", m
-# 	print "tool is : ", t
-# 	print "ingr is : ", i, "\n"
+# Demo:
+for step in recipe_lower_steps:
+	print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	m1,t1,i1 = firstWordAnalysis(step, recipe_ingrs_extracted_toks)
+	m2,t2,i2 = splitAnalysis(step, recipe_ingrs_extracted_toks)
+	print "step is: ", step, "\n"
+	print "According to First Word Analysis:"
+	print "method is : ", m1
+	print "tool is : ", t1
+	print "ingr is : ", i1, "\n"
+	print "According to splitAnalysis:"
+	print "method is : ", m2
+	print "tool is : ", t2
+	print "ingr is : ", i2, "\n"
+
 
 # firstWordAnalysis(recipe_lower_steps[1], recipe_ingrs_extracted_toks)
