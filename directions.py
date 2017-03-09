@@ -168,29 +168,6 @@ def getAdjacentTool(index, lower_step_tokens, lower_step_pos, retIterator=False)
 	else:
 		return None
 
-def getAdjacentIngredient(index, lower_step_tokens, lower_step_pos, retIterator=False):
-	#Call after the first_word is method.
-	#checks if there is an ingredient starting from that index
-
-	#examples:
-		# heat [4 cups vegetable oil] in a deep-fryer
-		# beat the [egg] in a mixing bowl
-		# add the [chicken cubes];
-	iterator, ingredient = index, None
-
-	#remove "determiners" such as 'a', 'the', 'an', 'these', 'those',
-	while( (lower_step_pos[iterator][1]=='DT') or lower_step_pos[iterator][1]=='IN' ):
-		iterator+=1
-
-	#While the next_word is compatible but not a tool, we continue onwards.
-
-	start = iterator
-
-
-
-	#checks if there is a tool starting from that index
-	iterator, tool = index, None
-
 def firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos):
 	#Call this function when the firstWord is an Adverb.
 	#It will extract METHOD & TOOL.
@@ -354,8 +331,8 @@ def getUntilTime(step):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # directions = removeNextRecipeTag(list(open("directions.txt", "r")))
-allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
-# asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
+# allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
+asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
 # diabeticDirections = removeNextRecipeTag(list(open("Directions/diabeticDirections.txt", "r")))
 # dietHealthDirections = removeNextRecipeTag(list(open("Directions/dietHealthDirections.txt", "r")))
 # glutenfreeDirections = removeNextRecipeTag(list(open("Directions/gluten-freeDirections.txt", "r")))
