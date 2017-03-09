@@ -383,33 +383,6 @@ def run_all():
 			print " "
 			print " "
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Used in directions.py ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-def getAdjacentIngredient(index, lower_step_tokens, lower_step_pos, retIterator=False):
-	#checks if there is an ingredient starting from that index
-		# heat [4 cups vegetable oil] in a deep-fryer
-		# beat the [egg] in a mixing bowl
-		# add the [chicken cubes];
-
-	iterator, ingredient = index, None
-
-	#remove "determiners" such as 'a', 'the', 'an', 'these', 'those',
-	while(lower_step_pos[iterator][1]=='DT'):
-		iterator+=1
-
-	#While the next_word is compatible, we continue onwards.
-	while ((lower_step_pos[iterator][1]=="CD") (lower_step_tokens[iterator] in ing_measurements) | (lower_step_tokens[iterator] in ing_descriptors) | (lower_step_tokens[iterator] in ing_containers)):
-		iterator+=1
-
-
-
-	start = iterator
-
-
-
-	#checks if there is a tool starting from that index
-	iterator, tool = index, None
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ingredients = removeNextRecipeTag(list(open("ingredients.txt", "r")))

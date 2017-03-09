@@ -209,14 +209,14 @@ def firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Work Space ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def firstWordAnalysis(lower_step):
+def firstWordAnalysis(lower_step, recipe_ingrs_extracted_tokens=None):
 	lower_step_tokens = nltk.word_tokenize(lower_step)
 	lower_step_pos = nltk.pos_tag(lower_step_tokens)
-	method, tool = None, None
+	method, tool, ingredient = None, None, None
 	fw = lower_step_tokens[0]
 	if(fw == "("):
 		#In the event of this
-		return firstWordAnalysis(lower_step[lower_step.index(")")+1:])
+		return firstWordAnalysis(lower_step[lower_step.index(")")+1:], recipe_ingrs_extracted_tokens)
 	
 	elif (fw in dirn_methods):
 		# If it is a verb
@@ -224,13 +224,21 @@ def firstWordAnalysis(lower_step):
 		in_a_index = findConsecutiveWords(["in", "a"], lower_step_tokens)
 		if(in_a_index):
 			tool = getAdjacentTool(in_a_index+2, lower_step_tokens, lower_step_pos)
-			print "~~~~~~~~~~~~~~"
-			print "lower_step: ", lower_step
-			print "method: ", method
-			print "tool: ", tool
+			ingr, iterator = None, 1
+			while(iterator<in_a_index):
+				ingr = getAdjacentIngredient(lower_step_tokens, iterator, recipe_ingrs_extracted_tokens)
+				if(ingr!=None):
+					iterator+=len(ingr)
+			if(ingr!=None):
+				ingredient = ingr
 		else:
 			iterator = 1
-			tool = getAdjacentTool(iterator, lower_step_tokens, lower_step_pos)
+			if(recipe_ingrs_extracted_tokens!=None):
+				ingr = getAdjacentIngredient(lower_step_tokens, 1, recipe_ingrs_extracted_tokens)
+				if(ingr==None):
+					tool = getAdjacentTool(iterator, lower_step_tokens, lower_step_pos)
+				else:
+					ingredient = ingr
 
 	elif (fw == "in"):
 		#Functionality works! 
@@ -252,12 +260,12 @@ def firstWordAnalysis(lower_step):
 		# if slowly, lightly, generously, lightly
 		method, tool = firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos)
 
-	return method, tool
+	return method, tool, ingredient
 
 def understandDirections(directions):
 	steps = getSteps(directions)
 	for step in steps:
-		tool, method = firstWordAnalysis
+		tool, method, ingredient = firstWordAnalysis
 		if(tool == None):
 			tool = extractTool()
 		time = getTime(step.lower())
@@ -328,7 +336,6 @@ def getConcreteTime(step):
 		final_time += " per " + tokens[tokens.index("per") + 1]
 
 	return final_time
-
 
 def getUntilTime(step):
 	"""This function takes a step (as a string) that has the word 'until' in it,
