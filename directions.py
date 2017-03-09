@@ -1,13 +1,13 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set-up: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-import nltk, string, os
+import nltk, string, os, re
 # os.chdir("documents/eecs/eecs337/recipe-parser")
 #execfile('/Users/Omar/Desktop/Code/recipe-parser/directions.py')
 
 #for list of all possible NLTK P.O.S.s
 #nltk.help.upenn_tagset()
 
-if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
-	os.chdir("../Desktop/Code/recipe-parser")
+#if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
+#	os.chdir("../Desktop/Code/recipe-parser")
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,7 +28,7 @@ dirn_methods = ["add", "adjust", "air", "allow", "arrange", "assemble", "bake", 
 dirn_tools = ["barbeque", "bowl", "coal", "cooker", "colander", "cover", "deep-fryer", "dish", "fork", "grate", "grill", "knife", "oven", "pan", "pot","saucepan", "set", "skillet", "spatula",
 	"thongs", "toaster", "water", "wok"]
 
-dirn_time_units = ["day", "days", "hour", "hours", "minute", "minutes", "second", "seconds"]
+dirn_time_units = ["seconds", "minutes", "hours", "days", "second", "minute", "hour", "day"]
 
 dirn_bad_adverbs = ["then", "there", "meanwhile", "once"]
 
@@ -52,7 +52,7 @@ def clear():
 def formatDirn(dirn):
 	#remove initial number; split by sentences; remove \n
 	try:
-		test =  dirn[dirn.index('. ')+2:].replace('  ',' ').replace('.\n','').replace('\n','').split('. ')
+		test =  dirn[dirn.index('. ')+2:].replace('  ',' ').replace('.\n','').replace('\n','').replace("; ", ". ").split('. ')
 		return test
 	except:
 		print "dirn is", dirn, "."
@@ -254,11 +254,38 @@ def firstWordAnalysis(lower_step):
 
 	return method, tool
 
-def getTime(lower_step):
-	lower_step_tokens = nltk.word_tokenize(lower_step)
-	lower_step_pos = nltk.pos_tag(lower_step_tokens)
-	# if("for" in lower_step_tokens):
+
+def getConcreteTime(step):
+	""" This function takes a step (as a string) and returns a string
+		like '3 to 5 minutes' or '4 hours' or 'approximately 45 minutes'."""
+	tokens = nltk.word_tokenize(step)
+	pos = nltk.pos_tag(tokens)
+
+	# Check if this step metions time at all, using list defined at top of file
+	time_unit = ""
+	for time in dirn_time_units:
+		if time in tokens:
+			time_unit = time
+
+	# If there is no mention of time, exit function
+	if not time_unit:
+		return "none"
+
+	# This pattern matches anything that looks like:
+	# 3 to 5 minutes, 4 hours, etc.
+	final_time = ""
+	pattern = "[0-9]+ [a-z]* *[0-9]* *" + time_unit
+
+	match = re.search(pattern, step)
+	if match:
+		final_time = step[match.start():match.end()]
+		# Add extra detail to time, if it is an estimate like "about 5 minutes"
+		if "about " + final_time in step:
+			final_time = "about " + final_time
+		elif "approximately " + final_time in step:
+			final_time = "approximately " + final_time
 	
+<<<<<<< HEAD
 def understandDirections(directions):
 	steps = getSteps(directions)
 	for step in steps:
@@ -266,12 +293,65 @@ def understandDirections(directions):
 		if(tool == None):
 			tool = extractTool()
 		time = getTime(step.lower())
+=======
+	# Else this step unfortunately doesn't use digits for its numbers
+	# First check for numbers using NLTK Part-Of-Speech Tagging, numbers
+	# are "CD"
+	else:
+		for word in pos:
+			if word[1] == "CD":
+				pattern = word[0] + " (to)? ?[a-z]* ?" + time_unit
+				match = re.search(pattern, step)
+				if match:
+					final_time = step[match.start():match.end()]
+				break
+		
+		# Check for phrases like "for five minutes"
+	 	if "for" in tokens:
+			idx = tokens.index("for") + 1
+			while tokens[idx] != time_unit:
+				final_time += tokens[idx] + " "
+				idx += 1
+			final_time += time_unit
+			
+		# Check for phrases like "a minute", "an hour", "an hour or two", etc
+		elif " a " + time_unit in step:
+			if " or two" in step:
+				final_time = "a " + time_unit + " or two"
 
+		elif " an " + time_unit in step:
+			if " or two" in step:
+				final_time = "an " + time_unit + " or two"	
+
+		elif " a few " + time_unit in step:
+			final_time = "a few " + time_unit
+
+	# A few steps specify "per side" or "per batch", this grabs them
+	if "per" in tokens:
+		final_time += " per " + tokens[tokens.index("per") + 1]
+
+	return final_time
+
+
+def getUntilTime(step):
+	"""This function takes a step (as a string) that has the word 'until' in it,
+	   and returns a string with the rest of the phrase, i.e. 'until golden brown'"""
+
+	until_time = ""
+	tokens = nltk.word_tokenize(step)
+	idx = tokens.index("until")	
+	while idx < len(tokens) and tokens[idx] not in ",./;:()[]{}\|":
+		until_time += tokens[idx] + " "
+		idx += 1
+>>>>>>> 6ef70a2ea58228def8239884561f14a3caad3c7b
+
+	return until_time.strip()
+ 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # directions = removeNextRecipeTag(list(open("directions.txt", "r")))
-# allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
+allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
 # asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
 # diabeticDirections = removeNextRecipeTag(list(open("Directions/diabeticDirections.txt", "r")))
 # dietHealthDirections = removeNextRecipeTag(list(open("Directions/dietHealthDirections.txt", "r")))
