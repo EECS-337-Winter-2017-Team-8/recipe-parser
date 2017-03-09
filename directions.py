@@ -30,6 +30,8 @@ dirn_tools = ["barbeque", "bowl", "coal", "cooker", "colander", "cover", "deep-f
 
 dirn_time_units = ["day", "days", "hour", "hours", "minute", "minutes", "second", "seconds"]
 
+dirn_bad_adverbs = ["then", "there", "meanwhile", "once"]
+
 #Maybe check if it starts with "do not"
 
 
@@ -204,7 +206,6 @@ def firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos):
 	else:
 		print "FAILED lower_step is: ", lower_step
 		raise ValueError('Adverb wasnt followed by a method')
-	return None
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Work Space ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -247,7 +248,7 @@ def firstWordAnalysis(lower_step):
 
 		method = lower_step_tokens[iterator]
 		
-	elif (lower_step_pos[0][1]=="RB"):
+	elif ( (lower_step_pos[0][1]=="RB") and (lower_step_tokens[0] not in dirn_bad_adverbs)) :
 		# if slowly, lightly, generously, lightly
 		method, tool = firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos)
 
@@ -258,7 +259,13 @@ def getTime(lower_step):
 	lower_step_pos = nltk.pos_tag(lower_step_tokens)
 	# if("for" in lower_step_tokens):
 	
-
+def understandDirections(directions):
+	steps = getSteps(directions)
+	for step in steps:
+		tool, method = firstWordAnalysis
+		if(tool == None):
+			tool = extractTool()
+		time = getTime(step.lower())
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
