@@ -3,6 +3,8 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients.py')
 execfile('/Users/Omar/Desktop/Code/recipe-parser/directions.py')
+execfile('/Users/Omar/Desktop/Code/recipe-parser/StepClass.py')
+execfile('/Users/Omar/Desktop/Code/recipe-parser/RecipeClass.py')
 
 def matchDirnAndIngredientInput(directions, ingredients):
 	#This will match each recipe in the directions & ingredients file
@@ -107,26 +109,40 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
 			continue
 	return None
 
-
 #Get steps:
 recipe_steps = getSteps(recipe_dirns_raw)
 recipe_lower_steps = map(str.lower, recipe_steps)
 lower_steps_toks = map(nltk.word_tokenize, recipe_lower_steps)
 
+#Class Demo:
+myRecipe = Recipe()
+myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
+myRecipe.ProvideRawDirnData(recipe_dirns_raw)
+myRecipe.extractFullIngrData(store=True)
+myRecipe.extractSolelyIngrData(store=True)
+myRecipe.extractSteps(store=True)
+
+for step in myRecipe.Steps:
+	print "step is: ", step.step
+	print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
+	print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
+
+
+
 # Demo:
-for step in recipe_lower_steps:
-	print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	m1,t1,i1 = firstWordAnalysis(step, recipe_ingrs_extracted_toks)
-	m2,t2,i2 = splitAnalysis(step, recipe_ingrs_extracted_toks)
-	print "step is: ", step, "\n"
-	print "According to First Word Analysis:"
-	print "method is : ", m1
-	print "tool is : ", t1
-	print "ingr is : ", i1, "\n"
-	print "According to splitAnalysis:"
-	print "method is : ", m2
-	print "tool is : ", t2
-	print "ingr is : ", i2, "\n"
+# for step in recipe_lower_steps:
+# 	print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+# 	m1,t1,i1 = firstWordAnalysis(step, recipe_ingrs_extracted_toks)
+# 	m2,t2,i2 = splitAnalysis(step, recipe_ingrs_extracted_toks)
+# 	print "step is: ", step, "\n"
+# 	print "According to First Word Analysis:"
+# 	print "method is : ", m1
+# 	print "tool is : ", t1
+# 	print "ingr is : ", i1, "\n"
+# 	print "According to splitAnalysis:"
+# 	print "method is : ", m2
+# 	print "tool is : ", t2
+# 	print "ingr is : ", i2, "\n"
 
 
 # firstWordAnalysis(recipe_lower_steps[1], recipe_ingrs_extracted_toks)
