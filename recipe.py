@@ -103,17 +103,11 @@ recipe_pairings = matchDirnAndIngredientInput(directions, ingredients)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ WorkSpace/Demo-code: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #This would eventually be parameterizable but just for now:
-def runTests():
-	for recipe in recipe_pairings[:10]:
-		print "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-		recipe_ingrs_raw, recipe_dirns_raw = recipe
-		recipe_ingrs_formatted = [parse_ingredient(ingr) for ingr in recipe_ingrs_raw]
-		recipe_ingrs_extracted = getRecipeIngredientsAttributes(recipe_ingrs_raw)
-		recipe_ingrs_extracted_toks = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
-		print "recipe ingredients are: ", recipe_ingrs_extracted,"\n"
-
-		recipe_steps = getSteps(recipe_dirns_raw)
-		recipe_lower_steps = map(str.lower, recipe_steps)
+def runTests(index_pairing=None):
+	if(index_pairing!=None):
+		pairing = recipe_pairings[index_pairing]
+		print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		recipe_ingrs_raw, recipe_dirns_raw = pairing
 
 		myRecipe = Recipe()
 		myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
@@ -121,53 +115,51 @@ def runTests():
 		myRecipe.extractFullIngrData(store=True)
 		myRecipe.extractSolelyIngrData(store=True)
 		myRecipe.extractSteps(store=True)
+		print "SolelyIngrData: ", myRecipe.SolelyIngrData, " \n"
 		for step in myRecipe.Steps:
-			print "step is: ", step.step
-			print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
-			print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
+			print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
+			print "step.splitAnalysis() returns: ", step.splitAnalysis(),
+			step.ExtractFromTxt(Display=True)
+	else:
+		for pairing in recipe_pairings[0:2]:
+			print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+			recipe_ingrs_raw, recipe_dirns_raw = pairing
 
-recipe_raw = recipe_pairings[1]
-recipe_ingrs_raw, recipe_dirns_raw = recipe_raw
-
-#Get ingredients:
-recipe_ingrs_formatted = [parse_ingredient(ingr) for ingr in recipe_ingrs_raw]
-recipe_ingrs_extracted = getRecipeIngredientsAttributes(recipe_ingrs_raw)
-recipe_ingrs_extracted_toks = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
-
-#Get steps:
-recipe_steps = getSteps(recipe_dirns_raw)
-recipe_lower_steps = map(str.lower, recipe_steps)
-lower_steps_toks = map(nltk.word_tokenize, recipe_lower_steps)
-
-#Class Demo:
-myRecipe = Recipe()
-myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
-myRecipe.ProvideRawDirnData(recipe_dirns_raw)
-myRecipe.extractFullIngrData(store=True)
-myRecipe.extractSolelyIngrData(store=True)
-myRecipe.extractSteps(store=True)
-
-for step in myRecipe.Steps:
-	print "step is: ", step.step
-	print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
-	print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
+			myRecipe = Recipe()
+			myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
+			myRecipe.ProvideRawDirnData(recipe_dirns_raw)
+			myRecipe.extractFullIngrData(store=True)
+			myRecipe.extractSolelyIngrData(store=True)
+			myRecipe.extractSteps(store=True)
+			print "SolelyIngrData: ", myRecipe.SolelyIngrData, "\n"
+			for step in myRecipe.Steps:
+				print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
+				print "step.splitAnalysis() returns: ", step.splitAnalysis(),
+				step.ExtractFromTxt(Display=True)
 
 
 
-# Demo:
-# for step in recipe_lower_steps:
-# 	print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-# 	m1,t1,i1 = firstWordAnalysis(step, recipe_ingrs_extracted_toks)
-# 	m2,t2,i2 = splitAnalysis(step, recipe_ingrs_extracted_toks)
-# 	print "step is: ", step, "\n"
-# 	print "According to First Word Analysis:"
-# 	print "method is : ", m1
-# 	print "tool is : ", t1
-# 	print "ingr is : ", i1, "\n"
-# 	print "According to splitAnalysis:"
-# 	print "method is : ", m2
-# 	print "tool is : ", t2
-# 	print "ingr is : ", i2, "\n"
 
 
-# firstWordAnalysis(recipe_lower_steps[1], recipe_ingrs_extracted_toks)
+# recipe_raw = recipe_pairings[0]
+# recipe_ingrs_raw, recipe_dirns_raw = recipe_raw
+
+# #Get ingredients:
+# recipe_ingrs_formatted = [parse_ingredient(ingr) for ingr in recipe_ingrs_raw]
+# recipe_ingrs_extracted = getRecipeIngredientsAttributes(recipe_ingrs_raw)
+# recipe_ingrs_extracted_toks = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
+
+# #Get steps:
+# recipe_steps = getSteps(recipe_dirns_raw)
+# recipe_lower_steps = map(str.lower, recipe_steps)
+# lower_steps_toks = map(nltk.word_tokenize, recipe_lower_steps)
+
+# #Class Demo:
+# myRecipe = Recipe()
+# myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
+# myRecipe.ProvideRawDirnData(recipe_dirns_raw)
+# myRecipe.extractFullIngrData(store=True)
+# myRecipe.extractSolelyIngrData(store=True)
+# myRecipe.extractSteps(store=True)
+
+# step = myRecipe.Steps[1]
