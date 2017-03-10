@@ -126,7 +126,7 @@ def runTests():
 			print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
 			print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
 
-recipe_raw = recipe_pairings[0]
+recipe_raw = recipe_pairings[1]
 recipe_ingrs_raw, recipe_dirns_raw = recipe_raw
 
 #Get ingredients:
@@ -147,10 +147,10 @@ myRecipe.extractFullIngrData(store=True)
 myRecipe.extractSolelyIngrData(store=True)
 myRecipe.extractSteps(store=True)
 
-# for step in myRecipe.Steps:
-# 	print "step is: ", step.step
-# 	print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
-# 	print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
+for step in myRecipe.Steps:
+	print "step is: ", step.step
+	print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
+	print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
 
 
 

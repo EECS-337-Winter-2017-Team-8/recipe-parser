@@ -315,8 +315,22 @@ class Step:
 			for i in lower_step_list:
 				toks = nltk.word_tokenize(i)
 				if split_tok in toks:
-					lower_step_list+=map(str.strip, i.split(split_tok))
-					lower_step_list.remove(i)
+					if(split_tok.isalpha()):
+						span_generator = WhitespaceTokenizer().span_tokenize(i)
+						spans = [span for span in span_generator]
+						cut_start, cut_end = spans[toks.index(split_tok)]
+						str1 = i[:cut_start]
+						str2 = i[cut_end+1:]
+						if(str1 and str2):
+							lower_step_list+=map(str.strip, [str1, str2])
+						elif(str1):
+							lower_step_list+=map(str.strip, [str1])
+						elif(str2):
+							lower_step_list+=map(str.strip, [str2])
+						lower_step_list.remove(i)
+					else:
+						lower_step_list+=map(str.strip, i.split(split_tok))
+						lower_step_list.remove(i)
 		return lower_step_list
 
 

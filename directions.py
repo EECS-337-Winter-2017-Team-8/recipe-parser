@@ -33,7 +33,7 @@ dirn_time_units = ["seconds", "minutes", "hours", "days", "second", "minute", "h
 
 dirn_bad_adverbs = ["then", "there", "meanwhile", "once"]
 
-dirn_split_toks = [",", ";", "in", "to", "and", "with"]
+dirn_split_toks = [",", ";", "of", "in", "to", "and", "with"]
 
 #Maybe check if it starts with "do not"
 
