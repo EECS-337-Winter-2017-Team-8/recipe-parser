@@ -15,12 +15,13 @@ class Step:
 		self.lower_step_pos = nltk.pos_tag(self.lower_step_toks)
 
 		self.recipeIngrData = SolelyIngrData #This is only the Ingredient attribute of the ingredients.
-		self.recipeIngrTokens = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
+		self.recipeIngrTokens = map(lambda(x): nltk.word_tokenize(x), SolelyIngrData)
 	
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	def ExtractFromTxt(self):
-		m1,t1,i1 = self.firstWordAnalysis()
-		m2,t2,i2 = self.splitAnalysis()
+		meth1,tool1,ingr1 = self.firstWordAnalysis()
+		meth2,tool2,ingr2 = self.splitAnalysis()
+		# meth_combined = list(set(meth2+meth1))
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Non-Interface/Behind The Scenes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -28,9 +29,11 @@ class Step:
 	def firstWordAnalysis(self, inpText=None):
 		#We have inpText attribute because we do recursion in event of "("
 		if(inpText!=None):
-			lower_step_tokens = nltk.word_tokenize(inpText.lower())
+			lower_step = inpText.lower()
+			lower_step_tokens = nltk.word_tokenize(lower_step)
 			lower_step_pos = nltk.pos_tag(lower_step_tokens)
 		else:
+			lower_step = self.lower_step
 			lower_step_tokens = self.lower_step_toks
 			lower_step_pos = self.lower_step_pos
 
@@ -39,7 +42,7 @@ class Step:
 		method, tool, ingredient = None, None, None
 		fw = lower_step_tokens[0]
 		if(fw == "("):
-			#In the event of this
+			#Nothing between () pertains to what we're after
 			return self.firstWordAnalysis(lower_step[lower_step.index(")")+1:])
 		
 		elif (fw in dirn_methods):
@@ -53,6 +56,8 @@ class Step:
 					ingr = self.getAdjacentIngredient(iterator, lower_step_tokens, lower_step_pos)
 					if(ingr!=None):
 						iterator+=len(ingr)
+					else:
+						iterator+=1
 				if(ingr!=None):
 					ingredient = ingr
 			else:
@@ -85,6 +90,7 @@ class Step:
 			method, tool = self.firstWordAdverb(lower_step, lower_step_tokens, lower_step_pos)
 
 		else: 
+			print "didn't work! lower_step is: ", self.lower_step
 			ingredient = self.getAdjacentIngredient(0)
 
 		return method, tool, ingredient
@@ -92,6 +98,7 @@ class Step:
 	def splitAnalysis(self):
 		lower_step = self.lower_step
 		lower_step_list = self.splitForSplitAnalysis()
+		recipe_ingrs_extracted_toks = self.recipeIngrTokens
 		methods, tools, ingredients = [],[],[]
 		for splitted_elt in lower_step_list:
 			if(len(splitted_elt)==0):
@@ -99,12 +106,14 @@ class Step:
 			method, tool, ingr = None, None, None
 			lower_step_tokens = nltk.word_tokenize(splitted_elt)
 			lower_step_pos = nltk.pos_tag(lower_step_tokens)
-			tool = getAdjacentTool(0, lower_step_tokens, lower_step_pos)
-			if(lower_step_tokens[0] in dirn_methods):
-				method = lower_step_tokens[0]
-				ingr = getAdjacentIngredient(lower_step_tokens, 1, recipe_ingrs_extracted_toks)
-			else:
-				ingr = getAdjacentIngredient(lower_step_tokens, 0, recipe_ingrs_extracted_toks)
+			tool = self.getAdjacentTool(0, lower_step_tokens, lower_step_pos)
+			ingr = self.getAdjacentIngredient(0, lower_step_tokens, lower_step_pos)
+			if(ingr==None):
+				if(lower_step_tokens[0] in dirn_methods):
+					method = lower_step_tokens[0]
+					ingr = self.getAdjacentIngredient(1, lower_step_tokens, lower_step_pos)
+				else:
+					ingr = self.getAdjacentIngredient(0, lower_step_tokens, lower_step_pos)
 			if((tool) and (method==tool)):
 				#Then we are trying to declare the same thing twice.
 				print "In splitted_elt = \"", splitted_elt, "\", we come across tool:", tool, " = elt: \" ", elt, " \" \n"
@@ -136,10 +145,14 @@ class Step:
 				return None
 
 		#While the next_word is compatible but not a tool, we continue onwards.
-		while ((lower_step_tokens[iterator] in dirn_measurements) or (lower_step_tokens[iterator] in dirn_descriptors) 
-		  or (bool(filter(lambda(x): x.isdigit(), lower_step_tokens[iterator])))):
+		while ( (iterator<len(lower_step_tokens)) and ((lower_step_tokens[iterator] in dirn_measurements) or (lower_step_tokens[iterator] in dirn_descriptors) 
+		  or (bool(filter(lambda(x): x.isdigit(), lower_step_tokens[iterator]))))):
 			iterator+=1
-
+		if(iterator==len(lower_step_tokens)):
+			if(retIterator):
+				return None, None
+			else:
+				return None
 		#To ensure accuraccy some more
 		if(lower_step_tokens[iterator] in dirn_tools):
 			#In event we have "grill grate" or something.
@@ -194,30 +207,32 @@ class Step:
 				len_ingr_token = len(ingr_token)
 				iterator_fwd, iterator_bwd = None, None
 				if(len_ingr_token>1):
-					token_index = ingr_token.index(susp_ingr)
-					len_step_tokens = len(lower_step_tokens)
+					token_index = ingr_token.index(susp_ingr) #The Index at which the Susp_Ingr occurs in the ingr_token
+					len_ingr_token = len(ingr_token)
+
+					len_step_tokens = len(lower_step_tokens) #The length of the lower_step_tokens (the input segment)
 
 					if(token_index==0): 
 						#if suspected ingredient is found at the start of the token, check if there is a match w the next one
 						iterator_fwd = 1
-						while( (len_step_tokens > (token_index+iterator_fwd) ) and ( lower_step_tokens[token_index+iterator_fwd] in ingr_token) ):
+						while( (len_step_tokens > (iterator_fwd+iterator) ) and ( lower_step_tokens[iterator_fwd+iterator] in ingr_token) ):
 							iterator_fwd+=1
 						iterator_fwd-=1
 
-					elif(token_index == (len_step_tokens-1) ): 
+					elif(token_index == (len_ingr_token-1) ): 
 						#if suspected ingredient is found at the end of the token, check if there is a match w the previous one
 						iterator_bwd = -1
-						while( (len_step_tokens > (token_index+iterator_bwd) ) and ( lower_step_tokens[token_index+iterator_bwd] in ingr_token) ):
+						while( ((iterator_bwd+iterator) >= 0) and ( lower_step_tokens[iterator_bwd+iterator] in ingr_token) ):
 							iterator_bwd-=1
 						iterator_bwd+=1
 
 					else:
 						#may be a chance that it is before OR after.
 						iterator_fwd, iterator_bwd = 1, -1
-						while( (len_step_tokens > (token_index+iterator_fwd) ) and ( lower_step_tokens[token_index+iterator_fwd] in ingr_token) ):
+						while( (len_step_tokens > (iterator_fwd+iterator)) and ( lower_step_tokens[iterator_fwd+iterator] in ingr_token) ):
 							iterator_fwd+=1
 						
-						while( ( (token_index+iterator_bwd) >= 0 ) and ( lower_step_tokens[token_index+iterator_bwd] in ingr_token) ):
+						while( ( (iterator_bwd+iterator) >= 0 ) and ( lower_step_tokens[iterator_bwd+iterator] in ingr_token) ):
 							iterator_bwd-=1
 						
 						#Just to undo the offset

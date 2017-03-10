@@ -6,12 +6,12 @@ import nltk, string, os, re
 #for list of all possible NLTK P.O.S.s
 #nltk.help.upenn_tagset()
 
-#if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
-#	os.chdir("../Desktop/Code/recipe-parser")
+if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
+	os.chdir("../Desktop/Code/recipe-parser")
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-dirn_descriptors = ["baking", "cold", "covered", "deep", "dutch", "foil", "glass", "greased", "heavy", "large", "loaf", "medium", "medium-size", "mixing", "nylon", "oiled", "paper", "plastic", "roasting", "shallow", "small","soup", "steak", "towel-lined", "well", "zipper"]
+dirn_descriptors = ["baking", "cold", "covered", "deep", "dutch", "foil", "glass", "greased", "heavy", "individual", "large", "loaf", "medium", "medium-size", "mixing", "nylon", "oiled", "paper", "plastic", "roasting", "shallow", "small","soup", "steak", "towel-lined", "well", "zipper"]
 
 dirn_measurements = ["inch"]
 
@@ -25,7 +25,7 @@ dirn_methods = ["add", "adjust", "air", "allow", "arrange", "assemble", "bake", 
 "slice", "smear", "smoke", "soak", "soften", "soup", "spear", "spice", "split", "spoon", "spray", "spread", "sprinkle", "spritz", "squeeze", "squirt", "stand", "steam", "stir", "stirfry", "stir-fry","store", "strain", "stuff", "suspend", "sweeten", 
 "swirl", "tap", "taste", "thread", "tie", "tilt", "time", "toast", "top", "toss", "transfer", "turn", "unroll", "use","wait", "wash", "warm", "weigh", "wet", "whip", "whisk", "wipe", "wrap"]
 
-dirn_tools = ["barbeque", "bowl", "coal", "cooker", "colander", "cover", "deep-fryer", "dish", "fork", "grate", "grill", "knife", "oven", "pan", "pot","saucepan", "set", "skillet", "spatula",
+dirn_tools = ["barbeque", "bowl","bowls", "coal", "cooker", "colander", "cover", "deep-fryer", "dish", "fork", "grate", "grill", "knife", "oven", "pan", "plate", "plates", "pot","saucepan", "set", "skillet", "spatula",
 	"thongs", "toaster", "water", "wok"]
 
 dirn_time_units = ["seconds", "minutes", "hours", "days", "second", "minute", "hour", "day"]
@@ -117,6 +117,16 @@ def getSteps_AllElseFirst(directions):
 			special.append(lower_step)
 	return special
 
+def getSteps_BracketsFirst(directions):
+	special = []
+	steps = getSteps(directions)
+	lower_steps = map(str.lower, steps)
+	for lower_step in lower_steps:
+		lower_step_tokens = nltk.word_tokenize(lower_step)
+		if(lower_step_tokens[0]=="("):	
+			special.append(lower_step)
+	return special
+
 def getFirstWord_AllElseSteps(directions):
 	#Just to get each first word that is neither Method nor Adjective
 	steps = getSteps_AllElseFirst(directions)
@@ -154,9 +164,11 @@ def getAdjacentTool(index, lower_step_tokens, lower_step_pos, retIterator=False)
 			return None
 
 	#While the next_word is compatible but not a tool, we continue onwards.
-	while ((lower_step_tokens[iterator] in dirn_measurements) or (lower_step_tokens[iterator] in dirn_descriptors) 
-	  or (bool(filter(lambda(x): x.isdigit(), lower_step_tokens[iterator])))):
+	while ((iterator<len(lower_step_tokens)) and ((lower_step_tokens[iterator] in dirn_measurements) or (lower_step_tokens[iterator] in dirn_descriptors) 
+	  or (bool(filter(lambda(x): x.isdigit(), lower_step_tokens[iterator]))))):
 		iterator+=1
+
+	iterator-=1
 
 	#To ensure accuraccy some more
 	if(lower_step_tokens[iterator] in dirn_tools):
@@ -373,7 +385,7 @@ def getUntilTime(step):
 
 # directions = removeNextRecipeTag(list(open("directions.txt", "r")))
 # allDirections = removeNextRecipeTag(list(open("Directions/allDirections.txt", "r")))
-asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
+# asianDirections = removeNextRecipeTag(list(open("Directions/asianDirections.txt", "r")))
 # diabeticDirections = removeNextRecipeTag(list(open("Directions/diabeticDirections.txt", "r")))
 # dietHealthDirections = removeNextRecipeTag(list(open("Directions/dietHealthDirections.txt", "r")))
 # glutenfreeDirections = removeNextRecipeTag(list(open("Directions/gluten-freeDirections.txt", "r")))
