@@ -1,5 +1,6 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set-up: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import nltk, string, os, re
+from nltk.tokenize import WhitespaceTokenizer
 # os.chdir("documents/eecs/eecs337/recipe-parser")
 #execfile('/Users/Omar/Desktop/Code/recipe-parser/directions.py')
 

@@ -201,38 +201,63 @@ class Step:
 			return None
 
 		susp_ingr  = lower_step_tokens[iterator]
+		susp_ingr_singular, susp_ingr_plural = pattern.en.singularize(susp_ingr), pattern.en.pluralize(susp_ingr)
+		susp_ingr_present, susp_ingr_present_regular, susp_ingr_present_singular, susp_ingr_present_plural = False, False, False, False
 		for ingr_token in recipe_ingrs_extracted_tokens:
 			#The tokens of 1 ingredient 
 			if(susp_ingr in ingr_token):
+				susp_ingr_present = True
+				susp_ingr_present_regular = True
+			elif(susp_ingr_singular in ingr_token):
+				susp_ingr_present = True
+				susp_ingr_present_singular = True
+			elif(susp_ingr_plural in ingr_token):
+				susp_ingr_present = True
+				susp_ingr_present_singular = False
+
+			if(susp_ingr_present):
 				len_ingr_token = len(ingr_token)
 				iterator_fwd, iterator_bwd = None, None
 				if(len_ingr_token>1):
-					token_index = ingr_token.index(susp_ingr) #The Index at which the Susp_Ingr occurs in the ingr_token
+					if(susp_ingr_present_regular):
+						token_index = ingr_token.index(susp_ingr) #The Index at which the Susp_Ingr occurs in the ingr_token
+					elif(susp_ingr_present_singular):
+						token_index = ingr_token.index(susp_ingr_singular) #The Index at which the Susp_Ingr occurs in the ingr_token
+					else:
+						token_index = ingr_token.index(susp_ingr_plural) #The Index at which the Susp_Ingr occurs in the ingr_token
+					
 					len_ingr_token = len(ingr_token)
-
 					len_step_tokens = len(lower_step_tokens) #The length of the lower_step_tokens (the input segment)
 
 					if(token_index==0): 
 						#if suspected ingredient is found at the start of the token, check if there is a match w the next one
 						iterator_fwd = 1
-						while( (len_step_tokens > (iterator_fwd+iterator) ) and ( lower_step_tokens[iterator_fwd+iterator] in ingr_token) ):
+						while( (len_step_tokens > (iterator_fwd+iterator) ) and ( (lower_step_tokens[iterator_fwd+iterator] in ingr_token)
+						  or ( pattern.en.singularize(lower_step_tokens[iterator_fwd+iterator]) in ingr_token) 
+					 	  or ( pattern.en.pluralize(lower_step_tokens[iterator_fwd+iterator]) in ingr_token))):
 							iterator_fwd+=1
 						iterator_fwd-=1
 
 					elif(token_index == (len_ingr_token-1) ): 
 						#if suspected ingredient is found at the end of the token, check if there is a match w the previous one
 						iterator_bwd = -1
-						while( ((iterator_bwd+iterator) >= 0) and ( lower_step_tokens[iterator_bwd+iterator] in ingr_token) ):
+						while( ((iterator_bwd+iterator) >= 0) and ( (lower_step_tokens[iterator_bwd+iterator] in ingr_token)
+						  or ( pattern.en.singularize(lower_step_tokens[iterator_bwd+iterator]) in ingr_token)
+						  or ( pattern.en.pluralize(lower_step_tokens[iterator_bwd+iterator]) in ingr_token))):
 							iterator_bwd-=1
 						iterator_bwd+=1
 
 					else:
 						#may be a chance that it is before OR after.
 						iterator_fwd, iterator_bwd = 1, -1
-						while( (len_step_tokens > (iterator_fwd+iterator)) and ( lower_step_tokens[iterator_fwd+iterator] in ingr_token) ):
+						while( (len_step_tokens > (iterator_fwd+iterator)) and ( (lower_step_tokens[iterator_fwd+iterator] in ingr_token)
+						  or (pattern.en.singularize(lower_step_tokens[iterator_fwd+iterator]) in ingr_token) 
+						  or (pattern.en.pluralize(lower_step_tokens[iterator_fwd+iterator]) in ingr_token))):
 							iterator_fwd+=1
 						
-						while( ( (iterator_bwd+iterator) >= 0 ) and ( lower_step_tokens[iterator_bwd+iterator] in ingr_token) ):
+						while( ((iterator_bwd+iterator) >= 0 ) and ( (lower_step_tokens[iterator_bwd+iterator] in ingr_token)
+							or (pattern.en.singularize(lower_step_tokens[iterator_bwd+iterator]) in ingr_token)
+						    or (pattern.en.pluralize(lower_step_tokens[iterator_bwd+iterator]) in ingr_token))):
 							iterator_bwd-=1
 						
 						#Just to undo the offset

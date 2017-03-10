@@ -1,6 +1,8 @@
 #execfile('/Users/Omar/Desktop/Code/recipe-parser/recipe.py')
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import pattern.en
+
 execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients.py')
 execfile('/Users/Omar/Desktop/Code/recipe-parser/directions.py')
 execfile('/Users/Omar/Desktop/Code/recipe-parser/StepClass.py')
@@ -124,26 +126,26 @@ def runTests():
 			print "step.firstWordAnalysis() returns: ", step.firstWordAnalysis()
 			print "step.splitAnalysis() returns: ", step.splitAnalysis(),"\n"
 
-# recipe_raw = recipe_pairings[0]
-# recipe_ingrs_raw, recipe_dirns_raw = recipe_raw
+recipe_raw = recipe_pairings[0]
+recipe_ingrs_raw, recipe_dirns_raw = recipe_raw
 
-# #Get ingredients:
-# recipe_ingrs_formatted = [parse_ingredient(ingr) for ingr in recipe_ingrs_raw]
-# recipe_ingrs_extracted = getRecipeIngredientsAttributes(recipe_ingrs_raw)
-# recipe_ingrs_extracted_toks = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
+#Get ingredients:
+recipe_ingrs_formatted = [parse_ingredient(ingr) for ingr in recipe_ingrs_raw]
+recipe_ingrs_extracted = getRecipeIngredientsAttributes(recipe_ingrs_raw)
+recipe_ingrs_extracted_toks = map(lambda(x): nltk.word_tokenize(x), recipe_ingrs_extracted)
 
-# #Get steps:
-# recipe_steps = getSteps(recipe_dirns_raw)
-# recipe_lower_steps = map(str.lower, recipe_steps)
-# lower_steps_toks = map(nltk.word_tokenize, recipe_lower_steps)
+#Get steps:
+recipe_steps = getSteps(recipe_dirns_raw)
+recipe_lower_steps = map(str.lower, recipe_steps)
+lower_steps_toks = map(nltk.word_tokenize, recipe_lower_steps)
 
-# #Class Demo:
-# myRecipe = Recipe()
-# myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
-# myRecipe.ProvideRawDirnData(recipe_dirns_raw)
-# myRecipe.extractFullIngrData(store=True)
-# myRecipe.extractSolelyIngrData(store=True)
-# myRecipe.extractSteps(store=True)
+#Class Demo:
+myRecipe = Recipe()
+myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
+myRecipe.ProvideRawDirnData(recipe_dirns_raw)
+myRecipe.extractFullIngrData(store=True)
+myRecipe.extractSolelyIngrData(store=True)
+myRecipe.extractSteps(store=True)
 
 # for step in myRecipe.Steps:
 # 	print "step is: ", step.step
