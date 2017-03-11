@@ -7,8 +7,8 @@ from nltk.tokenize import WhitespaceTokenizer
 #for list of all possible NLTK P.O.S.s
 #nltk.help.upenn_tagset()
 
-if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
-	os.chdir("../Desktop/Code/recipe-parser")
+#if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
+#	os.chdir("../Desktop/Code/recipe-parser")
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

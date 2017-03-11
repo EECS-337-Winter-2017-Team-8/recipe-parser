@@ -3,10 +3,10 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import pattern.en
 
-execfile('/Users/Omar/Desktop/Code/recipe-parser/ingredients.py')
-execfile('/Users/Omar/Desktop/Code/recipe-parser/directions.py')
-execfile('/Users/Omar/Desktop/Code/recipe-parser/StepClass.py')
-execfile('/Users/Omar/Desktop/Code/recipe-parser/RecipeClass.py')
+execfile('ingredients.py')
+execfile('directions.py')
+execfile('StepClass.py')
+execfile('RecipeClass.py')
 
 def matchDirnAndIngredientInput(directions, ingredients):
 	#This will match each recipe in the directions & ingredients file
