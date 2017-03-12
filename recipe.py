@@ -108,22 +108,19 @@ recipe_pairings = matchDirnAndIngredientInput(directions, ingredients)
 def runTests(index_pairing=None):
     if(index_pairing!=None):
         pairing = recipe_pairings[index_pairing]
-        print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        print '\n'
+        print_divider()
         recipe_ingrs_raw, recipe_dirns_raw = pairing
-
         myRecipe = parse_recipe_pairing(pairing)
         # print "SolelyIngrData: ", myRecipe.SolelyIngrData, " \n"
         for step in myRecipe.Steps:
-            # print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
-            # print "step.splitAnalysis() returns: ", step.splitAnalysis(),
-            step.ExtractFromTxt(Display=True)
+            print_step(step)
     else:
         for pairing in recipe_pairings[0:20]:
-            print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            print '\n'
+            print_divider()
             recipe_ingrs_raw, recipe_dirns_raw = pairing
-
             myRecipe = parse_recipe_pairing(pairing)
-
             print "SolelyIngrData: ", myRecipe.SolelyIngrData, "\n"
             for step in myRecipe.Steps:
                 print_step(step)
