@@ -1,3 +1,6 @@
+from directions import *
+from ingredients import *
+
 class Step:
 	#Note that this class requires acces to the global variables defined in directions.py AND ingredients.py
 

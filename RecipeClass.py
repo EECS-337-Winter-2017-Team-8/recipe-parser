@@ -1,3 +1,5 @@
+from ingredients import *
+
 class Recipe:
 	#Note that this class requires acces to the global variables defined in ingredients.py
 
