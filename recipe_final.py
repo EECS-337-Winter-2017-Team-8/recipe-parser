@@ -11,20 +11,24 @@ def run():
 	while "allrecipes.com/recipe" not in url:
 		url = raw_input("""Please enter a recipe URL from "allrecipes.com":  """)
 
-	ingredients, directions = get_ingredients_and_directions(url)
+	title, ingredients, directions = get_title_ingredients_and_directions(url)
+	
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Behind the Scenes to Parse HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def get_ingredients_and_directions(url):
+def get_title_ingredients_and_directions(url):
 	ingredients = []
 	directions = []
 
 	data = urllib.urlopen(url)
 	soup = BeautifulSoup(data)
 
-	ingredients_html = soup.find_all("span", class_="recipe-ingred_txt added")
-	directions_html = soup.find_all("span", class_="recipe-directions__list--item")
+	title_html = soup.find_all(itemprop="name")
+	# ingredients_html = soup.find_all("span", class_="recipe-ingred_txt added")
+	# directions_html = soup.find_all("span", class_="recipe-directions__list--item")
+
+	title = title_html[0].get_text()
 
 	for ing in ingredients_html:
 		ingredients.append(ing.get_text())
@@ -39,7 +43,7 @@ def get_ingredients_and_directions(url):
 		directions[idx] = (str(count) + ". ") + item
 		count += 1
 
-	return ingredients, directions
+	return title, ingredients, directions
 
 if __name__ == "__main__":
 	run()
