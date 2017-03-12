@@ -13,6 +13,8 @@ class Recipe:
 		#List of Methods Needed for Recipe; data from "Directions" Section
 		self.FormattedMethodsData = None
 
+		self.PrimaryMethods = None
+		self.SecondaryMethods = None
 		#~~~~~~~~~~~~~~~~~~~~~~~~~ Intermediary Variables for calculation purposes ~~~~~~~~~~~~~~~~~~~~~~~~~
 		#To hold what the user puts in
 		self.RawIngrData = None
@@ -72,6 +74,19 @@ class Recipe:
 			self.Steps = ret_arr
 
 		return ret_arr
+
+	def categorizeMethods(self, data=None, store=False):
+		primary_methods = []
+		secondary_methods = []
+		for step in self.Steps:
+			for method in step.methods:
+				if ((method in dirn_primary_methods) and (method not in primary_methods)):
+					primary_methods.append(method)
+				else:
+					secondary_methods.append(method)
+		if(store==True):
+			self.PrimaryMethods = primary_methods
+			self.SecondaryMethods = secondary_methods
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Non-Interface/Behind The Scenes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

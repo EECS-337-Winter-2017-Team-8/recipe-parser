@@ -1,5 +1,7 @@
-#execfile('/Users/Omar/Desktop/Code/recipe-parser/recipe.py')
-
+# execfile('/Users/Omar/Desktop/Code/recipe-parser/recipe.py')
+import os 
+if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
+	os.chdir("../Desktop/Code/recipe-parser")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import pattern.en
 
@@ -115,13 +117,13 @@ def runTests(index_pairing=None):
 		myRecipe.extractFullIngrData(store=True)
 		myRecipe.extractSolelyIngrData(store=True)
 		myRecipe.extractSteps(store=True)
-		print "SolelyIngrData: ", myRecipe.SolelyIngrData, " \n"
+		# print "SolelyIngrData: ", myRecipe.SolelyIngrData, " \n"
 		for step in myRecipe.Steps:
-			print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
-			print "step.splitAnalysis() returns: ", step.splitAnalysis(),
+			# print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
+			# print "step.splitAnalysis() returns: ", step.splitAnalysis(),
 			step.ExtractFromTxt(Display=True)
 	else:
-		for pairing in recipe_pairings[0:2]:
+		for pairing in recipe_pairings[0:20]:
 			print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 			recipe_ingrs_raw, recipe_dirns_raw = pairing
 
@@ -136,6 +138,9 @@ def runTests(index_pairing=None):
 				print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
 				print "step.splitAnalysis() returns: ", step.splitAnalysis(),
 				step.ExtractFromTxt(Display=True)
+			myRecipe.categorizeMethods(store=True)
+			print "myRecipe.PrimaryMethods = ", myRecipe.PrimaryMethods
+			print "myRecipe.SecondaryMethods = ", myRecipe.SecondaryMethods
 
 
 

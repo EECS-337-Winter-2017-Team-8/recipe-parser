@@ -72,20 +72,26 @@ class Step:
 				else:
 					tool_combined = tool2
 
-		if(len(ingr1)==0):
+		if( (ingr1==None) or (len(ingr1)==0)):
 			ingr_combined = ingr2
 		elif(len(ingr1)==1):
-			if(ingr1[0] in ingr2):
+			if( (ingr2 != None) and (ingr1[0] in ingr2)):
 				ingr_combined = ingr2
 			else:
-				ingr_combined = ingr2
-				ingr_combined.append(ingr1[0])
+				if(ingr2!=None):
+					ingr_combined = ingr2
+					ingr_combined.append(ingr1[0])
+				else:
+					ingr_combined = [ingr1[0]]
 		else: #len(ingr1)>1
-			if(ingr1 in ingr2):
-				ingr_combined = ingr2
+			if(ingr2!=None):
+				if(ingr1 in ingr2):
+					ingr_combined = ingr2
+				else:
+					ingr_combined = ingr2
+					ingr_combined.append(ingr1)
 			else:
-				ingr_combined = ingr2
-				ingr_combined.append(ingr1)
+				ingr_combined = ingr1
 
 		self.methods = meth_combined
 		self.tools = tool_combined
@@ -458,7 +464,7 @@ class Step:
 		if(lower_step_tokens[1] in dirn_methods): 
 			method = [lower_step_tokens[1]] #Should always be the case
 			iterator = 2
-			tool = getAdjacentTool(iterator, lower_step_tokens, lower_step_pos)
+			tool = self.getAdjacentTool(iterator, lower_step_tokens, lower_step_pos)
 			return method, tool
 		else:
 			print "FAILED lower_step is: ", lower_step
@@ -478,20 +484,23 @@ class Step:
 			lower_step = inp_str
 		else:
 			lower_step = self.lower_step
+		lower_step = lower_step.replace("(","").replace(")","")
 		lower_step_list = [lower_step]
 		for split_tok in dirn_split_toks:
-			for i in lower_step_list:
-				toks = nltk.word_tokenize(i)
+			i = 0
+			while(i<len(lower_step_list)):
+				list_elt = lower_step_list[i]
+				toks = nltk.word_tokenize(list_elt)
 				if split_tok in toks:
 					if(split_tok.isalpha()):
-						span_generator = WhitespaceTokenizer().span_tokenize(i)
+						span_generator = WhitespaceTokenizer().span_tokenize(list_elt)
 						spans = [span for span in span_generator]
 						cut_start, cut_end = spans[toks.index(split_tok)]
-						str1 = i[:cut_start]
-						str2 = i[cut_end+1:]
-						if(str1!=""):
+						str1 = list_elt[:cut_start]
+						str2 = list_elt[cut_end+1:]
+						if(str1.strip()!=""):
 							str1 = self.splitForSplitAnalysis(str1)
-						if(str2!=""):
+						if(str2.strip()!=""):
 							str2 = self.splitForSplitAnalysis(str2)
 						if(str1 and str2):
 							lower_step_list+=map(str.strip, str1+str2)
@@ -499,11 +508,61 @@ class Step:
 							lower_step_list+=map(str.strip, str1)
 						elif(str2):
 							lower_step_list+=map(str.strip, str2)
-						lower_step_list.remove(i)
+						lower_step_list.remove(list_elt)
+						i = - 1
 					else:
-						lower_step_list+=map(str.strip, i.split(split_tok))
-						lower_step_list.remove(i)
+						lower_step_list+=map(str.strip, list_elt.split(split_tok))
+						lower_step_list.remove(list_elt)
+						i = -1
+				i+=1
 		return lower_step_list
+
+
+def splitForSplitAnalysis(inp_str):
+	print "enterred splitForSplitAnalysis with inp_str: ", inp_str
+	lower_step = inp_str.replace("(","").replace(")","")
+	lower_step_list = [lower_step]
+	for split_tok in dirn_split_toks:
+		print "iterating over, split_tok = ", split_tok
+		print "lower_step_list was initially : ", lower_step_list
+		i = 0
+		while (i < len(lower_step_list)):
+			list_elt = lower_step_list[i]
+			toks = nltk.word_tokenize(list_elt)
+			print "list_elt toks are = ", toks
+			if split_tok in toks:
+				print "split_tok is in toks!"
+				if(split_tok.isalpha()):
+					print "split_tok ISALPHA"
+					span_generator = WhitespaceTokenizer().span_tokenize(list_elt)
+					spans = [span for span in span_generator]
+					print "spans are: ", spans
+					print "toks.index(split_tok) = ", toks.index(split_tok)
+					cut_start, cut_end = spans[toks.index(split_tok)]
+					str1 = list_elt[:cut_start]
+					print "str1 is : ", str1
+					str2 = list_elt[cut_end+1:]
+					print "str2 is : ", str2
+					if(str1!=""):
+						str1 = splitForSplitAnalysis(str1)
+					if(str2!=""):
+						str2 = splitForSplitAnalysis(str2)
+					if( (str1) and (str2)):
+						lower_step_list+=map(str.strip, str1+str2)
+					elif(str1):
+						lower_step_list+=map(str.strip, str1)
+					elif(str2):
+						lower_step_list+=map(str.strip, str2)
+					lower_step_list.remove(list_elt)
+					i = -1
+				else:
+					print "split_tok NOT ISALPHA"
+					lower_step_list+=map(str.strip, list_elt.split(split_tok))
+					lower_step_list.remove(list_elt)
+					i = -1
+				print "lower_step_list has become : ", lower_step_list 
+			i+=1
+	return lower_step_list
 
 
 

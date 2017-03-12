@@ -12,7 +12,7 @@ from nltk.tokenize import WhitespaceTokenizer
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-dirn_descriptors = ["baking", "cold", "covered", "deep", "dutch", "foil", "glass", "greased", "heavy", "individual", "large", "loaf", "medium", "medium-size", "mixing", "nylon", "oiled", "paper", "plastic", "roasting", "shallow", "small","soup", "steak", "towel-lined", "well", "zipper"]
+dirn_descriptors = ["baking", "cold", "combined", "covered", "deep", "dutch", "foil", "glass", "greased", "heavy", "individual", "large", "loaf", "medium", "medium-size", "mixed", "mixing", "nylon", "oiled", "paper", "plastic", "preheated", "remaining", "reserved", "roasting", "rolled", "shallow", "small","soup", "steak", "towel-lined", "well", "zipper"]
 
 dirn_measurements = ["inch"]
 
@@ -25,6 +25,9 @@ dirn_methods = ["add", "adjust", "air", "allow", "arrange", "assemble", "bake", 
 "scatter", "scoop", "scramble", "scrape", "seal", "sear", "season", "seed", "select", "separate", "serve", "set", "shake", "shape", "shave", "shred", "sift", "simmer", "skewer", "skim", "skin", 
 "slice", "smear", "smoke", "soak", "soften", "soup", "spear", "spice", "split", "spoon", "spray", "spread", "sprinkle", "spritz", "squeeze", "squirt", "stand", "steam", "stir", "stirfry", "stir-fry","store", "strain", "stuff", "suspend", "sweeten", 
 "swirl", "tap", "taste", "thread", "tie", "tilt", "time", "toast", "top", "toss", "transfer", "turn", "unroll", "use","wait", "wash", "warm", "weigh", "wet", "whip", "whisk", "wipe", "wrap"]
+
+dirn_primary_methods = ["bake", "baste", "blanch", "boil", "braise", "broil", "bronze", "caramelize", "cook", "fry", "glaze", "grill", "poach", "reduce", 
+  "roast", "saute", "sear", "smoke", "steam", "stirfry", "stir-fry", "toast"]
 
 dirn_tools = ["barbeque", "bowl","bowls", "coal", "cooker", "colander", "cover", "deep-fryer", "dish", "fork", "grate", "grill", "knife", "oven", "pan", "plate", "plates", "pot","saucepan", "set", "skillet", "spatula",
 	"thongs", "toaster", "water", "wok"]
