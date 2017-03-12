@@ -112,6 +112,9 @@ def runTests(index_pairing=None):
         for pairing in recipe_pairings[0:20]:
                 print_recipe_block(parse_recipe_pairing(pairing))
 
+def get_sample_recipes():
+        return [parse_recipe_pairing(pairing) for pairing in recipe_pairings]
+
 def print_recipe_block(recipe):
         print '\n'
         print_divider()
