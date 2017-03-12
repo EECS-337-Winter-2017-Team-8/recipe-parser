@@ -108,23 +108,24 @@ recipe_pairings = matchDirnAndIngredientInput(directions, ingredients)
 def runTests(index_pairing=None):
     if(index_pairing!=None):
         pairing = recipe_pairings[index_pairing]
-        print '\n'
-        print_divider()
-        recipe_ingrs_raw, recipe_dirns_raw = pairing
-        myRecipe = parse_recipe_pairing(pairing)
-        # print "SolelyIngrData: ", myRecipe.SolelyIngrData, " \n"
-        for step in myRecipe.Steps:
-            print_step(step)
+        print_parsed_recipe(pairing)
     else:
         for pairing in recipe_pairings[0:20]:
-            print '\n'
-            print_divider()
-            recipe_ingrs_raw, recipe_dirns_raw = pairing
-            myRecipe = parse_recipe_pairing(pairing)
-            print "SolelyIngrData: ", myRecipe.SolelyIngrData, "\n"
-            for step in myRecipe.Steps:
+                print_parsed_recipe(pairing)
+
+def print_parsed_recipe(pairing):
+        print '\n'
+        print_divider()
+        recipe = parse_recipe_pairing(pairing)
+        print_recipe(recipe)
+
+
+def print_recipe(recipe):
+        print "SolelyIngrData: ", recipe.SolelyIngrData, "\n"
+        for step in recipe.Steps:
                 print_step(step)
-            print_methods(myRecipe)
+        print_methods(recipe)
+
 
 def print_methods(recipe):
         recipe.categorizeMethods(store=True)
