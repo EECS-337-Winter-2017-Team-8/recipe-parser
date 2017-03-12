@@ -126,12 +126,23 @@ def runTests(index_pairing=None):
 
             print "SolelyIngrData: ", myRecipe.SolelyIngrData, "\n"
             for step in myRecipe.Steps:
-                print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
-                print "step.splitAnalysis() returns: ", step.splitAnalysis(),
-                step.ExtractFromTxt(Display=True)
-            myRecipe.categorizeMethods(store=True)
-            print "myRecipe.PrimaryMethods = ", myRecipe.PrimaryMethods
-            print "myRecipe.SecondaryMethods = ", myRecipe.SecondaryMethods
+                print_step(step)
+            print_methods(myRecipe)
+
+def print_methods(recipe):
+        recipe.categorizeMethods(store=True)
+        print "recipe.PrimaryMethods = ", recipe.PrimaryMethods
+        print "recipe.SecondaryMethods = ", recipe.SecondaryMethods
+
+def print_step(step):
+        print '\n'
+        print_divider()
+        print 'step.firstWordAnalysis() returns', step.firstWordAnalysis()
+        print "step.SplitAnalysis() returns: ", step.splitAnalysis()
+        step.ExtractFromTxt(Display=True)
+
+def print_divider():
+        print '~' * 80
 
 def parse_recipe_pairing(pairing):
         return parse_recipe(pairing[0], pairing[1])
