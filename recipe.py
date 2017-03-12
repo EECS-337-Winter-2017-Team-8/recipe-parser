@@ -111,12 +111,7 @@ def runTests(index_pairing=None):
         print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         recipe_ingrs_raw, recipe_dirns_raw = pairing
 
-        myRecipe = Recipe()
-        myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
-        myRecipe.ProvideRawDirnData(recipe_dirns_raw)
-        myRecipe.extractFullIngrData(store=True)
-        myRecipe.extractSolelyIngrData(store=True)
-        myRecipe.extractSteps(store=True)
+        myRecipe = parse_recipe_pairing(pairing)
         # print "SolelyIngrData: ", myRecipe.SolelyIngrData, " \n"
         for step in myRecipe.Steps:
             # print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
@@ -127,12 +122,8 @@ def runTests(index_pairing=None):
             print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             recipe_ingrs_raw, recipe_dirns_raw = pairing
 
-            myRecipe = Recipe()
-            myRecipe.ProvideRawIngrData(recipe_ingrs_raw)
-            myRecipe.ProvideRawDirnData(recipe_dirns_raw)
-            myRecipe.extractFullIngrData(store=True)
-            myRecipe.extractSolelyIngrData(store=True)
-            myRecipe.extractSteps(store=True)
+            myRecipe = parse_recipe_pairing(pairing)
+
             print "SolelyIngrData: ", myRecipe.SolelyIngrData, "\n"
             for step in myRecipe.Steps:
                 print "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nstep.firstWordAnalysis() returns: ", step.firstWordAnalysis()
@@ -142,9 +133,17 @@ def runTests(index_pairing=None):
             print "myRecipe.PrimaryMethods = ", myRecipe.PrimaryMethods
             print "myRecipe.SecondaryMethods = ", myRecipe.SecondaryMethods
 
+def parse_recipe_pairing(pairing):
+        return parse_recipe(pairing[0], pairing[1])
 
-
-
+def parse_recipe(ingredients_raw, directions_raw):
+        parsed_recipe = Recipe()
+        parsed_recipe.ProvideRawIngrData(ingredients_raw)
+        parsed_recipe.ProvideRawDirnData(directions_raw)
+        parsed_recipe.extractFullIngrData(store=True)
+        parsed_recipe.extractSolelyIngrData(store=True)
+        parsed_recipe.extractSteps(store=True)
+        return parsed_recipe
 
 # recipe_raw = recipe_pairings[0]
 # recipe_ingrs_raw, recipe_dirns_raw = recipe_raw
