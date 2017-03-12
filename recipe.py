@@ -1,5 +1,5 @@
 # execfile('/Users/Omar/Desktop/Code/recipe-parser/recipe.py')
-import os 
+import os
 #if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
 #    os.chdir("../Desktop/Code/recipe-parser")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,7 +19,7 @@ def matchDirnAndIngredientInput(directions, ingredients):
         ingr_end_index = ingredients.index("__SPLIT__\n")
         recipe_dirns = directions[:dirn_end_index]
         recipe_ingrs = ingredients[:ingr_end_index]
-        
+
         pairings.append([recipe_ingrs, recipe_dirns])
         directions = directions[dirn_end_index+1:]
         ingredients = ingredients[ingr_end_index+1:]
@@ -41,7 +41,7 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
 
     iterator = index
 
-    while( (iterator<len(lower_step_tokens)) and ((lower_step_pos[iterator][1] in ["DT", "CD"]) or (lower_step_tokens[iterator] in ing_measurements) or (lower_step_tokens[iterator] in ing_descriptors) 
+    while( (iterator<len(lower_step_tokens)) and ((lower_step_pos[iterator][1] in ["DT", "CD"]) or (lower_step_tokens[iterator] in ing_measurements) or (lower_step_tokens[iterator] in ing_descriptors)
       or (bool(filter(lambda(x): x.isdigit(), lower_step_tokens[iterator]))))):
         iterator+=1
 
@@ -50,7 +50,7 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
 
     susp_ingr  = lower_step_tokens[iterator]
     for ingr_token in recipe_ingrs_extracted_tokens:
-        #The tokens of 1 ingredient 
+        #The tokens of 1 ingredient
         if(susp_ingr in ingr_token):
             len_ingr_token = len(ingr_token)
             iterator_fwd, iterator_bwd = None, None
@@ -58,7 +58,7 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
                 token_index = ingr_token.index(susp_ingr)
                 len_step_tokens = len(lower_step_tokens)
 
-                if(token_index==0): 
+                if(token_index==0):
                     #if suspected ingredient is found at the start of the token, check if there is a match w the next one
                     iterator_fwd = 1
                     while( (len_step_tokens > (token_index+iterator_fwd) ) and ( lower_step_tokens[token_index+iterator_fwd] in ingr_token) ):
@@ -77,10 +77,10 @@ def getAdjacentIngredient(lower_step_tokens, index, recipe_ingrs_extracted_token
                     iterator_fwd, iterator_bwd = 1, -1
                     while( (len_step_tokens > (token_index+iterator_fwd) ) and ( lower_step_tokens[token_index+iterator_fwd] in ingr_token) ):
                         iterator_fwd+=1
-                    
+
                     while( ( (token_index+iterator_bwd) >= 0 ) and ( lower_step_tokens[token_index+iterator_bwd] in ingr_token) ):
                         iterator_bwd-=1
-                    
+
                     #Just to undo the offset
                     iterator_fwd-=1
                     iterator_bwd+=1
