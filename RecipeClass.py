@@ -358,7 +358,7 @@ class Recipe:
     #~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~
     
     def clone(self):
-        clone = Recipe(copy.deepcopy(self.unparsed_recipe))
+        clone = Recipe(self.unparsed_recipe)
         clone.FormattedDirnData = copy.deepcopy(self.FormattedDirnData)
         clone.FormattedToolsData = copy.deepcopy(self.FormattedToolsData)
         clone.FormattedMethodsData = copy.deepcopy(self.FormattedMethodsData)
@@ -383,6 +383,16 @@ class Recipe:
         for step in self.Steps:
             print step.step
 
+    def print_formatted_recipe(self):
+        print "\n~~~~~" + self.unparsed_recipe.title + "~~~~~"
+        print "~~~~~INGREDIENTS~~~~~\n"
+        for ing in self.FormattedIngrData:
+            print ing
+
+        print "\n~~~~~DIRECTIONS~~~~~\n"
+
+        for step in self.Steps:
+            print step.step
 
     def transform(self, transformation):
         if transformation == 1:

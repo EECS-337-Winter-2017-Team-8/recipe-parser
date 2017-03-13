@@ -1,5 +1,4 @@
-def change_servings(inp_servings, recipe):
-	
+def change_servings(inp_servings, recipe):	
 	# new_recipe = copy.deepcopy(recipe)
 	new_recipe = recipe.clone()
 
@@ -28,6 +27,7 @@ def changeIngredientSize(ingredients, factor):
 	return ingredients
 
 def changeStepsTimes(steps, factor):
+	ret_arr = copy.deepcopy(steps)
 	for i in range(len(steps)):
 		step = steps[i].step
 		new_step = step
@@ -42,25 +42,24 @@ def changeStepsTimes(steps, factor):
 				continue
 		else:
 			first_num, second_num = [],[]
-			i = 0
-			while( (len(indices)>(i+1)) and (indices[i+1]==(1+indices[i]))):
-				i+=1
+			iterator = 0
+			while( (len(indices)>(i+1)) and (indices[iterator+1]==(1+indices[iterator]))):
+				iterator+=1
 
-			first_num.append(step[indices[0]:indices[i]+1])
-			second_num.append(step[indices[i+1]:indices[-1]])
+			first_num.append(step[indices[0]:indices[iterator]+1])
+			second_num.append(step[indices[iterator+1]:indices[-1]])
 			if(first_num[0]!=""):
 				first_num_float = float(first_num[0])
 				desired_first_num = first_num_float*factor
-			if(second_num[0]!=""):
+			if((second_num[0]!="") and (second_num[0]!=".")):
 				second_num_float = float(second_num[0])
 				desired_second_num = second_num_float*factor
-			if((first_num[0]!="") and (second_num[0]!="")):
-				new_step = step[:indices[0]]+str(desired_first_num) + step[indices[i]+1:indices[i+1]] + str(desired_second_num) + step[indices[-1]:]
+			if((first_num[0]!="") and ((second_num[0]!="") and (second_num[0]!="."))):
+				new_step = step[:indices[0]]+str(desired_first_num) + step[indices[iterator]+1:indices[iterator+1]] + str(desired_second_num) + step[indices[-1]:]
 			elif(first_num[0]!=""):
-				new_step = step[:indices[0]]+str(desired_first_num) + step[indices[i]+1:]
-		steps[i].step = new_step
-
-	return steps
+				new_step = step[:indices[0]]+str(desired_first_num) + step[indices[iterator]+1:]
+		ret_arr[i].step = new_step
+	return ret_arr
 
 def extractQtyFromAttribute(attribute):
 	#This function can be used BOTH on Measurement & on Quantity
