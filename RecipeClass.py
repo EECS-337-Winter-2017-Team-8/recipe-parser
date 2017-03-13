@@ -1,4 +1,6 @@
 from ingredients import *
+from directions import *
+from StepClass import *
 
 class Recipe:
     #Note that this class requires acces to the global variables defined in ingredients.py
@@ -369,3 +371,30 @@ class Recipe:
         clone.SolelyIngrData = self.SolelyIngrData
         clone.Steps = self.Steps
         return clone
+
+
+    def print_recipe(self):
+        print "\n~~~~~" + self.unparsed_recipe.title + "~~~~~"
+        print "~~~~~INGREDIENTS~~~~~\n"
+        for ing in self.RawIngrData:
+            print ing
+
+        print "\n~~~~~DIRECTIONS~~~~~\n"
+
+        for step in self.Steps:
+            print step.step
+
+
+    def transform(self, transformation):
+        if transformation == 1:
+            print "Hi from", 1
+        elif transformation == 2:
+            print "Hi from", 2
+        elif transformation == 3:
+            print "Hi from", 3
+        elif transformation == 4:
+            print "Hi from", 4
+        elif transformation == 5:
+            print "Hi from", 5
+        elif transformation == 6:
+            print "Hi from", 6

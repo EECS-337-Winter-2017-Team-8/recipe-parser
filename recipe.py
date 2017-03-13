@@ -1,7 +1,7 @@
 # execfile('/Users/Omar/Desktop/Code/recipe-parser/recipe.py')
 import os
-if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
-   os.chdir("../Desktop/Code/recipe-parser")
+#if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
+ #  os.chdir("../Desktop/Code/recipe-parser")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import pattern.en
 import copy
