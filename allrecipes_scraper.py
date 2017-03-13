@@ -2,11 +2,12 @@
 from bs4 import BeautifulSoup
 import urllib
 
-cuisines = ["http://allrecipes.com/recipes/739/healthy-recipes/diabetic",
-			"http://allrecipes.com/recipes/741/healthy-recipes/gluten-free",
-			"http://allrecipes.com/recipes/84/healthy-recipes",
-			"http://allrecipes.com/recipes/1232/healthy-recipes/low-calorie",
-			"http://allrecipes.com/recipes/1231/healthy-recipes/low-fat"]
+cuisines = ["http://allrecipes.com/recipes/739/healthy-recipes/diabetic"
+			# "http://allrecipes.com/recipes/741/healthy-recipes/gluten-free",
+			# "http://allrecipes.com/recipes/84/healthy-recipes",
+			# "http://allrecipes.com/recipes/1232/healthy-recipes/low-calorie",
+			# "http://allrecipes.com/recipes/1231/healthy-recipes/low-fat"
+			]
 
 for c in cuisines:
 
@@ -31,43 +32,49 @@ for c in cuisines:
 	for link in links:
 		r = urllib.urlopen(link)
 		soup = BeautifulSoup(r)
-		ingredients = soup.find_all("span", class_="recipe-directions__list--item")
+		title_html = soup.find_all("h1", class_="recipe-summary__h1")
+		if len(title_html) != 1:
+			print "NOT ONE, FIX", link
+		if title_html:
+			title = title_html[0].get_text()
+			print title
+	# 	ingredients = soup.find_all("span", class_="recipe-directions__list--item")
 
-		count = 1
-		for ing in ingredients:
-	 		all_ingredients.append(str(count) + ". " + ing.get_text())
-	 		count += 1
+	# 	count = 1
+	# 	for ing in ingredients:
+	#  		all_ingredients.append(str(count) + ". " + ing.get_text())
+	#  		count += 1
 
-	 	all_ingredients.append("NEXT RECIPE")
+	#  	all_ingredients.append("NEXT RECIPE")
 
-	# Get rid of bullshit unicode characters. Copyright character was causing problems
-	for ing in all_ingredients[:]:
-		for letter in ing:
-			try:
-				letter.encode("ascii")
-			except UnicodeEncodeError:
-				newing = ing.replace(letter, "")
-				all_ingredients[all_ingredients.index(ing)] = newing
+	# # Get rid of bullshit unicode characters. Copyright character was causing problems
+	# for ing in all_ingredients[:]:
+	# 	for letter in ing:
+	# 		try:
+	# 			letter.encode("ascii")
+	# 		except UnicodeEncodeError:
+	# 			newing = ing.replace(letter, "")
+	# 			all_ingredients[all_ingredients.index(ing)] = newing
 
-	# Write Ingredients to file
-	word = ""
-	idx = -1
-	while c[idx] != "/":
-		word += c[idx]
-		idx -= 1
-	word = word[::-1]
+	# # Write Ingredients to file
+	# word = ""
+	# idx = -1
+	# while c[idx] != "/":
+	# 	word += c[idx]
+	# 	idx -= 1
+	# word = word[::-1]
 
-	print word
+	# print word
 
-	ing_file = open("allDirections.txt", "a")
-	ing_file2 = open("dietHealthDirections.txt", "a")
-	ing_file3 = open(word + "Directions.txt", "w")
+	# ing_file = open("allDirections.txt", "a")
+	# ing_file2 = open("dietHealthDirections.txt", "a")
+	# ing_file3 = open(word + "Directions.txt", "w")
 
-	for ing in all_ingredients:
-		ing_file.write(ing + "\n")
-		ing_file2.write(ing + "\n")
-		ing_file3.write(ing + "\n")
+	# for ing in all_ingredients:
+	# 	ing_file.write(ing + "\n")
+	# 	ing_file2.write(ing + "\n")
+	# 	ing_file3.write(ing + "\n")
 
-	ing_file.close()
-	ing_file2.close()
-	ing_file3.close()
+	# ing_file.close()
+	# ing_file2.close()
+	# ing_file3.close()

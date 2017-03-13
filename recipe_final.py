@@ -24,9 +24,9 @@ def get_title_ingredients_and_directions(url):
 	data = urllib.urlopen(url)
 	soup = BeautifulSoup(data)
 
-	title_html = soup.find_all(itemprop="name")
-	# ingredients_html = soup.find_all("span", class_="recipe-ingred_txt added")
-	# directions_html = soup.find_all("span", class_="recipe-directions__list--item")
+	title_html = soup.find_all("h1", class_="recipe-summary__h1")
+	ingredients_html = soup.find_all("span", class_="recipe-ingred_txt added")
+	directions_html = soup.find_all("span", class_="recipe-directions__list--item")
 
 	title = title_html[0].get_text()
 
