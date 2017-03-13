@@ -19,10 +19,9 @@ class Recipe:
         self.RawIngrData = self.unparsed_recipe.ingredients
         self.RawDirnData = self.unparsed_recipe.directions
 
-        self.Steps = None
-
         self.FormattedIngrData = self.parse_ingredients()
         self.SolelyIngrData = self.extractSolelyIngrData()
+        self.Steps = self.extractSteps()
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,9 +60,6 @@ class Recipe:
 
         if(val):
             ret_arr = [Step(step, self.SolelyIngrData) for step in val]
-
-        if(store):
-            self.Steps = ret_arr
 
         return ret_arr
 
