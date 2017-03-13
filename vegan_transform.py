@@ -3,8 +3,7 @@ import pattern.en
 
 non_vegetarian_ingredients = [ "beef", "veal", "lamb", "pork", "bacon", "pork belly", "ham", "ribs",
 "rib", "rib tips", "rabbit", "venison", "boar", "roast", "shoulder", "sweetbread", "liver", "kidney", "tongue", 
-"duck", "goose", "quail", "pheasant", "pidgeon", "squab", "chicken", "turkey", "snipe", "mutton", "steak",
-"burger" ]
+"duck", "goose", "quail", "pheasant", "pidgeon", "squab", "chicken", "turkey", "snipe", "mutton", "steak" ]
 
 types_of_fish = [ "fish", "salmon", "catfish", "shrimp", "tuna", "oyster", "halibut", "fish" ]
 types_of_beef = [ "beef", "steak", "rib", "brisket", "ribeye", "tenderloin", "sirloin", "filet mignon", "flank steak", "rump roast", "porterhouse" ]
@@ -44,32 +43,38 @@ def make_vegetarian(recipe):
                     new_recipe.FormattedIngrData[curIndex]['Ingredient'] = veggie_protein
                     new_recipe.SolelyIngrData[curIndex] = veggie_protein
                     changes[curIngredient] = veggie_protein
+                    for token in ingredient_tokens:
+                        changes[token] = veggie_protein
                     break;
 
     for step in steps:
         curIndex = steps.index(step)
-        stepText = step.step
+        stepText = str.lower(step.step)
         new_ingredients = []
-        for key in changes.keys():
-            while(stepText.find(key) != -1):
-                stepText = stepText.replace(key, "ThisIsFillerText")
-            while(stepText.find("ThisIsFillerText") != -1):
-                stepText = stepText.replace("ThisIsFillerText", changes[key])
-            new_recipe.Steps[curIndex].step = stepText
-            if(new_ingredients == []):
-                for ingredient in step.ingredients:
-                    ingredient_sub = ""
-                    if (isinstance(ingredient, list)):
-                        for token in ingredient:
-                            ingredient_sub += token + " "
-                        ingredient_sub = ingredient_sub[0:-1]
-                    else:
-                        ingredient_sub = ingredient
-                    if(ingredient_sub in changes.keys()):
-                        new_ingredients.append(changes[ingredient_sub])
-                    else:
-                        new_ingredients.append(ingredient)
-        new_recipe.Steps[curIndex].ingredients = new_ingredients
+        sortedKeys = changes.keys()
+        sortedKeys.sort(key = len)
+        for key in sortedKeys:
+            if(key in step.ingredients):
+                while(stepText.find(key) != -1):
+                    stepText = stepText.replace(key, "ThisIsFillerText")
+                while(stepText.find("ThisIsFillerText") != -1):
+                    stepText = stepText.replace("ThisIsFillerText", changes[key])
+                new_recipe.Steps[curIndex].step = stepText
+                if(new_ingredients == []):
+                    for ingredient in step.ingredients:
+                        ingredient_sub = ""
+                        if (isinstance(ingredient, list)):
+                            for token in ingredient:
+                                ingredient_sub += token + " "
+                            ingredient_sub = ingredient_sub[0:-1]
+                        else:
+                            ingredient_sub = ingredient
+                        if(ingredient_sub in changes.keys()):
+                            new_ingredients.append(changes[ingredient_sub])
+                        else:
+                            new_ingredients.append(ingredient)
+        if(new_ingredients != []):
+            new_recipe.Steps[curIndex].ingredients = new_ingredients
 
     return new_recipe
 
@@ -110,31 +115,39 @@ def make_vegan(recipe):
                 new_recipe.FormattedIngrData[curIndex]['Ingredient'] = vegan_replacements[token]
                 new_recipe.SolelyIngrData[curIndex] = vegan_replacements[token]
                 changes[curIngredient] = vegan_replacements[token]
+                for other_tokens in ingredient_tokens:
+                    if(other_tokens != token):
+                        changes[other_tokens] = vegan_replacements[token]
+                changes[curIngredient] = vegan_replacements[token]
                 break;
 
     for step in steps:
         curIndex = steps.index(step)
-        stepText = step.step
+        stepText = str.lower(step.step)
         new_ingredients = []
-        for key in changes.keys():
-            while(stepText.find(key) != -1):
-                stepText = stepText.replace(key, "ThisIsFillerText")
-            while(stepText.find("ThisIsFillerText") != -1):
-                stepText = stepText.replace("ThisIsFillerText", changes[key])
-            new_recipe.Steps[curIndex].step = stepText
-            if(new_ingredients == []):
-                for ingredient in step.ingredients:
-                    ingredient_sub = ""
-                    if (isinstance(ingredient, list)):
-                        for token in ingredient:
-                            ingredient_sub += token + " "
-                        ingredient_sub = ingredient_sub[0:-1]
-                    else:
-                        ingredient_sub = ingredient
-                    if(ingredient_sub in changes.keys()):
-                        new_ingredients.append(changes[ingredient_sub])
-                    else:
-                        new_ingredients.append(ingredient_sub)
-        new_recipe.Steps[curIndex].ingredients = new_ingredients
+        sortedKeys = changes.keys()
+        sortedKeys.sort(key = len)
+        for key in sortedKeys:
+            if(key in step.ingredients):
+                while(stepText.find(key) != -1):
+                    stepText = stepText.replace(key, "ThisIsFillerText")
+                while(stepText.find("ThisIsFillerText") != -1):
+                    stepText = stepText.replace("ThisIsFillerText", changes[key])
+                new_recipe.Steps[curIndex].step = stepText
+                if(new_ingredients == []):
+                    for ingredient in step.ingredients:
+                        ingredient_sub = ""
+                        if (isinstance(ingredient, list)):
+                            for token in ingredient:
+                                ingredient_sub += token + " "
+                            ingredient_sub = ingredient_sub[0:-1]
+                        else:
+                            ingredient_sub = ingredient
+                        if(ingredient_sub in changes.keys()):
+                            new_ingredients.append(changes[ingredient_sub])
+                        else:
+                            new_ingredients.append(ingredient_sub)
+        if(new_ingredients != []):
+            new_recipe.Steps[curIndex].ingredients = new_ingredients
 
     return new_recipe
