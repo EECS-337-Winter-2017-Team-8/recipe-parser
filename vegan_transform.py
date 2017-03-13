@@ -16,7 +16,7 @@ veggie_replacements = { "meat": "tofu", "poultry" : "tofu", "fish": "tempeh", "b
 non_vegan_ingredients = [ "milk", "cheese", "butter", "egg" ]
 vegan_replacements = { "milk": "soy milk", "butter": "vegetable oil", "margarine": "vegetable oil", "cottage cheese": "crumbled tofu",
 "ricotta cheese": "crumbled tofu", "cheese": "vegan cheese", "cream": "coconut milk", "yogurt": "soy yogurt", "mayonnaise": "vegan mayonnaise",
-"egg": "tofu", "honey": "maple syrup" }
+"egg": "tofu", "eggs": "tofu", "honey": "maple syrup" }
 
 def make_vegetarian(recipe):
     new_recipe = recipe
@@ -53,10 +53,23 @@ def make_vegetarian(recipe):
         new_ingredients = []
         sortedKeys = changes.keys()
         sortedKeys.sort(key = len)
+        sortedKeys.reverse()
+        containsFlag = False
         for key in sortedKeys:
-            if(key in step.ingredients):
+
+            for ingredient in step.ingredients:
+                if(isinstance(ingredient, list)):
+                    if (key in ingredient):
+                        containsFlag = True
+                        break;
+                elif(ingredient == key):
+                    containsFlag = True
+                    break;
+
+            if(containsFlag == True):
                 while(stepText.find(key) != -1):
                     stepText = stepText.replace(key, "ThisIsFillerText")
+                    print "replacing " + key
                 while(stepText.find("ThisIsFillerText") != -1):
                     stepText = stepText.replace("ThisIsFillerText", changes[key])
                 new_recipe.Steps[curIndex].step = stepText
@@ -67,6 +80,7 @@ def make_vegetarian(recipe):
                             for token in ingredient:
                                 ingredient_sub += token + " "
                             ingredient_sub = ingredient_sub[0:-1]
+                            print ingredient_sub
                         else:
                             ingredient_sub = ingredient
                         if(ingredient_sub in changes.keys()):
@@ -75,6 +89,8 @@ def make_vegetarian(recipe):
                             new_ingredients.append(ingredient)
         if(new_ingredients != []):
             new_recipe.Steps[curIndex].ingredients = new_ingredients
+        print "sorted changes dict keys: "
+        print sortedKeys
 
     return new_recipe
 
@@ -100,7 +116,8 @@ def protein_type(ingredient):
     return "meat"
 
 def make_vegan(recipe):
-    new_recipe = make_vegetarian(recipe)
+    recipe = make_vegetarian(recipe)
+    new_recipe = recipe.clone()
     new_recipe = recipe
     ingredients = recipe.FormattedIngrData
     steps = recipe.Steps
@@ -127,6 +144,7 @@ def make_vegan(recipe):
         new_ingredients = []
         sortedKeys = changes.keys()
         sortedKeys.sort(key = len)
+        sortedKeys.reverse()
         for key in sortedKeys:
             if(key in step.ingredients):
                 while(stepText.find(key) != -1):
