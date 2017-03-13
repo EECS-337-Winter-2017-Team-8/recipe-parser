@@ -1,9 +1,9 @@
 import nltk
+import pattern.en
 
 non_vegetarian_ingredients = [ "beef", "veal", "lamb", "pork", "bacon", "pork belly", "ham", "ribs",
 "rib", "rib tips", "rabbit", "venison", "boar", "roast", "shoulder", "sweetbread", "liver", "kidney", "tongue", 
-"duck", "goose", "quail", "pheasant", "pidgeon", "squab", "chicken", "turkey", "snipe", "mutton", "steak",
-"burger" ]
+"duck", "goose", "quail", "pheasant", "pidgeon", "squab", "chicken", "turkey", "snipe", "mutton", "steak" ]
 
 types_of_fish = [ "fish", "salmon", "catfish", "shrimp", "tuna", "oyster", "halibut", "fish" ]
 types_of_beef = [ "beef", "steak", "rib", "brisket", "ribeye", "tenderloin", "sirloin", "filet mignon", "flank steak", "rump roast", "porterhouse" ]
@@ -11,18 +11,21 @@ types_of_poultry = [ "poultry", "chicken", "duck", "goose", "quail", "pidgeon", 
 types_of_pork = [ "pork", "ribs", "bacon", "pork chop", "tenderloin", "ham", "sausage", "pancetta", "prosciutto", "sausage", "chorizo" ]
 types_of_protein = [ types_of_fish, types_of_pork, types_of_beef, types_of_poultry ]
 
-non_vegan_ingredients = [ "milk", "cheese", "butter", "egg" ]
+veggie_replacements = { "meat": "tofu", "poultry" : "tofu", "fish": "tempeh", "burger": "portobello mushroom", "beef": "seitan", "pork": "seitan" }
 
-replacements = { "meat": "tofu", "poultry" : "tofu", "fish": "tempeh", "burger": "portobello mushroom", "beef": "seitan", "pork": "seitan" }
+non_vegan_ingredients = [ "milk", "cheese", "butter", "egg" ]
+vegan_replacements = { "milk": "soy milk", "butter": "vegetable oil", "margarine": "vegetable oil", "cottage cheese": "crumbled tofu",
+"ricotta cheese": "crumbled tofu", "cheese": "vegan cheese", "cream": "coconut milk", "yogurt": "soy yogurt", "mayonnaise": "vegan mayonnaise",
+"egg": "tofu", "honey": "maple syrup" }
 
 def make_vegetarian(recipe):
     new_recipe = recipe
     ingredients = recipe.FormattedIngrData
     steps = recipe.Steps
     changes = {}
+
     for ingredient in ingredients:
         veggie_protein = ""
-        ingredient_tokens = None
         curIndex = recipe.FormattedIngrData.index(ingredient)
         curIngredient = ingredient['Ingredient']
         ingredient_tokens = nltk.word_tokenize(curIngredient)
@@ -32,37 +35,47 @@ def make_vegetarian(recipe):
                     new_recipe.FormattedIngrData[curIndex]['Ingredient'] = "vegetable broth"
                     new_recipe.SolelyIngrData[curIndex] = "vegetable broth"
                     changes[curIngredient] = "vegetable broth"
+                    break;
                 else:
                     protein = protein_type(curIngredient)
-                    if(protein in replacements.keys()):
-                        veggie_protein = replacements[protein]
+                    if(protein in veggie_replacements.keys()):
+                        veggie_protein = veggie_replacements[protein]
                     new_recipe.FormattedIngrData[curIndex]['Ingredient'] = veggie_protein
                     new_recipe.SolelyIngrData[curIndex] = veggie_protein
                     changes[curIngredient] = veggie_protein
+                    for token in ingredient_tokens:
+                        changes[token] = veggie_protein
+                    break;
+
     for step in steps:
         curIndex = steps.index(step)
-        stepText = step.step
+        stepText = str.lower(step.step)
         new_ingredients = []
-        print changes.keys()
-        print step.ingredients, "\n"
-        for key in changes.keys():
-            while(stepText.find(key) != -1):
-                stepText = stepText.replace(key, changes[key])
-            new_recipe.Steps[curIndex].step = stepText
-            if(new_ingredients == []):
-                for ingredient in step.ingredients:
-                    ingredient_sub = ""
-                    if (isinstance(ingredient, list)):
-                        for token in ingredient:
-                            ingredient_sub += token + " "
-                        ingredient_sub = ingredient_sub[0:-1]
-                    else:
-                        ingredient_sub = ingredient
-                    if(ingredient_sub in changes.keys()):
-                        new_ingredients.append(changes[ingredient_sub])
-                    else:
-                        new_ingredients.append(ingredient)
-        new_recipe.Steps[curIndex].ingredients = new_ingredients
+        sortedKeys = changes.keys()
+        sortedKeys.sort(key = len)
+        for key in sortedKeys:
+            if(key in step.ingredients):
+                while(stepText.find(key) != -1):
+                    stepText = stepText.replace(key, "ThisIsFillerText")
+                while(stepText.find("ThisIsFillerText") != -1):
+                    stepText = stepText.replace("ThisIsFillerText", changes[key])
+                new_recipe.Steps[curIndex].step = stepText
+                if(new_ingredients == []):
+                    for ingredient in step.ingredients:
+                        ingredient_sub = ""
+                        if (isinstance(ingredient, list)):
+                            for token in ingredient:
+                                ingredient_sub += token + " "
+                            ingredient_sub = ingredient_sub[0:-1]
+                        else:
+                            ingredient_sub = ingredient
+                        if(ingredient_sub in changes.keys()):
+                            new_ingredients.append(changes[ingredient_sub])
+                        else:
+                            new_ingredients.append(ingredient)
+        if(new_ingredients != []):
+            new_recipe.Steps[curIndex].ingredients = new_ingredients
+
     return new_recipe
 
 def not_vegetarian(ingredient):
@@ -88,4 +101,53 @@ def protein_type(ingredient):
 
 def make_vegan(recipe):
     new_recipe = make_vegetarian(recipe)
+    new_recipe = recipe
+    ingredients = recipe.FormattedIngrData
+    steps = recipe.Steps
+    changes = {}
+
+    for ingredient in ingredients:
+        curIndex = recipe.FormattedIngrData.index(ingredient)
+        curIngredient = ingredient['Ingredient']
+        ingredient_tokens = nltk.word_tokenize(curIngredient)
+        for token in ingredient_tokens:
+            if(token in vegan_replacements.keys()):
+                new_recipe.FormattedIngrData[curIndex]['Ingredient'] = vegan_replacements[token]
+                new_recipe.SolelyIngrData[curIndex] = vegan_replacements[token]
+                changes[curIngredient] = vegan_replacements[token]
+                for other_tokens in ingredient_tokens:
+                    if(other_tokens != token):
+                        changes[other_tokens] = vegan_replacements[token]
+                changes[curIngredient] = vegan_replacements[token]
+                break;
+
+    for step in steps:
+        curIndex = steps.index(step)
+        stepText = str.lower(step.step)
+        new_ingredients = []
+        sortedKeys = changes.keys()
+        sortedKeys.sort(key = len)
+        for key in sortedKeys:
+            if(key in step.ingredients):
+                while(stepText.find(key) != -1):
+                    stepText = stepText.replace(key, "ThisIsFillerText")
+                while(stepText.find("ThisIsFillerText") != -1):
+                    stepText = stepText.replace("ThisIsFillerText", changes[key])
+                new_recipe.Steps[curIndex].step = stepText
+                if(new_ingredients == []):
+                    for ingredient in step.ingredients:
+                        ingredient_sub = ""
+                        if (isinstance(ingredient, list)):
+                            for token in ingredient:
+                                ingredient_sub += token + " "
+                            ingredient_sub = ingredient_sub[0:-1]
+                        else:
+                            ingredient_sub = ingredient
+                        if(ingredient_sub in changes.keys()):
+                            new_ingredients.append(changes[ingredient_sub])
+                        else:
+                            new_ingredients.append(ingredient_sub)
+        if(new_ingredients != []):
+            new_recipe.Steps[curIndex].ingredients = new_ingredients
+
     return new_recipe
