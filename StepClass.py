@@ -1,5 +1,6 @@
 from directions import *
 from ingredients import *
+import pattern.en
 
 class Step:
 	#Note that this class requires acces to the global variables defined in directions.py AND ingredients.py
@@ -221,6 +222,7 @@ class Step:
 			like '3 to 5 minutes' or '4 hours' or 'approximately 45 minutes'."""
 		step = self.lower_step  #or maybe self.lowerstep
 
+		print step
 		tokens = nltk.word_tokenize(step)
 		pos = nltk.pos_tag(tokens)
 
@@ -289,6 +291,8 @@ class Step:
 		"""This function takes a step (as a string) that has the word 'until' in it,
 		   and returns a string with the rest of the phrase, i.e. 'until golden brown'"""
 		step = self.lower_step
+		if "until" not in step:
+			return None
 		until_time = ""
 		tokens = nltk.word_tokenize(step)
 		if("until" in tokens):

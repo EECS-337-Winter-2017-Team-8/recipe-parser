@@ -1,6 +1,11 @@
 from ingredients import *
 from directions import *
 from StepClass import *
+from fat_transform import *
+from carb_transform import *
+from servings_transform import *
+from vegan_transform import *
+import copy
 
 class Recipe:
     #Note that this class requires acces to the global variables defined in ingredients.py
@@ -394,16 +399,20 @@ class Recipe:
         for step in self.Steps:
             print step.step
 
-    def transform(self, transformation):
-        if transformation == 1:
-            print "Hi from", 1
+    def transform(self, transformation, num_serve=None):
+        if transformation == 1: 
+            transformed_recipe = make_vegan(self)
         elif transformation == 2:
-            print "Hi from", 2
+            transformed_recipe = change_servings(num_serve, self)
         elif transformation == 3:
-            print "Hi from", 3
+            transformed_recipe = high2low_fat_transform(self)
         elif transformation == 4:
-            print "Hi from", 4
+            transformed_recipe = low2high_fat_transform(self)
         elif transformation == 5:
-            print "Hi from", 5
+            transformed_recipe = high2low_carb_transform(self)
         elif transformation == 6:
-            print "Hi from", 6
+            transformed_recipe = low2high_carb_transform(self)
+        elif transformation == 7: 
+            transformed_recipe = make_vegetarian(self)
+
+        return transformed_recipe
