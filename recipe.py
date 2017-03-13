@@ -5,6 +5,8 @@ import os
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import pattern.en
 
+from UnparsedRecipe import UnparsedRecipe
+
 execfile('ingredients.py')
 execfile('directions.py')
 execfile('StepClass.py')
@@ -145,13 +147,12 @@ def parse_recipe_pairing(pairing):
         return parse_recipe(pairing[0], pairing[1])
 
 def parse_recipe(ingredients_raw, directions_raw):
-        parsed_recipe = Recipe()
-        parsed_recipe.ProvideRawIngrData(ingredients_raw)
-        parsed_recipe.ProvideRawDirnData(directions_raw)
-        parsed_recipe.extractFullIngrData(store=True)
-        parsed_recipe.extractSolelyIngrData(store=True)
-        parsed_recipe.extractSteps(store=True)
-        return parsed_recipe
+    unparsed_dummy = UnparsedRecipe(None)
+    unparsed_dummy.dummy(ingredients_raw, directions_raw)
+    parsed_recipe = Recipe(unparsed_dummy)
+    parsed_recipe.extractSolelyIngrData(store=True)
+    parsed_recipe.extractSteps(store=True)
+    return parsed_recipe
 
 # recipe_raw = recipe_pairings[0]
 # recipe_ingrs_raw, recipe_dirns_raw = recipe_raw

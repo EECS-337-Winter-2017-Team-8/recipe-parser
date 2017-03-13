@@ -1,376 +1,366 @@
 from ingredients import *
 
 class Recipe:
-	#Note that this class requires acces to the global variables defined in ingredients.py
+    #Note that this class requires acces to the global variables defined in ingredients.py
 
-	def __init__(self):
-		#~~~~~~~~~~~~~~~~~~~~~~~~~ The final values we will return ~~~~~~~~~~~~~~~~~~~~~~~~~
-		#List of Ingredients Needed for Recipe; data from "Ingredients" Section
-		self.FormattedIngrData = None
+    def __init__(self, unparsed_recipe):
+        self.unparsed_recipe = unparsed_recipe
+        #self.FormattedIngrData = None
+        #List of breakdown of Steps; data from "Directions" Section
+        self.FormattedDirnData = None
+        #List of Tools Needed for Recipe; data from "Directions" Section
+        self.FormattedToolsData = None
+        #List of Methods Needed for Recipe; data from "Directions" Section
+        self.FormattedMethodsData = None
 
-		#List of breakdown of Steps; data from "Directions" Section
-		self.FormattedDirnData = None
-		#List of Tools Needed for Recipe; data from "Directions" Section
-		self.FormattedToolsData = None
-		#List of Methods Needed for Recipe; data from "Directions" Section
-		self.FormattedMethodsData = None
+        self.PrimaryMethods = None
+        self.SecondaryMethods = None
+        #~~~~~~~~~~~~~~~~~~~~~~~~~ Intermediary Variables for calculation purposes ~~~~~~~~~~~~~~~~~~~~~~~~~
+        self.RawIngrData = self.unparsed_recipe.ingredients
+        self.RawDirnData = self.unparsed_recipe.directions
 
-		self.PrimaryMethods = None
-		self.SecondaryMethods = None
-		#~~~~~~~~~~~~~~~~~~~~~~~~~ Intermediary Variables for calculation purposes ~~~~~~~~~~~~~~~~~~~~~~~~~
-		#To hold what the user puts in
-		self.RawIngrData = None
-		self.RawDirnData = None
+        self.Steps = None
 
-		self.SolelyIngrData = None
+        self.FormattedIngrData = self.parse_ingredients()
+        self.SolelyIngrData = self.extractSolelyIngrData()
 
-		self.Steps = None
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    #~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	#~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~
+    def parse_ingredients(self):
+        return [self.parse_ingredient(ingredient)
+                for ingredient in self.unparsed_recipe.ingredients]
 
-	def ProvideRawIngrData(self, data):
-		self.RawIngrData = data
+    #~~~~~~~~~~~~~~~~~~~~~~~~~ Analyze ~~~~~~~~~~~~~~~~~~~~~~~~~
+    #~~~~~~~~~~~~ Ingredients ~~~~~~~~~~~~
+    #We provide optional data & store parameters in next 2 funxns to allow us to test the functionality.
 
-	def ProvideRawDirnData(self, data):
-		self.RawDirnData = data
+    def extractSolelyIngrData(self, data=None, store=False):
+        #Extracts only the 'Ingredient' elements within the entire ingredient dictionary...
+        val = None
 
-	#~~~~~~~~~~~~~~~~~~~~~~~~~ Analyze ~~~~~~~~~~~~~~~~~~~~~~~~~
-	#~~~~~~~~~~~~ Ingredients ~~~~~~~~~~~~
-	#We provide optional data & store parameters in next 2 funxns to allow us to test the functionality.
-	def extractFullIngrData(self, data=None, store=False):
-		#Extracts the entire ingredient dictionary incl. Directions, Measurements, etc...
-		self.FormattedIngrData = [self.parse_ingredient(ingr) for ingr in self.RawIngrData]
+        if(self.FormattedIngrData!=None):
+            val = [ frm_ingr['Ingredient'] for frm_ingr in self.FormattedIngrData]
+        elif (data != None):
+            val = self.getRecipeIngredientsAttributes(data)
 
-	def extractSolelyIngrData(self, data=None, store=False):
-		#Extracts only the 'Ingredient' elements within the entire ingredient dictionary...
-		val = None
+        return val
 
-		if(self.FormattedIngrData!=None):
-			val = [ frm_ingr['Ingredient'] for frm_ingr in self.FormattedIngrData]
-		elif (data != None):
-			val = self.getRecipeIngredientsAttributes(data)
+    #~~~~~~~~~~~~ Directions ~~~~~~~~~~~~
+    def extractSteps(self, data=None, store=False):
+        # Finds all of the steps in the data paramater (or, if that is not given, the RawDirnData).
+        # Creates a Step object for every one of them, and if store==True, stores it in self.Steps
+        val = None
+        ret_arr = []
 
-		if(store):
-			self.SolelyIngrData = val
-		
-		return val
+        if(data):
+            val = getSteps(data)
+        else:
+            val = getSteps(self.RawDirnData)
 
-	#~~~~~~~~~~~~ Directions ~~~~~~~~~~~~
-	def extractSteps(self, data=None, store=False):
-		# Finds all of the steps in the data paramater (or, if that is not given, the RawDirnData).
-		# Creates a Step object for every one of them, and if store==True, stores it in self.Steps
-		val = None
-		ret_arr = []
+        if(val):
+            ret_arr = [Step(step, self.SolelyIngrData) for step in val]
 
-		if(data):
-			val = getSteps(data)
-		else:
-			val = getSteps(self.RawDirnData)
+        if(store):
+            self.Steps = ret_arr
 
-		if(val):
-			ret_arr = [Step(step, self.SolelyIngrData) for step in val]
+        return ret_arr
 
-		if(store):
-			self.Steps = ret_arr
+    def categorizeMethods(self, data=None, store=False):
+        primary_methods = []
+        secondary_methods = []
+        for step in self.Steps:
+            for method in step.methods:
+                if ((method in dirn_primary_methods) and (method not in primary_methods)):
+                    primary_methods.append(method)
+                else:
+                    secondary_methods.append(method)
+        if(store==True):
+            self.PrimaryMethods = primary_methods
+            self.SecondaryMethods = secondary_methods
 
-		return ret_arr
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Non-Interface/Behind The Scenes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	def categorizeMethods(self, data=None, store=False):
-		primary_methods = []
-		secondary_methods = []
-		for step in self.Steps:
-			for method in step.methods:
-				if ((method in dirn_primary_methods) and (method not in primary_methods)):
-					primary_methods.append(method)
-				else:
-					secondary_methods.append(method)
-		if(store==True):
-			self.PrimaryMethods = primary_methods
-			self.SecondaryMethods = secondary_methods
+    #~~~~~~~~~~~~~~~~~~~~~~~~~ Ingredient Functionality ~~~~~~~~~~~~~~~~~~~~~~~~~
+    def parse_ingredient (self, ingredient):
+        # Initialize list of tokens
+        word_list = nltk.word_tokenize(ingredient)
+        lower_word_list = map(str.lower, word_list)
 
-	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Non-Interface/Behind The Scenes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        lower_ingredient = str.lower(ingredient)
+        increment, word_list_len = 0, len(word_list)
 
-	#~~~~~~~~~~~~~~~~~~~~~~~~~ Ingredient Functionality ~~~~~~~~~~~~~~~~~~~~~~~~~
-	def parse_ingredient (self, ingredient):
-		# Initialize list of tokens
-		word_list = nltk.word_tokenize(ingredient)
-		lower_word_list = map(str.lower, word_list)
+        # Initialize dictionary
+        ingredient_dictionary = { 'Quantity': None, 'Measurement': None, 'Ingredient': None, 'Preparation': None, 'Descriptor': None }
 
-		lower_ingredient = str.lower(ingredient)
-		increment, word_list_len = 0, len(word_list)
+        # Set empty strings
+        quantity, measurement, ingredient_name, preparation, descriptor, new_quantity, new_measurement = "", "", "", "", "", "", ""
 
-		# Initialize dictionary
-		ingredient_dictionary = { 'Quantity': None, 'Measurement': None, 'Ingredient': None, 'Preparation': None, 'Descriptor': None }
+        # For parsing ingredient
+        ingredient_name_tokens, ingredient_tokens, ingredient_pos = [], None, None
 
-		# Set empty strings
-		quantity, measurement, ingredient_name, preparation, descriptor, new_quantity, new_measurement = "", "", "", "", "", "", ""
+        # Find quantity
+        while ((increment < word_list_len) and (any(char.isdigit() for char in lower_word_list[increment]))):
+            if (quantity != ""):
+                quantity += " "
+            quantity += lower_word_list[increment]
+            increment += 1
 
-		# For parsing ingredient
-		ingredient_name_tokens, ingredient_tokens, ingredient_pos = [], None, None
+        # Some ingredients don't have a numeric quantity because they are added "to taste"
+        # i.e. "salt and pepper to taste"
+        # should produce Quantity: to taste
+        if (quantity == ""):
+            if (lower_ingredient.find("to taste") != -1):
+                quantity = "to taste"
 
-		# Find quantity
-		while ((increment < word_list_len) and (any(char.isdigit() for char in lower_word_list[increment]))):
-			if (quantity != ""):
-				quantity += " "
-			quantity += lower_word_list[increment]
-			increment += 1
+        # If quantity and measurement are actually in brackets
+        # i.e. "1 (8 ounce) can tomato sauce"
+        # should produce Quantity: 8, Measurement: Ounce
+        if ((increment < word_list_len) and (lower_word_list[increment] == "(")):
+            increment += 1
+            while ((increment < word_list_len) and (lower_word_list[increment] != ")")):
+                tmp_inc = increment
+                # Find new quantity
+                while ((increment < word_list_len) and ((any(char.isdigit() for char in lower_word_list[increment])) or (lower_word_list[increment] in ing_measurements))):
+                    if (new_measurement != ""):
+                        new_measurement += " "
+                    new_measurement += lower_word_list[increment]
+                    increment += 1
+                if (tmp_inc == increment):
+                    increment += 1
+            increment += 1
 
-		# Some ingredients don't have a numeric quantity because they are added "to taste"
-		# i.e. "salt and pepper to taste"
-		# should produce Quantity: to taste
-		if (quantity == ""):
-			if (lower_ingredient.find("to taste") != -1):
-				quantity = "to taste"
-
-		# If quantity and measurement are actually in brackets
-		# i.e. "1 (8 ounce) can tomato sauce"
-		# should produce Quantity: 8, Measurement: Ounce
-		if ((increment < word_list_len) and (lower_word_list[increment] == "(")):
-			increment += 1
-			while ((increment < word_list_len) and (lower_word_list[increment] != ")")):
-				tmp_inc = increment
-				# Find new quantity
-				while ((increment < word_list_len) and ((any(char.isdigit() for char in lower_word_list[increment])) or (lower_word_list[increment] in ing_measurements))):
-					if (new_measurement != ""):
-						new_measurement += " "
-					new_measurement += lower_word_list[increment]
-					increment += 1
-				if (tmp_inc == increment):
-					increment += 1
-			increment += 1
-
-		# Find measurement in the rest of the ingredient
-		while ((increment < word_list_len) and (lower_word_list[increment] in ing_measurements)):
-			if (measurement != ""):
-				measurement += " "
-			measurement += lower_word_list[increment]
-			increment += 1
+        # Find measurement in the rest of the ingredient
+        while ((increment < word_list_len) and (lower_word_list[increment] in ing_measurements)):
+            if (measurement != ""):
+                measurement += " "
+            measurement += lower_word_list[increment]
+            increment += 1
 
 
-		if (measurement in ing_containers):
-			if(new_measurement!=""):
-				measurement = new_measurement+" "+measurement
+        if (measurement in ing_containers):
+            if(new_measurement!=""):
+                measurement = new_measurement+" "+measurement
 
-		elif ((new_measurement != "") and (measurement == "")):
-			measurement = new_measurement
+        elif ((new_measurement != "") and (measurement == "")):
+            measurement = new_measurement
 
-		elif ((new_measurement != "") and (measurement != "")):
-			measurement = new_measurement + " " + measurement
+        elif ((new_measurement != "") and (measurement != "")):
+            measurement = new_measurement + " " + measurement
 
-		# Find ingredient name
-		while ((increment < word_list_len) and (lower_word_list[increment] != ",") and (lower_word_list[increment] != "-")):
-			if (lower_word_list[increment] not in ing_containers):
-				if (ingredient_name != ""):
-					ingredient_name += " "
-				ingredient_name += lower_word_list[increment]
-				ingredient_name_tokens.append(lower_word_list[increment])
-			increment += 1
-		# Find preparation
-		if ((increment < word_list_len) and ((lower_word_list[increment] == ",") or (lower_word_list[increment] == "-"))):
-			increment += 1
-			while (increment < word_list_len):
-				if ((preparation != "") and (lower_word_list[increment] != ",")):
-					preparation += " "
-				preparation += lower_word_list[increment]
-				increment += 1
+        # Find ingredient name
+        while ((increment < word_list_len) and (lower_word_list[increment] != ",") and (lower_word_list[increment] != "-")):
+            if (lower_word_list[increment] not in ing_containers):
+                if (ingredient_name != ""):
+                    ingredient_name += " "
+                ingredient_name += lower_word_list[increment]
+                ingredient_name_tokens.append(lower_word_list[increment])
+            increment += 1
+        # Find preparation
+        if ((increment < word_list_len) and ((lower_word_list[increment] == ",") or (lower_word_list[increment] == "-"))):
+            increment += 1
+            while (increment < word_list_len):
+                if ((preparation != "") and (lower_word_list[increment] != ",")):
+                    preparation += " "
+                preparation += lower_word_list[increment]
+                increment += 1
 
-		ingred_repl = [", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste", " or more to taste", "or more to taste", "more to taste",
-		", or as needed", ", or to taste", "or as needed", "or to taste", " as needed", " to taste"]
-		prep_repl = [", or as needed", ", or to taste", "or as needed", "or to taste", ", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste",
-		" or more to taste", "or more to taste", "more to taste"]
+        ingred_repl = [", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste", " or more to taste", "or more to taste", "more to taste",
+        ", or as needed", ", or to taste", "or as needed", "or to taste", " as needed", " to taste"]
+        prep_repl = [", or as needed", ", or to taste", "or as needed", "or to taste", ", plus more for topping", " plus more for topping", "plus more for topping", ", or more to taste",
+        " or more to taste", "or more to taste", "more to taste"]
 
-		if(ingredient_name != ""):
-			for i_r in ingred_repl:
-				ingredient_name = ingredient_name.replace(i_r, "")
-		if(preparation!=""):
-			for p_r in prep_repl:
-				preparation = preparation.replace(p_r, "")
+        if(ingredient_name != ""):
+            for i_r in ingred_repl:
+                ingredient_name = ingredient_name.replace(i_r, "")
+        if(preparation!=""):
+            for p_r in prep_repl:
+                preparation = preparation.replace(p_r, "")
 
-		# Parse ingredient to find descriptor
-		newIngDescPrep = parse_ing_name(lower_word_list, ingredient_name, ingredient_name_tokens)
-		ingredient_name = newIngDescPrep[1]
-		if (descriptor != ""):
-			descriptor += ", "
-		descriptor += newIngDescPrep[2]
-		if (preparation != ""):
-			preparation += " "
-		preparation += newIngDescPrep[3]
-		if (measurement == ""):
-			measurement = newIngDescPrep[4]
-		# In case there was a comma in a weird place
-		# i.e. "4 skinless, boneless chicken breast halves"
-		#
-		# Otherwise parser will think "skinless" is ingreadient
-		# and "boneless chicken breast halves" is preparation
-		if ((ingredient_name == "") and (preparation != "")):
-			stopFlag = False
-			while_inc = 0
-			while ((ingredient_name == "") and (while_inc < 10)):
-				ingredient_name = ""
-				ingredient_name_tokens = []
-				prep_tokens = nltk.word_tokenize(preparation)
-				prep_token_len = len(prep_tokens)
-				tmp_inc = 0
-				while ((tmp_inc < prep_token_len) and (prep_tokens[tmp_inc] != ",")):
-					if (preparation[tmp_inc] not in ing_containers):
-						if (ingredient_name != ""):
-							ingredient_name += " "
-						ingredient_name += prep_tokens[tmp_inc]
-						ingredient_name_tokens.append(prep_tokens[tmp_inc])
-					tmp_inc += 1
-				preparation = preparation.replace(ingredient_name + ", ", "")
-				preparation = preparation.replace(ingredient_name, "")
-				while_inc += 1
-				if (while_inc < 10):
-					newIngDescPrep = parse_ing_name(lower_word_list, ingredient_name, ingredient_name_tokens)
-					ingredient_name = newIngDescPrep[1]
-					if (descriptor != ""):
-						descriptor += ", "
-					descriptor += newIngDescPrep[2]
-					if (preparation != ""):
-						preparation += ", "
-					preparation += newIngDescPrep[3]
-					if (measurement == ""):
-						measurement = newIngDescPrep[4]
+        # Parse ingredient to find descriptor
+        newIngDescPrep = parse_ing_name(lower_word_list, ingredient_name, ingredient_name_tokens)
+        ingredient_name = newIngDescPrep[1]
+        if (descriptor != ""):
+            descriptor += ", "
+        descriptor += newIngDescPrep[2]
+        if (preparation != ""):
+            preparation += " "
+        preparation += newIngDescPrep[3]
+        if (measurement == ""):
+            measurement = newIngDescPrep[4]
+        # In case there was a comma in a weird place
+        # i.e. "4 skinless, boneless chicken breast halves"
+        #
+        # Otherwise parser will think "skinless" is ingreadient
+        # and "boneless chicken breast halves" is preparation
+        if ((ingredient_name == "") and (preparation != "")):
+            stopFlag = False
+            while_inc = 0
+            while ((ingredient_name == "") and (while_inc < 10)):
+                ingredient_name = ""
+                ingredient_name_tokens = []
+                prep_tokens = nltk.word_tokenize(preparation)
+                prep_token_len = len(prep_tokens)
+                tmp_inc = 0
+                while ((tmp_inc < prep_token_len) and (prep_tokens[tmp_inc] != ",")):
+                    if (preparation[tmp_inc] not in ing_containers):
+                        if (ingredient_name != ""):
+                            ingredient_name += " "
+                        ingredient_name += prep_tokens[tmp_inc]
+                        ingredient_name_tokens.append(prep_tokens[tmp_inc])
+                    tmp_inc += 1
+                preparation = preparation.replace(ingredient_name + ", ", "")
+                preparation = preparation.replace(ingredient_name, "")
+                while_inc += 1
+                if (while_inc < 10):
+                    newIngDescPrep = parse_ing_name(lower_word_list, ingredient_name, ingredient_name_tokens)
+                    ingredient_name = newIngDescPrep[1]
+                    if (descriptor != ""):
+                        descriptor += ", "
+                    descriptor += newIngDescPrep[2]
+                    if (preparation != ""):
+                        preparation += ", "
+                    preparation += newIngDescPrep[3]
+                    if (measurement == ""):
+                        measurement = newIngDescPrep[4]
 
-		# Remove comma from the end of preparation
-		if (preparation != ""):
-			final_prep_tokens = nltk.word_tokenize(preparation)
-			if (final_prep_tokens[len(final_prep_tokens) - 1] == ","):
-				preparation = preparation.replace(" , ", "")
-				preparation = preparation.replace(", ", "")
-				preparation = preparation.replace(" ,", "")
-				preparation = preparation.replace(",", "")
-		# Remove comma from the end of descriptor
-		if (descriptor != ""):
-			final_prep_tokens = nltk.word_tokenize(descriptor)
-			if (final_prep_tokens[len(final_prep_tokens) - 1] == ","):
-				descriptor = descriptor.replace(" , ", "")
-				descriptor = descriptor.replace(", ", "")
-				descriptor = descriptor.replace(" ,", "")
-				descriptor = descriptor.replace(",", "")
-		# Assigns parsed string values to appropriate dictionary keys.
-		# Leaves dictionary value as None if still an empty string
-		# we may want to change that interaction depending on how we plan to use the output of this parser.
-		if (descriptor != ""):
-			ingredient_dictionary['Descriptor'] = descriptor
+        # Remove comma from the end of preparation
+        if (preparation != ""):
+            final_prep_tokens = nltk.word_tokenize(preparation)
+            if (final_prep_tokens[len(final_prep_tokens) - 1] == ","):
+                preparation = preparation.replace(" , ", "")
+                preparation = preparation.replace(", ", "")
+                preparation = preparation.replace(" ,", "")
+                preparation = preparation.replace(",", "")
+        # Remove comma from the end of descriptor
+        if (descriptor != ""):
+            final_prep_tokens = nltk.word_tokenize(descriptor)
+            if (final_prep_tokens[len(final_prep_tokens) - 1] == ","):
+                descriptor = descriptor.replace(" , ", "")
+                descriptor = descriptor.replace(", ", "")
+                descriptor = descriptor.replace(" ,", "")
+                descriptor = descriptor.replace(",", "")
+        # Assigns parsed string values to appropriate dictionary keys.
+        # Leaves dictionary value as None if still an empty string
+        # we may want to change that interaction depending on how we plan to use the output of this parser.
+        if (descriptor != ""):
+            ingredient_dictionary['Descriptor'] = descriptor
 
-		if (preparation != ""):
-			ingredient_dictionary['Preparation'] = preparation
+        if (preparation != ""):
+            ingredient_dictionary['Preparation'] = preparation
 
-		if (ingredient_name != ""):
-			ingredient_dictionary['Ingredient'] = ingredient_name
+        if (ingredient_name != ""):
+            ingredient_dictionary['Ingredient'] = ingredient_name
 
-		if (measurement != ""):
-			ingredient_dictionary['Measurement'] = measurement
+        if (measurement != ""):
+            ingredient_dictionary['Measurement'] = measurement
 
-		if (quantity != ""):
-			ingredient_dictionary['Quantity'] = quantity
+        if (quantity != ""):
+            ingredient_dictionary['Quantity'] = quantity
 
-		return ingredient_dictionary
+        return ingredient_dictionary
 
-	def parse_ing_name(self, ingredient, ingredient_name, ingredient_name_tokens):
-		results = { 1: None, 2: None, 3: None, 4: None }
-		descriptor, preparation, measurement = "", "",""
-		
-		ingredient_pos = nltk.pos_tag(ingredient)
-		ing_pos_len = len(ingredient_pos)
-		increment = 0
+    def parse_ing_name(self, ingredient, ingredient_name, ingredient_name_tokens):
+        results = { 1: None, 2: None, 3: None, 4: None }
+        descriptor, preparation, measurement = "", "",""
+        
+        ingredient_pos = nltk.pos_tag(ingredient)
+        ing_pos_len = len(ingredient_pos)
+        increment = 0
 
-		while (increment < ing_pos_len):
-			if (ingredient_pos[increment][0] in ingredient_name_tokens):
-				if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in ing_descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
-					#verb, past participle. Used w/ Auxillary version of has
-					#he HAS ridden. he HAS eaten. he HAS rowed the boat.
-					if (descriptor != ""):
-						descriptor += " "
-					descriptor += ingredient_pos[increment][0]
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+        while (increment < ing_pos_len):
+            if (ingredient_pos[increment][0] in ingredient_name_tokens):
+                if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in ing_descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
+                    #verb, past participle. Used w/ Auxillary version of has
+                    #he HAS ridden. he HAS eaten. he HAS rowed the boat.
+                    if (descriptor != ""):
+                        descriptor += " "
+                    descriptor += ingredient_pos[increment][0]
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-				elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
-					#VBD past tense Verb: dipped, pleased, swiped, adopted, strode, wore
-					#RB averb. occassionally, professionally, maddeningly, swiftly, quickly
-					if (preparation != ""):
-						preparation += " " + ingredient_pos[increment][0]
-					else:
-						preparation = ingredient_pos[increment][0]
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
+                    #VBD past tense Verb: dipped, pleased, swiped, adopted, strode, wore
+                    #RB averb. occassionally, professionally, maddeningly, swiftly, quickly
+                    if (preparation != ""):
+                        preparation += " " + ingredient_pos[increment][0]
+                    else:
+                        preparation = ingredient_pos[increment][0]
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-				elif (ingredient_pos[increment][0] in ing_measurements):
-					measurement += ingredient_pos[increment][0]
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif (ingredient_pos[increment][0] in ing_measurements):
+                    measurement += ingredient_pos[increment][0]
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-				elif (ingredient_pos[increment][0] == "("):
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
-					increment += 1
-					if (descriptor != ""):
-						descriptor += " ; "
-					while ((increment < ing_pos_len) and (ingredient_pos[increment][0] != ")")):
-						if (descriptor != ""):
-							descriptor += " "
-						descriptor += ingredient_pos[increment][0]
-						ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-						ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-						ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-						ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
-						increment += 1
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif (ingredient_pos[increment][0] == "("):
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                    increment += 1
+                    if (descriptor != ""):
+                        descriptor += " ; "
+                    while ((increment < ing_pos_len) and (ingredient_pos[increment][0] != ")")):
+                        if (descriptor != ""):
+                            descriptor += " "
+                        descriptor += ingredient_pos[increment][0]
+                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                        increment += 1
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-				elif ((ingredient_pos[increment][0] == "CC") and (ingredient_pos[increment][0] != "and")):
-					#CC: Conjunction, coordinating. 
-					#and both but either et for less minus neither nor or plus so therefore times yet whether
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif ((ingredient_pos[increment][0] == "CC") and (ingredient_pos[increment][0] != "and")):
+                    #CC: Conjunction, coordinating. 
+                    #and both but either et for less minus neither nor or plus so therefore times yet whether
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
 
-				elif (ingredient_pos[increment][0] == "-"):
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-					ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
-					increment += 1
-					while (increment < ing_pos_len):
-						if (preparation != ""):
-							preparation += " "
-						preparation += ingredient_pos[increment][0]
-						ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-						ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-						ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-						ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
-						increment += 1
+                elif (ingredient_pos[increment][0] == "-"):
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                    increment += 1
+                    while (increment < ing_pos_len):
+                        if (preparation != ""):
+                            preparation += " "
+                        preparation += ingredient_pos[increment][0]
+                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
+                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
+                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
+                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                        increment += 1
 
-			increment += 1
+            increment += 1
 
-		results[1] = ingredient_name
-		results[2] = descriptor
-		results[3] = preparation
-		results[4] = measurement
-		return results
+        results[1] = ingredient_name
+        results[2] = descriptor
+        results[3] = preparation
+        results[4] = measurement
+        return results
 
-	def getRecipeIngredientsAttributes(self, recipe_ingrs_raw):
-		recipe_ingrs_formatted = []
-		for ingr in recipe_ingrs_raw:
-			ingr_formatted = parse_ingredient(ingr)
-			recipe_ingrs_formatted.append(ingr_formatted)
-		recipe_ingrs_extracted = [recipe["Ingredient"] for recipe in recipe_ingrs_formatted]
-		return recipe_ingrs_extracted
+    def getRecipeIngredientsAttributes(self, recipe_ingrs_raw):
+        recipe_ingrs_formatted = []
+        for ingr in recipe_ingrs_raw:
+            ingr_formatted = parse_ingredient(ingr)
+            recipe_ingrs_formatted.append(ingr_formatted)
+        recipe_ingrs_extracted = [recipe["Ingredient"] for recipe in recipe_ingrs_formatted]
+        return recipe_ingrs_extracted
 
-	#~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~
+    #~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~

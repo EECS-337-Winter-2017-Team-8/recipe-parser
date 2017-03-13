@@ -7,10 +7,15 @@ import urllib
 class UnparsedRecipe:
     def __init__(self, url):
         self.url = url
-        self.soup = self.extract_soup()
-        self.title = self.extract_title()
-        self.ingredients = self.extract_ingredients()
-        self.directions = self.extract_directions()
+        if url != None:
+            self.soup = self.extract_soup()
+            self.title = self.extract_title()
+            self.ingredients = self.extract_ingredients()
+            self.directions = self.extract_directions()
+
+    def dummy(self, ingredients, directions):
+        self.ingredients = ingredients
+        self.directions = directions
 
     def extract_soup(self):
         data = urllib.urlopen(self.url)
