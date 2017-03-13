@@ -13,6 +13,7 @@ execfile('directions.py')
 execfile('StepClass.py')
 execfile('RecipeClass.py')
 execfile('servings-transform.py')
+execfile('vegan_transform.py')
 
 def matchDirnAndIngredientInput(directions, ingredients):
     #This will match each recipe in the directions & ingredients file
@@ -152,6 +153,10 @@ def parse_recipe(ingredients_raw, directions_raw):
     unparsed_dummy = UnparsedRecipe(None)
     unparsed_dummy.dummy(ingredients_raw, directions_raw)
     parsed_recipe = Recipe(unparsed_dummy)
+    curIndex = 0
+    for step in parsed_recipe.Steps:
+        parsed_recipe.Steps[curIndex].ExtractFromTxt()
+        curIndex+=1
     return parsed_recipe
 
 # recipe_raw = recipe_pairings[0]
