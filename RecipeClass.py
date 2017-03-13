@@ -258,11 +258,11 @@ class Recipe:
         return ingredient_dictionary
 
 
-    def a_function(ingredient_name, a_variable):
-        ingredient_name = ingredient_name.replace(" " + a_variable + " ", "")
-        ingredient_name = ingredient_name.replace(" " + a_variable, "")
-        ingredient_name = ingredient_name.replace(a_variable + " ", "")
-        ingredient_name = ingredient_name.replace(a_variable, "")
+    def remove_token(ingredient_name, token):
+        ingredient_name = ingredient_name.replace(" " + token + " ", "")
+        ingredient_name = ingredient_name.replace(" " + token, "")
+        ingredient_name = ingredient_name.replace(token + " ", "")
+        ingredient_name = ingredient_name.replace(token, "")
         return ingredient_name
 
     def parse_ing_name(self, ingredient, ingredient_name, ingredient_name_tokens):
@@ -290,7 +290,7 @@ class Recipe:
                         if (descriptor != ""):
                                 descriptor += " "
                                 descriptor += token
-                                ingredient_name = a_function(ingredient_name, token)
+                                ingredient_name = remove_token(ingredient_name, token)
 
                 elif ((token_pos == 'VBD') or (token_pos == 'RB')):
                     #VBD past tense Verb: dipped, pleased, swiped, adopted, strode, wore
@@ -299,14 +299,14 @@ class Recipe:
                         preparation += " " + token
                     else:
                         preparation = token
-                    ingredient_name = a_function(ingredient_name, token)
+                    ingredient_name = remove_token(ingredient_name, token)
 
                 elif (token in ing_measurements):
                     measurement += token
-                    ingredient_name = a_function(ingredient_name, token)
+                    ingredient_name = remove_token(ingredient_name, token)
 
                 elif (token == "("):
-                    ingredient_name = a_function(ingredient_name, token)
+                    ingredient_name = remove_token(ingredient_name, token)
                     increment += 1
                     if (descriptor != ""):
                         descriptor += " ; "
@@ -314,23 +314,23 @@ class Recipe:
                         if (descriptor != ""):
                             descriptor += " "
                         descriptor += token
-                        ingredient_name = a_function(ingredient_name, token)
+                        ingredient_name = remove_token(ingredient_name, token)
                         increment += 1
-                    ingredient_name = a_function(ingredient_name, token)
+                    ingredient_name = remove_token(ingredient_name, token)
 
                 elif ((token == "CC") and (token != "and")):
                     #CC: Conjunction, coordinating. 
                     #and both but either et for less minus neither nor or plus so therefore times yet whether
-                    ingredient_name = a_function(ingredient_name, token)
+                    ingredient_name = remove_token(ingredient_name, token)
 
                 elif (token == "-"):
-                    ingredient_name = a_function(ingredient_name, token)
+                    ingredient_name = remove_token(ingredient_name, token)
                     increment += 1
                     while (increment < ing_pos_len):
                         if (preparation != ""):
                             preparation += " "
                         preparation += token
-                        ingredient_name = a_function(ingredient_name, token)
+                        ingredient_name = remove_token(ingredient_name, token)
                         increment += 1
 
             increment += 1
