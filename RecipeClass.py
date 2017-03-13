@@ -358,20 +358,19 @@ class Recipe:
     #~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~
     
     def clone(self):
-        clone = Recipe(self.unparsed_recipe)
-        clone.FormattedDirnData = self.FormattedDirnData
-        clone.FormattedToolsData = self.FormattedToolsData
-        clone.FormattedMethodsData = self.FormattedMethodsData
-        clone.PrimaryMethods = self.PrimaryMethods
-        clone.SecondaryMethods = self.SecondaryMethods
-        clone.Servings = self.Servings
-        clone.RawIngrData = self.RawIngrData
-        clone.RawDirnData = self.RawDirnData
-        clone.FormattedIngrData = self.FormattedIngrData
-        clone.SolelyIngrData = self.SolelyIngrData
-        clone.Steps = self.Steps
+        clone = Recipe(copy.deepcopy(self.unparsed_recipe))
+        clone.FormattedDirnData = copy.deepcopy(self.FormattedDirnData)
+        clone.FormattedToolsData = copy.deepcopy(self.FormattedToolsData)
+        clone.FormattedMethodsData = copy.deepcopy(self.FormattedMethodsData)
+        clone.PrimaryMethods = copy.deepcopy(self.PrimaryMethods)
+        clone.SecondaryMethods = copy.deepcopy(self.SecondaryMethods)
+        clone.Servings = copy.deepcopy(self.Servings)
+        clone.RawIngrData = copy.deepcopy(self.RawIngrData)
+        clone.RawDirnData = copy.deepcopy(self.RawDirnData)
+        clone.FormattedIngrData = copy.deepcopy(self.FormattedIngrData)
+        clone.SolelyIngrData = copy.deepcopy(self.SolelyIngrData)
+        clone.Steps = copy.deepcopy(self.Steps)
         return clone
-
 
     def print_recipe(self):
         print "\n~~~~~" + self.unparsed_recipe.title + "~~~~~"
