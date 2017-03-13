@@ -17,7 +17,7 @@ def run():
     print "\n ~~~~~TRANSFORMATIONS~~~~~\n"
     transformation = 0
     while int(transformation) not in range(1, 7):
-    	transformation = raw_input("Please enter a number for one of the following transformations:\n1: Vegetarian\n2: Serving Size\n3: Low Fat\n4: High Fat\n5: Low Carb\n6: High Carb\n")
+    	transformation = raw_input("Please enter a number for one of the following transformations:\n1: Vegan\n2: Serving Size\n3: Low Fat\n4: High Fat\n5: Low Carb\n6: High Carb\n")
 
     recipe.transform(int(transformation))
 
