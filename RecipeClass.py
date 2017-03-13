@@ -257,90 +257,80 @@ class Recipe:
 
         return ingredient_dictionary
 
+
+    def a_function(ingredient_name, a_variable):
+        ingredient_name = ingredient_name.replace(" " + a_variable + " ", "")
+        ingredient_name = ingredient_name.replace(" " + a_variable, "")
+        ingredient_name = ingredient_name.replace(a_variable + " ", "")
+        ingredient_name = ingredient_name.replace(a_variable, "")
+        return ingredient_name
+
     def parse_ing_name(self, ingredient, ingredient_name, ingredient_name_tokens):
         results = { 1: None, 2: None, 3: None, 4: None }
         descriptor, preparation, measurement = "", "",""
-        
-        ingredient_pos = nltk.pos_tag(ingredient)
-        ing_pos_len = len(ingredient_pos)
+
+
+        ingredient_pos_tags = nltk.pos_tag(ingredient)
+        ing_pos_len = len(ingredient_parts_of_speech)
         increment = 0
 
         while (increment < ing_pos_len):
-            if (ingredient_pos[increment][0] in ingredient_name_tokens):
-                if ((ingredient_pos[increment][1] == 'VBN') or (ingredient_pos[increment][0] in ing_descriptors) or (ingredient_pos[increment][0].find("less") != -1)):
-                    #verb, past participle. Used w/ Auxillary version of has
-                    #he HAS ridden. he HAS eaten. he HAS rowed the boat.
-                    if (descriptor != ""):
-                        descriptor += " "
-                    descriptor += ingredient_pos[increment][0]
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+            ingredient_pos_tag = ingredient_pos_tags[increment]
 
-                elif ((ingredient_pos[increment][1] == 'VBD') or (ingredient_pos[increment][1] == 'RB')):
+            token = ingredient_pos_tag[0]
+            token_pos = token_pos_tag[1]
+
+            if (token in ingredient_name_tokens):
+                if ((token_pos == 'VBN')
+                    or (token in ing_descriptors)
+                    or (token.find("less") != -1)):
+
+                        #verb, past participle. Used w/ Auxillary version of has
+                        #he HAS ridden. he HAS eaten. he HAS rowed the boat.
+                        if (descriptor != ""):
+                                descriptor += " "
+                                descriptor += token
+                                ingredient_name = a_function(ingredient_name, token)
+
+                elif ((token_pos == 'VBD') or (token_pos == 'RB')):
                     #VBD past tense Verb: dipped, pleased, swiped, adopted, strode, wore
                     #RB averb. occassionally, professionally, maddeningly, swiftly, quickly
                     if (preparation != ""):
-                        preparation += " " + ingredient_pos[increment][0]
+                        preparation += " " + token
                     else:
-                        preparation = ingredient_pos[increment][0]
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                        preparation = token
+                    ingredient_name = a_function(ingredient_name, token)
 
-                elif (ingredient_pos[increment][0] in ing_measurements):
-                    measurement += ingredient_pos[increment][0]
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif (token in ing_measurements):
+                    measurement += token
+                    ingredient_name = a_function(ingredient_name, token)
 
-                elif (ingredient_pos[increment][0] == "("):
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif (token == "("):
+                    ingredient_name = a_function(ingredient_name, token)
                     increment += 1
                     if (descriptor != ""):
                         descriptor += " ; "
-                    while ((increment < ing_pos_len) and (ingredient_pos[increment][0] != ")")):
+                    while ((increment < ing_pos_len) and (token != ")")):
                         if (descriptor != ""):
                             descriptor += " "
-                        descriptor += ingredient_pos[increment][0]
-                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                        descriptor += token
+                        ingredient_name = a_function(ingredient_name, token)
                         increment += 1
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                    ingredient_name = a_function(ingredient_name, token)
 
-                elif ((ingredient_pos[increment][0] == "CC") and (ingredient_pos[increment][0] != "and")):
+                elif ((token == "CC") and (token != "and")):
                     #CC: Conjunction, coordinating. 
                     #and both but either et for less minus neither nor or plus so therefore times yet whether
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                    ingredient_name = a_function(ingredient_name, token)
 
-                elif (ingredient_pos[increment][0] == "-"):
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                    ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                elif (token == "-"):
+                    ingredient_name = a_function(ingredient_name, token)
                     increment += 1
                     while (increment < ing_pos_len):
                         if (preparation != ""):
                             preparation += " "
-                        preparation += ingredient_pos[increment][0]
-                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0] + " ", "")
-                        ingredient_name = ingredient_name.replace(" " + ingredient_pos[increment][0], "")
-                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0] + " ", "")
-                        ingredient_name = ingredient_name.replace(ingredient_pos[increment][0], "")
+                        preparation += token
+                        ingredient_name = a_function(ingredient_name, token)
                         increment += 1
 
             increment += 1
@@ -350,6 +340,7 @@ class Recipe:
         results[3] = preparation
         results[4] = measurement
         return results
+
 
     def getRecipeIngredientsAttributes(self, recipe_ingrs_raw):
         recipe_ingrs_formatted = []
