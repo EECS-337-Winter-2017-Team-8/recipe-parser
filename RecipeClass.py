@@ -15,6 +15,11 @@ class Recipe:
 
         self.PrimaryMethods = None
         self.SecondaryMethods = None
+        if(self.unparsed_recipe.servings!=None):
+            self.Servings = self.unparsed_recipe.servings
+        else:
+            self.Servings = None
+
         #~~~~~~~~~~~~~~~~~~~~~~~~~ Intermediary Variables for calculation purposes ~~~~~~~~~~~~~~~~~~~~~~~~~
         self.RawIngrData = self.unparsed_recipe.ingredients
         self.RawDirnData = self.unparsed_recipe.directions
@@ -80,7 +85,7 @@ class Recipe:
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~ Ingredient Functionality ~~~~~~~~~~~~~~~~~~~~~~~~~
     def parse_ingredient (self, ingredient):
-        # Initialize list of tokens
+        #Initialize list of tokens
         word_list = nltk.word_tokenize(ingredient)
         lower_word_list = map(str.lower, word_list)
 
@@ -257,7 +262,6 @@ class Recipe:
 
         return ingredient_dictionary
 
-
     def remove_token(ingredient_name, token):
         ingredient_name = ingredient_name.replace(" " + token + " ", "")
         ingredient_name = ingredient_name.replace(" " + token, "")
@@ -341,7 +345,6 @@ class Recipe:
         results[4] = measurement
         return results
 
-
     def getRecipeIngredientsAttributes(self, recipe_ingrs_raw):
         recipe_ingrs_formatted = []
         for ingr in recipe_ingrs_raw:
@@ -351,3 +354,18 @@ class Recipe:
         return recipe_ingrs_extracted
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    def clone(self):
+        clone = Recipe(self.unparsed_recipe)
+        clone.FormattedDirnData = self.FormattedDirnData
+        clone.FormattedToolsData = self.FormattedToolsData
+        clone.FormattedMethodsData = self.FormattedMethodsData
+        clone.PrimaryMethods = self.PrimaryMethods
+        clone.SecondaryMethods = self.SecondaryMethods
+        clone.Servings = self.Servings
+        clone.RawIngrData = self.RawIngrData
+        clone.RawDirnData = self.RawDirnData
+        clone.FormattedIngrData = self.FormattedIngrData
+        clone.SolelyIngrData = self.SolelyIngrData
+        clone.Steps = self.Steps
+        return clone

@@ -1,7 +1,7 @@
-bad_ingredients = ["salt", "olive oil"]
+bad_ingredients = ["salt", "oil", "butter", "bacon", "sugar", "lard", "grease"]
 
 def make_healthy(recipe):
-    ingredients = recipe.ingredients
+    ingredients = recipe.SolelyIngrData
     for ingredient in bad_ingredients:
         ingredients = reduce_ingredient(ingredients, ingredient["name"], 2)
 

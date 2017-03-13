@@ -33,10 +33,14 @@ class Step:
 
 		if(ConcrTime and UntilTime):
 			time = ConcrTime+" or " + UntilTime
+			self.concreteTime = ConcrTime
+			self.untilTime = UntilTime
 		elif(ConcrTime):
 			time = ConcrTime
+			self.concreteTime = ConcrTime
 		elif(UntilTime):
 			time = UntilTime
+			self.untilTime = UntilTime
 
 		if(len(meth1)==0):
 			meth_combined = meth2
@@ -297,7 +301,6 @@ class Step:
 		else:
 			return None
 	 
-
 	#~~~~~~ Get Methods ~~~~~~
 	def getAdjacentTool(self, index, inp_lower_step_toks = None, inp_lower_step_pos = None, retIterator=False):
 		#checks if there is a tool starting from that index
@@ -519,53 +522,3 @@ class Step:
 						i = -1
 				i+=1
 		return lower_step_list
-
-
-def splitForSplitAnalysis(inp_str):
-	print "enterred splitForSplitAnalysis with inp_str: ", inp_str
-	lower_step = inp_str.replace("(","").replace(")","")
-	lower_step_list = [lower_step]
-	for split_tok in dirn_split_toks:
-		print "iterating over, split_tok = ", split_tok
-		print "lower_step_list was initially : ", lower_step_list
-		i = 0
-		while (i < len(lower_step_list)):
-			list_elt = lower_step_list[i]
-			toks = nltk.word_tokenize(list_elt)
-			print "list_elt toks are = ", toks
-			if split_tok in toks:
-				print "split_tok is in toks!"
-				if(split_tok.isalpha()):
-					print "split_tok ISALPHA"
-					span_generator = WhitespaceTokenizer().span_tokenize(list_elt)
-					spans = [span for span in span_generator]
-					print "spans are: ", spans
-					print "toks.index(split_tok) = ", toks.index(split_tok)
-					cut_start, cut_end = spans[toks.index(split_tok)]
-					str1 = list_elt[:cut_start]
-					print "str1 is : ", str1
-					str2 = list_elt[cut_end+1:]
-					print "str2 is : ", str2
-					if(str1!=""):
-						str1 = splitForSplitAnalysis(str1)
-					if(str2!=""):
-						str2 = splitForSplitAnalysis(str2)
-					if( (str1) and (str2)):
-						lower_step_list+=map(str.strip, str1+str2)
-					elif(str1):
-						lower_step_list+=map(str.strip, str1)
-					elif(str2):
-						lower_step_list+=map(str.strip, str2)
-					lower_step_list.remove(list_elt)
-					i = -1
-				else:
-					print "split_tok NOT ISALPHA"
-					lower_step_list+=map(str.strip, list_elt.split(split_tok))
-					lower_step_list.remove(list_elt)
-					i = -1
-				print "lower_step_list has become : ", lower_step_list 
-			i+=1
-	return lower_step_list
-
-
-

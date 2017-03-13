@@ -1,16 +1,18 @@
 # execfile('/Users/Omar/Desktop/Code/recipe-parser/recipe.py')
 import os
-#if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
-#    os.chdir("../Desktop/Code/recipe-parser")
+if(os.getcwd() != '/Users/Omar/Desktop/Code/recipe-parser'):
+   os.chdir("../Desktop/Code/recipe-parser")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up & Utility Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import pattern.en
+import copy
 
-from UnparsedRecipe import UnparsedRecipe
+from UnparsedRecipe import *
 
 execfile('ingredients.py')
 execfile('directions.py')
 execfile('StepClass.py')
 execfile('RecipeClass.py')
+execfile('servings-transform.py')
 
 def matchDirnAndIngredientInput(directions, ingredients):
     #This will match each recipe in the directions & ingredients file
@@ -115,12 +117,12 @@ def runTests(index_pairing=None):
                 print_recipe_block(parse_recipe_pairing(pairing))
 
 def get_sample_recipes():
-        return [parse_recipe_pairing(pairing) for pairing in recipe_pairings]
+    return [parse_recipe_pairing(pairing) for pairing in recipe_pairings]
 
 def print_recipe_block(recipe):
-        print '\n'
-        print_divider()
-        print_recipe(recipe)
+    print '\n'
+    print_divider()
+    print_recipe(recipe)
 
 def print_recipe(recipe):
         print "SolelyIngrData: ", recipe.SolelyIngrData, "\n"

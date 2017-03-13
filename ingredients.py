@@ -36,21 +36,7 @@ def removeNextRecipeTag(ing_lst):
 		ing_lst.remove("NEXT RECIPE\n")
 	return ing_lst
 
-def clear():
-	print "\n"*70
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Parse Functions: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Exceptions/Improvements?:
-#
-#	"1 pinch cayenne pepper, or to taste"
-#		Do we want to include the ", or to taste"?
-#		i.e. Quantity: 2, or to taste
-#
-#	"1/4 cup all-purpose flour for coating"
-#		Ingredient: all-purpose flour for coating
-#
-# To check meaning of tags use nltk.help.upenn_tagset()
 
 def parse_ingredient (ingredient):
 	# Initialize list of tokens
@@ -409,16 +395,3 @@ def omar_tests(i):
 		print i
 		print omar
 		print "~~~~~~~~~~~~~~~~~"
-
-list_of_ingredients = ["2 chipotle chilies in adobo sauce, minced, or to taste", 
-"1 1/2 pounds ground beef",
-"salt and pepper to taste", 
-"1 (1 ounce) package dry onion soup mix",
-"1 (8 ounce) can tomato sauce",
-"1/2 cup barbecue sauce, or as needed",
-"1 pinch cayenne pepper, or to taste",
-"2 (6.5 ounce) cans canned tomato sauce",
-"1 (10 ounce) package frozen chopped spinach , thawed, drained and squeezed dry",
-"4 (6 ounce) fillets salmon",
-"1 cup finely grated Parmigiano-Reggiano cheese, plus more for topping"]
-
