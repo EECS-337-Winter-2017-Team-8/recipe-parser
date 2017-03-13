@@ -23,12 +23,13 @@ class UnparsedRecipe:
         return title
 
     def extract_ingredients(self):
-        ingredients_html = soup.find_all("span", class_="recipe-ingred_txt added")
+        ingredients_html = self.soup.find_all("span", class_="recipe-ingred_txt added")
         ingredients = [ingredient.get_text() for ingredient in ingredients_html]
         return ingredients
 
     def extract_directions(self):
-        directions_html = soup.find_all("span", class_="recipe-directions__list--item")
+        directions_html = self.soup.find_all("span", class_="recipe-directions__list--item")
+        directions = []
         for direction in directions_html:
             tokens = nltk.sent_tokenize(str(direction.get_text()))
             for token in tokens:
