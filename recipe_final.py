@@ -46,7 +46,7 @@ def run():
         transformed_recipe = recipe.transform(int(transformation))
 
     # Change the title of the recipe to include the new modification
-    transformed_recipe.unparsed_recipe.title = transforms[int(transformation)] + transformed_recipe.unparsed_recipe.title
+    transformed_recipe.unparsed_recipe.title = transforms[int(transformation)-1] + transformed_recipe.unparsed_recipe.title
 
     # Pretty print
     transformed_recipe.print_formatted_recipe()
