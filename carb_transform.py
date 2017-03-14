@@ -8,7 +8,7 @@ carb_h2l_subs = {
     'sweet potatoes': 'zucchini',
     'sweet potato': 'zucchini',
 	'linguine': 'whole wheat linguine',
-    'spaghetti': 'whole what spaghetti',
+    'spaghetti': 'whole wheat spaghetti',
 	'penne': 'whole wheat penne',
 	'fettuccine': 'whole wheat fettuccine',
     'farfalle' : 'whole wheat farfalle',

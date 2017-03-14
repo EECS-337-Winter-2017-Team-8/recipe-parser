@@ -3,7 +3,7 @@ fat_h2l_subs = {
     'unhealthy':'healthy',
     'ground beef':'lean ground turkey',
     'bacon':'canadian bacon',
-    'strips bacon': 'strips canadian bacon',
+    'strips bacon': 'strips turkey bacon',
     'sausage':'lean ham',
     'chicken':'skinless chicken',
     'thigh': 'breast',
